@@ -9,6 +9,8 @@ import ConfirmChangeConfigFeatureModal from './ConfigFeatureModal';
 import { PregnancyWeekInfo } from '../../baby-tracker-interface';
 import { TableMoreMenu } from '../../../../common/components/table';
 import { formatDateNoTime } from '../../../../common/constants/common.utils';
+import AlertDialogSlide from '../dialog/dialog-confirm';
+import { useRemoveBabyTracker } from '../../hooks/useRemoveBabyTracker';
 export interface IPropsBabyTrackerListTable {
   rowCode: string;
   TrackerList?: PregnancyWeekInfo[];
@@ -19,7 +21,9 @@ function BabyTrackerTableRow({
 }: IPropsBabyTrackerListTable) {
   const { t } = useTranslation();
   
-  
+  const [dialogOpen, setDialogOpen] = React.useState(false);
+  const [status, setStatus] = React.useState<'agree' | 'disagree' | null>(null);
+  const { mutate } = useRemoveBabyTracker();
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
   const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
     setOpenMenuActions(event.currentTarget);
@@ -27,10 +31,30 @@ function BabyTrackerTableRow({
   const handleCloseMenu = () => {
     setOpenMenuActions(null);
   };
+  const handleRemoveRow = () =>{
+    setDialogOpen(true);
+  }
   // Kiểm tra và in ra thông tin của trackerItem
-
+  const handleStatusChange = (newStatus: 'agree' | 'disagree') => {
+    setStatus(newStatus);  // Lưu trạng thái agree/disagree
+    console.log('User selected:', newStatus);
+    if(newStatus ==='agree')
+    {
+      mutate(TrackerList?.[+rowCode].week.toString() || '');
+    }else{
+      setDialogOpen(false);
+    }
+  };
+  const handleDialogClose = () => {
+    setDialogOpen(false);  // Đóng dialog
+  };
   return (
     <>
+      <AlertDialogSlide
+        open={dialogOpen}  // Điều khiển trạng thái mở của dialog
+        onClose={handleDialogClose}  // Đóng dialog khi cần
+        onStatusChange={handleStatusChange}  // Gửi trạng thái về parent
+      />
       <TableRow hover sx={{ borderBottom: '1px dotted gray' }}>
         <TableCell align="center">{TrackerList?.[+rowCode].week}</TableCell>
         <TableCell align="left">{TrackerList?.[+rowCode].keyTakeaways}</TableCell>
@@ -53,7 +77,7 @@ function BabyTrackerTableRow({
                   </MenuItem>
                   <MenuItem
                     onClick={() => {
-                      console.log('')
+                      handleRemoveRow();
                       handleCloseMenu();
                     }}
                     sx={{
