@@ -155,7 +155,14 @@ export default function Router() {
               element: <Navigate to={PATH_DASHBOARD.configFeature.root} replace />,
               index: true,
             },
-            { path: PATH_DASHBOARD.configFeature.list, element: <ConfigFeatureList /> },
+            {
+              path: PATH_DASHBOARD.configFeature.edit.babyTracker, 
+              element: <EditBabyTracker/>
+            },
+            { path: PATH_DASHBOARD.configFeature.list, 
+              element: <ConfigFeatureList /> },
+            
+      
           ],
         },
         {
@@ -1236,3 +1243,5 @@ const AnalystScan = Loadable(lazy(() => import('src/analytics/analytic-scan/inde
 
 // config-share-app
 const EditConfigShareApp = Loadable(lazy(() => import('src/config-share-app/index')));
+// baby tracker
+const EditBabyTracker = Loadable(lazy(() => import('../../config-off-checkout/detail-baby-tracker')));

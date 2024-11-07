@@ -58,3 +58,22 @@ export interface PregnancyWeekInfo {
       babySizeInfo: string;
     };
   }
+  export interface UpdateBabyTrackerParams {
+    week: string; // Tham số tuần
+    data: {
+      keyTakeaways: string;
+      thumbnail3DMom: string;
+      image3DUrlMom: string;
+      symptoms: string;
+      thingsTodo: string;
+      thingsToAvoid: string;
+      weight: number;
+      high: number;
+      thumbnail3DBaby: string;
+      image3DUrlBaby: string;
+      symbolicImage: string;
+      sizeShortDescription: string;
+      babyOverallInfo: string;
+      babySizeInfo: string;
+    };
+  }

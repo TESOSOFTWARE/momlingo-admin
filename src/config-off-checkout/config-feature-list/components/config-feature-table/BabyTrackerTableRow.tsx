@@ -11,6 +11,8 @@ import { TableMoreMenu } from '../../../../common/components/table';
 import { formatDateNoTime } from '../../../../common/constants/common.utils';
 import AlertDialogSlide from '../dialog/dialog-confirm';
 import { useRemoveBabyTracker } from '../../hooks/useRemoveBabyTracker';
+import { useNavigate } from 'react-router-dom';
+import { PATH_DASHBOARD } from '../../../../common/routes/paths';
 export interface IPropsBabyTrackerListTable {
   rowCode: string;
   TrackerList?: PregnancyWeekInfo[];
@@ -20,7 +22,7 @@ function BabyTrackerTableRow({
   TrackerList,
 }: IPropsBabyTrackerListTable) {
   const { t } = useTranslation();
-  
+  const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = React.useState(false);
   const [status, setStatus] = React.useState<'agree' | 'disagree' | null>(null);
   const { mutate } = useRemoveBabyTracker();
@@ -69,7 +71,13 @@ function BabyTrackerTableRow({
                 <Stack>
                   <MenuItem
                     onClick={() => {
-                      console.log('view')
+                      const weekValue = TrackerList?.[+rowCode]?.week;  // Lấy giá trị tuần
+                      if (weekValue) {
+                        navigate(PATH_DASHBOARD.configFeature.edit.babyTracker.replace(':week', weekValue.toString()));
+                        console.log('Navigating to week', weekValue);
+                      } else {
+                        console.error('Invalid week value');
+                      }
                     }}
                   >
                     <Iconify icon={'mdi:eye-outline'} />
