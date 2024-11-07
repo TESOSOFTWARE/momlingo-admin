@@ -167,4 +167,6 @@ export const API_DUPLICATE_SCAN = 'merchant/add-point-code-dup';
 // 
 export const API_BABY_TRACKERS = '/api/v1/baby-trackers';
 export const API_BABY_REMOVE_TRACKERS = '/api/v1/baby-trackers/week/';
+export const API_BABY_CREATE_TRACKERS = '/api/v1/baby-trackers';
+export const API_BABY_EDIT_TRACKERS = '/api/v1/baby-trackers';
 
