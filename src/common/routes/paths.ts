@@ -64,6 +64,9 @@ export const PATH_DASHBOARD = {
   configFeature: {
     root: path(ROOT_DASHBOARD, '/config'),
     list: path(ROOT_DASHBOARD, '/config/feature/list'),
+    edit:{
+      babyTracker: path(ROOT_DASHBOARD,`/config/babyTrack/edit/:week`)
+    }
   },
   configEvent: {
     root: path(ROOT_DASHBOARD, '/config/event'),

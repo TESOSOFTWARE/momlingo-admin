@@ -1,4 +1,9 @@
 const vn = {
+
+  babyTracker:{
+    title: ''
+  },
+
   confirmModal: {
     content: 'Hành động này không thể hoàn tác',
     cancel: 'Huỷ bỏ',
