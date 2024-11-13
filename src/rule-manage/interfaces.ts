@@ -34,4 +34,9 @@ export interface IFormRuleConfigItem {
       [key: string]:string;
     };
 }
-  
+
+export interface ChildTracker{
+  id: string,
+  week: string,
+  content: string
+}

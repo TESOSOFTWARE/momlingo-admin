@@ -23,25 +23,24 @@ export default function EditBabyTracker() {
       console.error('Week is required');
       return; // Nếu `week` không tồn tại, dừng lại và không thực hiện mutate
     }
+    // const data = {
+    //   keyTakeaways: 'Trọng tâm tuần này',
+    //   thumbnail3DMom: 'base64-image-data',
+    //   image3DUrlMom: 'http://link-to-3d-mom-image',
+    //   symptoms: 'Triệu chứng mẹ',
+    //   thingsTodo: 'Những việc mẹ nên làm',
+    //   thingsToAvoid: 'Những việc mẹ nên tránh',
+    //   weight: 500, // trọng lượng của mẹ (gam)
+    //   high: 150, // chiều cao của mẹ (cm)
+    //   thumbnail3DBaby: 'base64-image-data',
+    //   image3DUrlBaby: 'http://link-to-3d-baby-image',
+    //   symbolicImage: 'base64-image-data',
+    //   sizeShortDescription: 'Mô tả kích thước em bé',
+    //   babyOverallInfo: 'Thông tin tổng quan về em bé',
+    //   babySizeInfo: 'Thông tin về kích thước em bé',
+    // };
 
-    const data = {
-      keyTakeaways: 'Trọng tâm tuần này',
-      thumbnail3DMom: 'base64-image-data',
-      image3DUrlMom: 'http://link-to-3d-mom-image',
-      symptoms: 'Triệu chứng mẹ',
-      thingsTodo: 'Những việc mẹ nên làm',
-      thingsToAvoid: 'Những việc mẹ nên tránh',
-      weight: 500, // trọng lượng của mẹ (gam)
-      high: 150, // chiều cao của mẹ (cm)
-      thumbnail3DBaby: 'base64-image-data',
-      image3DUrlBaby: 'http://link-to-3d-baby-image',
-      symbolicImage: 'base64-image-data',
-      sizeShortDescription: 'Mô tả kích thước em bé',
-      babyOverallInfo: 'Thông tin tổng quan về em bé',
-      babySizeInfo: 'Thông tin về kích thước em bé',
-    };
-
-    mutate({ week, data }); // Gọi mutation và truyền `week` và `data` vào
+    // mutate({ week, data }); // Gọi mutation và truyền `week` và `data` vào
   };
   return (
     <Page title={i18n.t('featureConfig.title')}>
@@ -51,7 +50,7 @@ export default function EditBabyTracker() {
           <Box>
             {/* <FormCreateSurvey/> */}
             <FormCreateSurvey babyTrackerData={data} />
-            <Button onClick={handleUpdateData}>Update Baby Tracker</Button>
+            {/* <Button onClick={handleUpdateData}>Update Baby Tracker</Button> */}
           </Box>
       </Container>
     </Page>

@@ -47,16 +47,15 @@ export default function AlertDialogSlide({
       onClose={onClose}
       aria-describedby="alert-dialog-slide-description"
     >
-      <DialogTitle>{"Use Google's location service?"}</DialogTitle>
+      <DialogTitle>{"Bạn Xác Nhận?"}</DialogTitle>
       <DialogContent>
         <DialogContentText id="alert-dialog-slide-description">
-          Let Google help apps determine location. This means sending anonymous
-          location data to Google, even when no apps are running.
+          Bạn có muốn xoá nội dung được chọn. Không thể khôi phục hành động này
         </DialogContentText>
       </DialogContent>
       <DialogActions>
-        <Button onClick={handleDisagree}>Disagree</Button>
-        <Button onClick={handleAgree}>Agree</Button>
+        <Button onClick={handleDisagree}>Không đồng ý</Button>
+        <Button onClick={handleAgree}>Đồng ý</Button>
       </DialogActions>
     </Dialog>
   );

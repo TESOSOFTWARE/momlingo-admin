@@ -198,5 +198,6 @@ export const QUERY_KEYS = Object.freeze({
 
   //
   LIST_BABY_TRACKERS: 'LIST_BABY_TRACKER',
+  LIST_CHILD_TRACKERS: 'RULE_CONFIG',
 
 });

@@ -1,4 +1,4 @@
-import { Paper, Table, TableBody, TableContainer, Stack, Card, Box, TablePagination, FormControlLabel, Switch } from '@mui/material';
+import { Paper, Table, TableBody, TableContainer, Stack, Card, Box, TablePagination, FormControlLabel, Switch, Button } from '@mui/material';
 import { TableHeadCustom } from '../../../../common/components/table';
 import useTable from '../../../../common/hooks/useTable';
 import { useGetConfigFeature } from '../../hooks/useGetConfigFeature';
@@ -8,6 +8,8 @@ import { TABLE_HEAD } from '../../constants';
 import { useGetBabyTracker } from '../../hooks/useGetBabyTracker';
 import lodash from 'lodash';
 import { BabyTrackerTableRow } from './BabyTrackerTableRow';
+import { useNavigate } from 'react-router-dom';
+import { PATH_DASHBOARD } from '../../../../common/routes/paths';
 export default function ConfigFeatureList() {
   const { 
     dense, 
@@ -20,6 +22,7 @@ export default function ConfigFeatureList() {
     onChangePage,
     onChangeRowsPerPage,
   } = useTable();
+  const navigate = useNavigate();
   const { data: productList } = useGetConfigFeature();
   const { data: trackerList, isLoading} = useGetBabyTracker();
   console.log(trackerList )
@@ -38,6 +41,14 @@ export default function ConfigFeatureList() {
       }}
     >
       <Stack spacing={3}>
+        <Button
+          sx={{
+            maxWidth: '300px'
+          }}
+          onClick={() => navigate(PATH_DASHBOARD.configFeature.new.babyTracker)} // Đóng ngoặc đúng cách
+        >
+          Tạo mới
+        </Button>
         <TableContainer sx={{ minWidth: 800, position: 'relative' }}>
           <Table size={dense ? 'small' : 'medium'}>
             <TableHeadCustom order={order} orderBy={orderBy} headLabel={TABLE_HEAD} />

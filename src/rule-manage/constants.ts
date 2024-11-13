@@ -21,6 +21,26 @@ export const RULE_TABLE_HEAD = [
   },
 
 ];
+export const CHILD_TRACKER_TABLE_HEAD = [
+
+  {
+    id: 'Week',
+    label: 'Tuần',
+    align: 'center',
+  },
+  {
+    id: 'Content',
+    label: 'Nội dung',
+    align: 'left',
+  },
+  {
+    id: 'option',
+    label: 'Tùy chọn',
+    align: 'center',
+  },
+
+];
+
 
 export enum RuleConfigType {
   GAME_LUCKY_WHEEL_POINT = "GAME_LUCKY_WHEEL_POINT",

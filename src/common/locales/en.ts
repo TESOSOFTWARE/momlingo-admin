@@ -965,10 +965,10 @@ const en = {
     },
   },
   ruleManage: {
-    title: 'Rule Management',
-    list: 'Rule list',
-    edit: 'Edit rule',
-    detail: 'Rule detail',
+    title: 'Child Tracker Management',
+    list: 'Quản lý child tracker',
+    edit: 'Edit Child Tracker',
+    detail: 'Child tracker detail',
   },
   gameGifts: {
     title: "Game's Prize management",
