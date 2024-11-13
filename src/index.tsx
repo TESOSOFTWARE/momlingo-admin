@@ -37,7 +37,7 @@ root.render(
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <SettingsProvider>
               <CollapseDrawerProvider>
-                <BrowserRouter basename='admin-momlingo' > 
+                <BrowserRouter> 
                   <App />
                 </BrowserRouter>
               </CollapseDrawerProvider>

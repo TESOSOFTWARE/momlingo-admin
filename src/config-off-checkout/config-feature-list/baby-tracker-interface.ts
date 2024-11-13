@@ -61,19 +61,19 @@ export interface PregnancyWeekInfo {
   export interface UpdateBabyTrackerParams {
     week: string; // Tham số tuần
     data: {
-      keyTakeaways: string;
-      thumbnail3DMom: string;
-      image3DUrlMom: string;
-      symptoms: string;
-      thingsTodo: string;
-      thingsToAvoid: string;
-      weight: number;
-      high: number;
-      thumbnail3DBaby: string;
-      image3DUrlBaby: string;
-      symbolicImage: string;
-      sizeShortDescription: string;
-      babyOverallInfo: string;
-      babySizeInfo: string;
+      keyTakeaways: string | any;
+      thumbnail3DMom: string | any;
+      image3DUrlMom: string | any;
+      symptoms: string | any;
+      thingsTodo: string | any;
+      thingsToAvoid: string | any;
+      weight: number | any;
+      high: number | any;
+      thumbnail3DBaby: string | any;
+      image3DUrlBaby: string | any;
+      symbolicImage: string | any;
+      sizeShortDescription: string | any;
+      babyOverallInfo: string | any;
+      babySizeInfo: string | any;
     };
   }

@@ -27,6 +27,8 @@ import StoreList from '../../store-in-map/store-list/StoreList';
 import StoreNew from '../../store-in-map/store-new/StoreNew';
 import StoreEdit from '../../store-in-map/store-edit/StoreEdit';
 import EditShareAppBanner from '../../config-share-app/components/BannerEdit';
+import NewBabyTrackerPage from '../../config-off-checkout/new-baby-tracker';
+import EditChildTracker from '../../rule-manage/detail-child-tracker';
 
 // ----------------------------------------------------------------------
 
@@ -158,6 +160,10 @@ export default function Router() {
             {
               path: PATH_DASHBOARD.configFeature.edit.babyTracker, 
               element: <EditBabyTracker/>
+            },
+            {
+              path: PATH_DASHBOARD.configFeature.new.babyTracker, 
+              element: <NewBabyTrackerPage/>
             },
             { path: PATH_DASHBOARD.configFeature.list, 
               element: <ConfigFeatureList /> },
@@ -754,6 +760,10 @@ export default function Router() {
             {
               path: PATH_DASHBOARD.ruleManage.list,
               element: <RuleManageList />,
+            },
+            {
+              path: PATH_DASHBOARD.configFeature.edit.childTracker, 
+              element: <EditChildTracker/>
             },
           ],
         },

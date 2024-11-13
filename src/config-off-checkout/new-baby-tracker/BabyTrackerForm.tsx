@@ -17,81 +17,36 @@ import { LoadingButton } from '@mui/lab';
 import { useUpdateBabyTracker } from '../config-feature-list/hooks/useUpdateBabyTracker';
 import { UpdateBabyTrackerParams } from '../config-feature-list/baby-tracker-interface';
 
-// Sửa lại để nhận data từ parent
-interface FormCreateSurveyProps {
-  babyTrackerData?: any; // Thông tin dữ liệu truyền từ parent
-}
 
-export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyProps) {
+
+export default function NewBabyTracker() {
   const navigate = useNavigate();
-  console.log('ues', babyTrackerData);
-
+  
   // init data
-  const [idTracker, setIdTracker] = React.useState(babyTrackerData?.id || '0');
-
-  const [week, setWeek] = React.useState(babyTrackerData?.week || '0');
-  const [keyTakeaways, setKeyTakeaways] = React.useState(
-    babyTrackerData?.keyTakeaways || '0'
+  const [week, setWeek] = React.useState('0');
+  const [keyTakeaways, setKeyTakeaways] = React.useState('0');
+  const [momThumbnail3DUrl, setMomThumbnail3DUrl] = React.useState( "https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" ||'');
+  const [momImage3DUrl, setMomImage3DUrl] = React.useState("0");
+  const [symptoms, setSymptoms] = React.useState('0');
+  const [thingsToAvoid, setThingsToAvoid] = React.useState('0');
+  const [thingsTodo, setThingsTodo] = React.useState('0');
+  const [high, setHigh] = React.useState('0');
+  const [weight, setWeight] = React.useState('0');
+  const [thumbnail3DUrl, setThumbnail3DUrl] = React.useState( '0' );
+  const [image3DUrl, setImage3DUrl] = React.useState( "0" );
+  const [symbolicImageUrl, setSymbolicImageUrl] = React.useState("https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" || "");
+  const [sizeShortDescription, setSizeShortDescription] = React.useState( '0'
   );
-  const [babyOverallInfo, setBabyOverallInfo] = React.useState(
-    babyTrackerData?.babyInfo?.babyOverallInfo || '0'
-  );
-  const [babySizeInfo, setBabySizeInfo] = React.useState(
-    babyTrackerData?.babyInfo?.babySizeInfo || '0'
-  );
-  const [high, setHigh] = React.useState(babyTrackerData?.babyInfo?.high || '0');
-  const [weight, setWeight] = React.useState(babyTrackerData?.babyInfo?.weight || '0');
-  const [babyId, setBabyId] = React.useState(babyTrackerData?.babyInfo?.id || '0');
-  const [image3DUrl, setImage3DUrl] = React.useState(
-    babyTrackerData?.babyInfo?.image3DUrl || '0'
-  );
-  const [sizeShortDescription, setSizeShortDescription] = React.useState(
-    babyTrackerData?.babyInfo?.sizeShortDescription || '0'
-  );
-  const [symbolicImageUrl, setSymbolicImageUrl] = React.useState(
-    babyTrackerData?.babyInfo?.symbolicImageUrl || '0'
-  );
-  const [thumbnail3DUrl, setThumbnail3DUrl] = React.useState(
-    babyTrackerData?.babyInfo?.thumbnail3DUrl || '0'
-  );
-
-  // info mommy
-  const [idMom, setIdMom] = React.useState(babyTrackerData?.momInfo?.id || '0');
-  const [momImage3DUrl, setMomImage3DUrl] = React.useState(babyTrackerData?.momInfo?.momImage3DUrl || '0');
-  const [symptoms, setSymptoms] = React.useState(babyTrackerData?.momInfo?.symptoms || '0');
-  const [thingsToAvoid, setThingsToAvoid] = React.useState(babyTrackerData?.momInfo?.thingsToAvoid || '0');
-  const [thingsTodo, setThingsTodo] = React.useState(babyTrackerData?.momInfo?.thingsTodo || '0');
-  const [momThumbnail3DUrl, setMomThumbnail3DUrl] = React.useState(babyTrackerData?.momInfo?.thumbnail3DUrl || '0');
-
-  React.useEffect(() => {
-    if (babyTrackerData) {
-      setWeek(babyTrackerData?.week);
-      setIdTracker(babyTrackerData?.id);
-      setKeyTakeaways(babyTrackerData?.keyTakeaways);
-      setBabyOverallInfo(babyTrackerData?.babyInfo?.babyOverallInfo);
-      setBabySizeInfo(babyTrackerData?.babyInfo?.babySizeInfo);
-      setHigh(babyTrackerData?.babyInfo?.high);
-      setWeight(babyTrackerData?.babyInfo?.weight);
-      setBabyId(babyTrackerData?.babyInfo?.id);
-      setImage3DUrl(babyTrackerData?.babyInfo?.image3DUrl);
-      setSizeShortDescription(babyTrackerData?.babyInfo?.sizeShortDescription);
-      setSymbolicImageUrl(babyTrackerData?.babyInfo?.symbolicImageUrl);
-      setThumbnail3DUrl(babyTrackerData?.babyInfo?.thumbnail3DUrl);
-      // mom
-      setIdMom(babyTrackerData?.momInfo?.id );
-      setMomImage3DUrl(babyTrackerData?.momInfo?.image3DUrl);
-      setSymptoms(babyTrackerData?.momInfo?.symptoms);
-      setThingsToAvoid(babyTrackerData?.momInfo?.thingsToAvoid);
-      setThingsTodo(babyTrackerData?.momInfo?.thingsTodo);
-      setMomThumbnail3DUrl(babyTrackerData?.momInfo?.thumbnail3DUrl);
-    }
-  }, [babyTrackerData]);
-
+  const [babyOverallInfo, setBabyOverallInfo] = React.useState('0' );
+  const [babySizeInfo, setBabySizeInfo] = React.useState('0' );
+  
+  // React.useEffect(() => {
+    
+  // }, []);
   const methods = useForm<ISurVeyForm>({
     resolver: yupResolver(schemaAddSurvey),
-    defaultValues: babyTrackerData || DEFAULT_ADD_SURVEY, // Sử dụng dữ liệu truyền vào nếu có
+    defaultValues: DEFAULT_ADD_SURVEY, // Sử dụng dữ liệu truyền vào nếu có
   });
-
   const {
     control,
     handleSubmit,
@@ -100,33 +55,12 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
     reset,
     formState: { errors, isSubmitting },
   } = methods;
-
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
 
   const { mutate } = useUpdateBabyTracker();
 
-  // const { mutate } = useSurveyCreate({
-  //   onSuccess: () => {
-  //     showSuccessSnackbar('Survey created successfully');
-  //     navigate(PATH_DASHBOARD.survey.list);
-  //   },
-  //   onError: () => {
-  //     showErrorSnackbar('Failed to create survey');
-  //   },
-  // });
-
-  // const onSubmit = (data: ISurVeyForm) => {
-    // const dataCreate = {
-    //   ...data,
-    //   status: data.status ? IStatus.ACTIVE : IStatus.IN_ACTIVE,
-    //   point: data.point ? data.point : 0,
-    // };
-    // mutate(dataCreate);
-    // console.log(...data)
-  // };
-
-  const UpdateTracker = async () => {
-    const dataUpdate = {
+  const dataNewTracker = async () => {
+    const dataNew = {
       keyTakeaways: keyTakeaways,
       thumbnail3DMom: momThumbnail3DUrl,
       image3DUrlMom: momImage3DUrl,
@@ -142,22 +76,19 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
       babyOverallInfo: babyOverallInfo,
       babySizeInfo: babySizeInfo
     }
-    console.log('Dữ liệu cập nhật:', dataUpdate);
+    console.log('data :', dataNew);
 
-  // Kiểm tra nếu `week` có giá trị hợp lệ
   if (!week) {
     console.error('Tuần không hợp lệ.');
     return;
   }
-  const updateParams: UpdateBabyTrackerParams = {
-    week,
-    data: dataUpdate,
-  };
+  // const updateParams: UpdateBabyTrackerParams = {
+  //   week,
+  //   data: dataUpdate,
+  // };
   // Gọi mutate với dữ liệu đã chuẩn bị
-   mutate(updateParams);
+  //  mutate(updateParams);
   }
-
-  console.log(babyTrackerData?.week);
   return (
     <Stack spacing={3}>
       <FormProvider methods={methods} 
@@ -219,13 +150,6 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
               onChange={(e) => setWeight(e.target.value)}
             />
 
-            {/* <TextField
-              id="babyId"
-              label="ID Thai nhi"
-              variant="outlined"
-              value={babyId}
-              onChange={(e) => setBabyId(e.target.value)}
-            /> */}
             <Box sx={{
               display:'grid',
               gridTemplateColumns: {
@@ -396,7 +320,7 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
             variant="contained"
             loading={isSubmitting}
             // type="submit"
-            onClick={()=>UpdateTracker()}
+            onClick={()=>dataNewTracker()}
           >
             Cập nhật
           </LoadingButton>
