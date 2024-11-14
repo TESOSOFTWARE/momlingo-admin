@@ -33,12 +33,8 @@ export default function FormChildTracker({ childTrackerData }: ChildTracker) {
 
   console.log(childTrackerData)
   const {
-    control,
     handleSubmit,
-    setValue,
-    watch,
-    reset,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
   } = methods;
 
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
@@ -67,6 +63,8 @@ export default function FormChildTracker({ childTrackerData }: ChildTracker) {
 
   // Define the type for the editor change handler
   const handleEditorChange = (event: Event, editor: Editor) => {
+    
+    console.log()
     setEditorData(editor.getData());
   };
   return (
@@ -82,13 +80,7 @@ export default function FormChildTracker({ childTrackerData }: ChildTracker) {
             value={childTrackerData?.week || ''} // Gán giá trị trực tiếp
             onChange={(e) => console.log(e.target.value)} // Có thể thêm hàm xử lý sự kiện khi thay đổi giá trị
           />
-          {/* <TextField
-            id="outlined-basic"
-            label="Content"
-            variant="outlined"
-            value={childTrackerData?.content || ''} // Gán giá trị trực tiếp
-            onChange={(e) => console.log(e.target.value)} // Có thể thêm hàm xử lý sự kiện khi thay đổi giá trị
-          /> */}
+          
           <Box>
             <h2>Nội dung</h2>
             <CKEditor
