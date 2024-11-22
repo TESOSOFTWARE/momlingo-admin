@@ -136,7 +136,7 @@ export default function FormCreateSurvey() {
               name="point"
               InputLabelProps={{ shrink: true }}
               label="Tích xu"
-              placeholder='0'
+              placeholder="0"
             />
             <QuestionItemDetails />
           </Stack>

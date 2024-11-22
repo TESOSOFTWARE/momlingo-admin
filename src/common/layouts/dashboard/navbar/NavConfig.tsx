@@ -62,7 +62,7 @@ const ICONS = {
   news: <Iconify icon="fluent:news-28-regular" />,
 };
 
-const navConfig = [  
+const navConfig = [
   {
     subheader: 'Analytics',
     items: [
@@ -108,7 +108,6 @@ const navConfig = [
   {
     subheader: 'app',
     items: [
-
       // user management
       {
         action: Action.READ,
@@ -146,7 +145,7 @@ const navConfig = [
           { title: i18n.t('configEvent.list'), path: PATH_DASHBOARD.configEvent.list },
           { title: i18n.t('configApp.title'), path: PATH_DASHBOARD.configApp.list },
         ],
-      },     
+      },
       // category
       {
         action: Action.READ,
@@ -185,7 +184,7 @@ const navConfig = [
           },
         ],
       },
-      
+
       // product attribute
       // {
       //   action: Action.READ,
@@ -205,7 +204,7 @@ const navConfig = [
       //     },
       //   ],
       // },
-      
+
       // Attribute term
       // {
       //   action: Action.READ,
@@ -225,7 +224,7 @@ const navConfig = [
       //     },
       //   ],
       // },
-      
+
       // Another product
       // {
       //   action: Action.READ,
@@ -245,7 +244,7 @@ const navConfig = [
       //     },
       //   ],
       // },
-      
+
       // product
       // {
       //   action: Action.READ,
@@ -265,7 +264,7 @@ const navConfig = [
       //     },
       //   ],
       // },
-      
+
       // manage order
       // {
       //   action: Action.READ,
@@ -312,8 +311,8 @@ const navConfig = [
       //     },
       //   ],
       // },
-      
-      // Home configuration 
+
+      // Home configuration
       {
         action: Action.READ,
         icon: ICONS.homeSetting,

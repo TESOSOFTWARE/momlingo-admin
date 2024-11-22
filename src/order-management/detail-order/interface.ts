@@ -87,7 +87,7 @@ interface IProduct {
   onSale: boolean;
   id: number;
   type: string;
-  status:string;
+  status: string;
   isFeatured: boolean;
   taxStatus: string;
   defaultProductVariantId: number;
@@ -107,7 +107,6 @@ export interface IOrderLine {
   status: string;
   product: IProduct;
   externalProductUsedInfos: IExternalProductUsedInfos[];
-  
 }
 
 export interface IExternalProductUsedInfos {

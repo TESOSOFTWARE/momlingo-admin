@@ -16,7 +16,7 @@ export default function OrderTableRow({
   selected,
   onSelectRow,
   onEditRow,
-  onDetailRow
+  onDetailRow,
 }: IPropsTableRow) {
   const { id, createAt, expressDeliveryCode, phoneUser, orderStatus } = row;
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
@@ -42,8 +42,8 @@ export default function OrderTableRow({
         sx={{
           cursor: 'pointer',
           '&:hover': {
-            fontStyle: 'italic'
-          }
+            fontStyle: 'italic',
+          },
         }}
       >
         <TableCell align="center" padding="checkbox">
@@ -88,7 +88,7 @@ export default function OrderTableRow({
               fontWeight: 'bold',
               borderRadius: '8px',
             }}
-            label= {STATUS_ORDER_GIFT_STYLE[orderStatus].label}
+            label={STATUS_ORDER_GIFT_STYLE[orderStatus].label}
           />
         </TableCell>
         <TableCell align="right">

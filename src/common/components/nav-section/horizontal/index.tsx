@@ -41,7 +41,7 @@
 //   //                   hasChildren={!!list.children}
 //   //                 />
 //   //               ))
-//   //             : 
+//   //             :
 //   //             group.items.map((list, index) => (
 //   //                 <Can do={list?.action} on={list?.resource} key={index}>
 //   //                   <NavList
@@ -127,4 +127,3 @@ function NavSectionHorizontal({ navConfig }: NavSectionProps) {
 }
 
 export default memo(NavSectionHorizontal);
-

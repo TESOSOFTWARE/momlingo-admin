@@ -21,7 +21,7 @@ type StateProps = {
     status?: boolean;
     values?: any;
   };
-  listRulesConfig?: any; 
+  listRulesConfig?: any;
 };
 
 export const configRuleReducer = createSlice({
@@ -31,16 +31,12 @@ export const configRuleReducer = createSlice({
     setIsOpenConfirmModal: (state, action: PayloadAction<boolean>) => {
       state.isOpenConfirmModal = action.payload;
     },
-    setRuleConfigRowItems: (
-      state,
-      action: PayloadAction<IFormRuleConfigItem>
-    ) => {
+    setRuleConfigRowItems: (state, action: PayloadAction<IFormRuleConfigItem>) => {
       state.ruleConfigRowItems = action.payload;
-
     },
     setListRuleConfig: (state, action: PayloadAction<any>) => {
       state.listRulesConfig = action.payload;
-    }
+    },
   },
 });
 

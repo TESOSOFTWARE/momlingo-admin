@@ -113,7 +113,7 @@ export default function FormEditGroupUser() {
       });
       dispatch(setListPickedUser(arrayId));
       // reset(dataGroupUser);
-      setValue('description', dataGroupUser?.description)
+      setValue('description', dataGroupUser?.description);
       setValue('status', dataGroupUser?.status === GroupUserStatus.ACTIVE ? true : false);
       setValue('ids', arrayId);
       setValue('nameGroup', dataGroupUser?.name);
@@ -157,8 +157,7 @@ export default function FormEditGroupUser() {
     dispatch(setIsOpenModalPickUser(true));
   };
   useDeepCompareEffect(() => {
-    if(!isCheckAllUser)
-    setValue('ids', listUserPicked);
+    if (!isCheckAllUser) setValue('ids', listUserPicked);
   }, [listUserPicked]);
 
   return (
@@ -188,7 +187,9 @@ export default function FormEditGroupUser() {
               <TextField
                 fullWidth
                 label={'Thành viên nhóm'}
-                value={`Tất cả người dùng ${dataCheckAllUser?.name ? 'có tên ' + dataCheckAllUser?.name : ''} ${
+                value={`Tất cả người dùng ${
+                  dataCheckAllUser?.name ? 'có tên ' + dataCheckAllUser?.name : ''
+                } ${
                   dataCheckAllUser?.email ? 'có email ' + dataCheckAllUser?.email : ''
                 } ${
                   dataCheckAllUser?.tierCode

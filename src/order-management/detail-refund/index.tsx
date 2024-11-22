@@ -25,7 +25,7 @@ export default function DetailOrderRefund() {
             },
           ]}
         />
-        <FormRefundOrderDetail/>
+        <FormRefundOrderDetail />
       </Container>
     </Page>
   );

@@ -1,4 +1,4 @@
-import { Button , Stack } from '@mui/material';
+import { Button, Stack } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
@@ -14,22 +14,21 @@ import { useEffect } from 'react';
 import { ConfirmModal } from '../../../common/components/modal/ConfirmModal';
 
 export default function FeedbackListHeader() {
-  const {t} =useTranslation();
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
-  const { searchParams ,confirmModal } = useSelector((state) => state.feedback);
+  const { searchParams, confirmModal } = useSelector((state) => state.feedback);
   const handleCloseDeleteModal = () => {
     dispatch(closeConfirmModal());
   };
-  const { mutate, isSuccess } = useRequestExport(
-    {
-      onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
-      onError: () => showErrorSnackbar(t('survey.action.export.fail')),
-    })
+  const { mutate, isSuccess } = useRequestExport({
+    onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
+    onError: () => showErrorSnackbar(t('survey.action.export.fail')),
+  });
   const handleRequestExport = () => {
-    mutate(searchParams)
-  }
+    mutate(searchParams);
+  };
   useEffect(() => {
     if (isSuccess) {
       dispatch(
@@ -37,13 +36,12 @@ export default function FeedbackListHeader() {
           isOpen: true,
           text: t('survey.action.export.redirectExportList'),
           callback: () => {
-            navigate(PATH_DASHBOARD.fileManage.listFileExport)
+            navigate(PATH_DASHBOARD.fileManage.listFileExport);
           },
         })
       );
     }
-
-  }, [isSuccess])
+  }, [isSuccess]);
   return (
     <>
       <HeaderBreadcrumbs
@@ -54,14 +52,17 @@ export default function FeedbackListHeader() {
         ]}
         action={
           <Stack direction={'row'} spacing={2}>
-            <Button onClick={handleRequestExport} variant="contained" startIcon={<Iconify icon={'carbon:export'} />}>
+            <Button
+              onClick={handleRequestExport}
+              variant="contained"
+              startIcon={<Iconify icon={'carbon:export'} />}
+            >
               {t('feedbackManage.export')}
             </Button>
           </Stack>
         }
-       
       />
-       <ConfirmModal
+      <ConfirmModal
         isOpen={confirmModal.isOpen}
         onClose={handleCloseDeleteModal}
         onSubmit={confirmModal.callback}

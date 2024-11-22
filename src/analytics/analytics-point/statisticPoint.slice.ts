@@ -7,10 +7,10 @@ type StateProps = {
 };
 
 const initialState: StateProps = {
-  searchData:{
+  searchData: {
     startDate: null,
     endDate: null,
-  }
+  },
 };
 
 export const statisticPointSlice = createSlice({

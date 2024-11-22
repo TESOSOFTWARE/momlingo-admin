@@ -39,8 +39,13 @@ export default function FilterStatisticPoint() {
   return (
     <>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack direction="column" spacing={2} padding={2} width={{md: '50%', sm: '100%'}}>
-          <Stack direction="row" spacing={3} >
+        <Stack
+          direction="column"
+          spacing={2}
+          padding={2}
+          width={{ md: '50%', sm: '100%' }}
+        >
+          <Stack direction="row" spacing={3}>
             <Controller
               name="startDate"
               control={control}
@@ -114,4 +119,3 @@ export default function FilterStatisticPoint() {
     </>
   );
 }
-

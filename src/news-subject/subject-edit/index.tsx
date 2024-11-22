@@ -4,7 +4,7 @@ import EditSubjectHeader from './components/EditSubjectHeader';
 
 function NewsSubjectEdit() {
   return (
-    <Page title='Chỉnh sửa chủ đề'>
+    <Page title="Chỉnh sửa chủ đề">
       <EditSubjectHeader />
       <EditSubjectForm />
     </Page>

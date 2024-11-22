@@ -91,7 +91,7 @@ export default function EventList() {
 
   const { showSuccessSnackbar, showErrorSnackbar } = useShowSnackbar();
 
-  const {mutate} = useDeleteEvent({
+  const { mutate } = useDeleteEvent({
     onSuccess: () => {
       showSuccessSnackbar('Xóa thành công !');
       navigate(PATH_DASHBOARD.event.list);
@@ -99,9 +99,9 @@ export default function EventList() {
     onError: () => {
       showErrorSnackbar('Xóa thất bại !');
     },
-  })
+  });
 
-  const pickedRows = useSelector(selectedRowsSelector) 
+  const pickedRows = useSelector(selectedRowsSelector);
   const handleCloseModal = () => {
     dispatch(setIsOpenModalDelete(false));
   };
@@ -113,7 +113,7 @@ export default function EventList() {
 
   const onDeleteRow = () => {
     mutate({
-      ids: pickedRows
+      ids: pickedRows,
     });
     resetSelect();
   };

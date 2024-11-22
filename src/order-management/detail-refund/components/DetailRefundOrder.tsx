@@ -68,29 +68,57 @@ export default function FormRefundOrderDetail() {
           <Stack direction={'column'} spacing={3}>
             <Grid container spacing={3}>
               <Grid item xs={2}>
-                <RHFTextField name="id" label='ID' disabled/>
+                <RHFTextField name="id" label="ID" disabled />
               </Grid>
               <Grid item xs={4}>
-                <RHFTextField name="name" label={t('order.detail.refundForm.name')} disabled/>
+                <RHFTextField
+                  name="name"
+                  label={t('order.detail.refundForm.name')}
+                  disabled
+                />
               </Grid>
               <Grid item xs={4}>
-                <RHFTextField name="phoneNumber" label={t('order.detail.refundForm.phoneNumber')} disabled/>
+                <RHFTextField
+                  name="phoneNumber"
+                  label={t('order.detail.refundForm.phoneNumber')}
+                  disabled
+                />
               </Grid>
               <Grid item xs={2}>
-                <RHFTextField name="type" label={t('order.detail.refundForm.type')} disabled/>
+                <RHFTextField
+                  name="type"
+                  label={t('order.detail.refundForm.type')}
+                  disabled
+                />
               </Grid>
               <Grid item xs={4}>
-                <RHFTextField name="refundPoint" label={t('order.detail.refundForm.quantity')} disabled/>
+                <RHFTextField
+                  name="refundPoint"
+                  label={t('order.detail.refundForm.quantity')}
+                  disabled
+                />
               </Grid>
               <Grid item xs={8}>
-                <RHFTextField name="contentRefund" label={t('order.detail.refundForm.content')} disabled/>
+                <RHFTextField
+                  name="contentRefund"
+                  label={t('order.detail.refundForm.content')}
+                  disabled
+                />
               </Grid>
               <Grid item xs={6}>
-                <RHFTextField name="createdAtOrder" label={t('order.detail.refundForm.createdDate')} disabled/>
+                <RHFTextField
+                  name="createdAtOrder"
+                  label={t('order.detail.refundForm.createdDate')}
+                  disabled
+                />
               </Grid>
-              
+
               <Grid item xs={6}>
-                <RHFTextField name="refundDate" label={t('order.detail.refundForm.refundDate')} disabled/>
+                <RHFTextField
+                  name="refundDate"
+                  label={t('order.detail.refundForm.refundDate')}
+                  disabled
+                />
               </Grid>
             </Grid>
 

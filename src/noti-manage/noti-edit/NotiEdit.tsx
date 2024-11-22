@@ -95,7 +95,7 @@ export default function FormEditNoti() {
     const dataEdit = {
       id: parseInt(idNoti as string),
       data: {
-        groupUserIds: data?.source === sourceType.INTERNAL ?  data.groupUserIds : [],
+        groupUserIds: data?.source === sourceType.INTERNAL ? data.groupUserIds : [],
         title: data.title,
         content: data.content,
         deepLink:
@@ -174,22 +174,22 @@ export default function FormEditNoti() {
                 <RHFTextField name="source" label="Source" disabled />
               </Stack>
               <Stack spacing={3} direction="row">
-                {dataNotiID?.source === sourceType.INTERNAL ? 
-                <RHFMultipleSelect
-                  name="groupUserIds"
-                  fullWidth
-                  label="Chọn nhóm người dùng"
-                >
-                  <MenuItem value="" disabled>
-                    {' '}
-                  </MenuItem>
-                  {dataGroupUser?.items?.map((item, index: number) => (
-                    <MenuItem key={index} value={item?.id}>
-                      {item?.name}
+                {dataNotiID?.source === sourceType.INTERNAL ? (
+                  <RHFMultipleSelect
+                    name="groupUserIds"
+                    fullWidth
+                    label="Chọn nhóm người dùng"
+                  >
+                    <MenuItem value="" disabled>
+                      {' '}
                     </MenuItem>
-                  ))}
-                </RHFMultipleSelect>
-                : null}
+                    {dataGroupUser?.items?.map((item, index: number) => (
+                      <MenuItem key={index} value={item?.id}>
+                        {item?.name}
+                      </MenuItem>
+                    ))}
+                  </RHFMultipleSelect>
+                ) : null}
                 <Controller
                   name="timeSent"
                   control={control}

@@ -5,7 +5,7 @@ import { IHistoryGiftUserParams, InitialHistoryGiftUserState } from './interface
 
 const initialOrderState: InitialHistoryGiftUserState = {
   dataSearch: defaultValueFilter,
-  value: 0
+  value: 0,
 };
 
 export const historyGiftReducer = createSlice({
@@ -17,8 +17,8 @@ export const historyGiftReducer = createSlice({
     },
     setValue(state, action: PayloadAction<number>) {
       state.value = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setDataFilter, setValue } = historyGiftReducer.actions;

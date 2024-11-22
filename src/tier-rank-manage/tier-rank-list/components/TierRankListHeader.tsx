@@ -16,7 +16,6 @@ export default function TierRankListHeader() {
           { name: BREADCUMBS.TIER_RANK_MANAGE, href: PATH_DASHBOARD.tierRankManage.list },
           { name: vn.tierRankManage.list.title },
         ]}
-      
       />
     </>
   );

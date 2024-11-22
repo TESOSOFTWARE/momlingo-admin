@@ -31,36 +31,39 @@ function ChildTrackerTableRow({ rowCode, TrackerList }: IPropsBabyTrackerListTab
   };
   // Kiểm tra và in ra thông tin của trackerItem
   const handleStatusChange = (newStatus: 'agree' | 'disagree') => {
-    setStatus(newStatus);  // Lưu trạng thái agree/disagree
+    setStatus(newStatus); // Lưu trạng thái agree/disagree
     console.log('User selected:', newStatus);
-    if(newStatus ==='agree')
-    {
+    if (newStatus === 'agree') {
       console.log('success');
       mutate(TrackerList?.[+rowCode].week.toString() || '');
-    }else{
+    } else {
       setDialogOpen(false);
     }
   };
   const handleDialogClose = () => {
-    setDialogOpen(false);  // Đóng dialog
+    setDialogOpen(false); // Đóng dialog
   };
   return (
     <>
       <AlertDialogSlide
-        open={dialogOpen}  // Điều khiển trạng thái mở của dialog
-        onClose={handleDialogClose}  // Đóng dialog khi cần
-        onStatusChange={handleStatusChange}  // Gửi trạng thái về parent
+        open={dialogOpen} // Điều khiển trạng thái mở của dialog
+        onClose={handleDialogClose} // Đóng dialog khi cần
+        onStatusChange={handleStatusChange} // Gửi trạng thái về parent
       />
       <TableRow hover sx={{ borderBottom: '1px solid gray' }}>
-        <TableCell align="center" sx={{ 
-          borderRight: '1px solid lightgray',
-           }}>{TrackerList?.[+rowCode].week}
-           </TableCell>
-           <TableCell>
-                <div
-                dangerouslySetInnerHTML={{ __html: TrackerList?.[+rowCode].content || '' }}
-            />
-           </TableCell>
+        <TableCell
+          align="center"
+          sx={{
+            borderRight: '1px solid lightgray',
+          }}
+        >
+          {TrackerList?.[+rowCode].week}
+        </TableCell>
+        <TableCell>
+          <div
+            dangerouslySetInnerHTML={{ __html: TrackerList?.[+rowCode].content || '' }}
+          />
+        </TableCell>
         {/* <TableCell align="left">{TrackerList?.[+rowCode].content}</TableCell> */}
         <TableCell align="center" sx={{ borderRight: '1px solid lightgray' }}>
           <TableMoreMenu

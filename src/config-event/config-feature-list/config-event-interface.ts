@@ -6,10 +6,10 @@ export type IConfigEventCallback = {
 export interface IConfigEventList {
   eventConfig?: {
     [key: string]: {
-      desc: string,
-      status: number,
-      endDate:string,
-      startDate:string
+      desc: string;
+      status: number;
+      endDate: string;
+      startDate: string;
     };
   };
 }
@@ -18,16 +18,16 @@ export interface IConfigEventListForm {
   [key: string]: {
     desc: string;
     status: number;
-    endDate:string;
-    startDate:string;
+    endDate: string;
+    startDate: string;
   };
 }
 
 export interface IConfigEventItem {
   desc: string;
   status: boolean;
-  startDate:string;
-  endDate:string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface ConfigEventState {
@@ -47,8 +47,8 @@ export interface IPropsConfigEventListTable {
 export interface IFormChangeEventConfig {
   desc: string;
   status: boolean;
-  startDate:string;
-  endDate:string;
+  startDate: string;
+  endDate: string;
 }
 
 export interface IReduxPayloadEventConfigItem extends IConfigEventItem {

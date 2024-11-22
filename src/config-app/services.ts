@@ -7,5 +7,5 @@ export const getListConfigApp = (params?: any) => {
 };
 
 export const editConfigApp = (data: IDataEditConfigApp) => {
-  return  axiosInstance.patch(`${API_CONFIG_APP}/${data?.id}`, data?.data)
-}
+  return axiosInstance.patch(`${API_CONFIG_APP}/${data?.id}`, data?.data);
+};

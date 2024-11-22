@@ -24,15 +24,12 @@ export default function AnalycticsAppList() {
             },
           ]}
           action={
-            <Button
-              variant="contained"
-              startIcon={<Iconify icon={'eva:plus-fill'} />}
-            >
+            <Button variant="contained" startIcon={<Iconify icon={'eva:plus-fill'} />}>
               {`${i18n.t('export')}`}
             </Button>
           }
         />
-        <AppAnalyticsDashboard/>
+        <AppAnalyticsDashboard />
       </Container>
     </Page>
   );

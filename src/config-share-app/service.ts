@@ -12,6 +12,6 @@ export const getMobileRoutes = () => {
 
 export const editShareAppConfig = (data: IDataRequest[]) => {
   return axiosInstance.put(API_SHARE_APP_CONFIG, {
-    sections: [...data]
+    sections: [...data],
   });
 };

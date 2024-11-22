@@ -5,7 +5,10 @@ import { getListFileImport } from '../services';
 
 export function useGetListFileImport(params: IParams) {
   return {
-    ...useQuery([QUERY_KEYS.REQUEST_IMPORT_LIST, params], () => getListFileImport(params), {
-    }),
+    ...useQuery(
+      [QUERY_KEYS.REQUEST_IMPORT_LIST, params],
+      () => getListFileImport(params),
+      {}
+    ),
   };
 }

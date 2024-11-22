@@ -53,10 +53,7 @@ import { useEditGameGift } from '../../hooks/useEditGameGift';
 import { useGetGameGiftById } from '../../hooks/useGetGameGiftById';
 import { useGetProductById } from '../../hooks/useGetProductById';
 import { useGetProductVirtual } from '../../hooks/useGetProductVirtual';
-import {
-  IFormCreateGameGift,
-  IProductVirtualVariant
-} from '../../interfaces';
+import { IFormCreateGameGift, IProductVirtualVariant } from '../../interfaces';
 import { schemaCreateGameGift } from '../../shema';
 
 export default function FormEditGameGift() {
@@ -106,8 +103,9 @@ export default function FormEditGameGift() {
 
   const productVirtualId = useSelector(idProductSelector);
 
-  const { data: dataProductById, isLoading: isLoadingProductById } =
-    useGetProductById({id: productVirtualId });
+  const { data: dataProductById, isLoading: isLoadingProductById } = useGetProductById({
+    id: productVirtualId,
+  });
 
   const handleScrollProductVirtual = (event: any) => {
     const listBoxNode = event?.currentTarget;
@@ -156,25 +154,24 @@ export default function FormEditGameGift() {
         name: dataGameGiftById?.name,
         ordinal: dataGameGiftById?.ordinal ? dataGameGiftById?.ordinal : 1,
         posInImage: dataGameGiftById?.posInImage,
-        isWonMultiple:dataGameGiftById?.isWonMultiple,
-      winRate:dataGameGiftById?.winRate,
+        isWonMultiple: dataGameGiftById?.isWonMultiple,
+        winRate: dataGameGiftById?.winRate,
         quantity: dataGameGiftById?.quantity,
         startDate: dataGameGiftById?.startDate,
         endDate: dataGameGiftById?.endDate,
         status: dataGameGiftById?.status === 'ACTIVE' ? true : false,
-        constraintProvince: dataGameGiftById?.gameGiftProvinceConstraints?.map(
+        constraintProvince: dataGameGiftById?.gameGiftProvinceConstraints?.map((item) => {
+          return {
+            id: item?.province?.id,
+            name: item?.province?.name,
+          };
+        }),
+        constraintPhoneNumber: dataGameGiftById?.gameGiftAllocationConstraints?.map(
           (item) => {
-            return {
-              id: item?.province?.id,
-              name: item?.province?.name,
-            };
+            return item?.phoneNumber;
           }
         ),
-        constraintPhoneNumber:
-          dataGameGiftById?.gameGiftAllocationConstraints?.map((item) => {
-            return item?.phoneNumber
-          }),
-       
+
         gameGiftProvinceQuantities: dataGameGiftById?.gameGiftProvinceQuantities?.map(
           (item: any) => {
             return {
@@ -184,9 +181,9 @@ export default function FormEditGameGift() {
           }
         ),
         imageId: dataGameGiftById?.productVariant?.id
-        ? undefined
-        : dataGameGiftById?.image?.url,
-      isWinnable: dataGameGiftById?.isWinnable,
+          ? undefined
+          : dataGameGiftById?.image?.url,
+        isWinnable: dataGameGiftById?.isWinnable,
         type: dataGameGiftById?.type,
       };
       reset(dataReset);
@@ -251,10 +248,10 @@ export default function FormEditGameGift() {
       startDate: dataSubmit?.startDate,
       endDate: dataSubmit?.endDate,
       status: dataSubmit?.status ? 'ACTIVE' : 'INACTIVE',
-      ordinal: dataSubmit?.ordinal ? dataSubmit?.ordinal : 1 ,
-      posInImage:dataSubmit?.posInImage,
-      isWonMultiple:dataSubmit?.isWonMultiple,
-      winRate:dataSubmit?.winRate ? dataSubmit?.winRate : 1 ,
+      ordinal: dataSubmit?.ordinal ? dataSubmit?.ordinal : 1,
+      posInImage: dataSubmit?.posInImage,
+      isWonMultiple: dataSubmit?.isWonMultiple,
+      winRate: dataSubmit?.winRate ? dataSubmit?.winRate : 1,
       productVariantId:
         dataSubmit?.typePrize === DEFAULT_TYPE_PRIZE[0].value
           ? dataSubmit?.productVariantId?.id
@@ -469,8 +466,13 @@ export default function FormEditGameGift() {
               background: `linear-gradient(to left bottom, white, white, ${DEFAULT_MAIN_COLOR})`,
             }}
           >
-           <Stack spacing={2}>
-           <Stack spacing={2} direction={'row'} justifyContent={'space-between'} alignItems={'center'}>
+            <Stack spacing={2}>
+              <Stack
+                spacing={2}
+                direction={'row'}
+                justifyContent={'space-between'}
+                alignItems={'center'}
+              >
                 <Box sx={{ width: '500px' }}>
                   <RHFSelect
                     name="type"
@@ -484,17 +486,21 @@ export default function FormEditGameGift() {
                     ))}
                   </RHFSelect>
                 </Box>
-                {giftId ? (<Typography variant="h6">Tổng số giải: {dataGameGiftById?.totalQuantity || 0} </Typography>) : null}
+                {giftId ? (
+                  <Typography variant="h6">
+                    Tổng số giải: {dataGameGiftById?.totalQuantity || 0}{' '}
+                  </Typography>
+                ) : null}
               </Stack>
               {/* {watch('type') !== TypeGameConstraints.DEFAULT && (<RHFTextField name="ordinal" label={'Thứ tự ưu tiên*'} type="number" />)}
             {watch('type') === TypeGameConstraints.DEFAULT && (<RHFTextField name="winRate" label={'Tỉ lệ trúng giải*'} type="number" />)}
             {watch('type') === TypeGameConstraints.DEFAULT && (<RHFSwitch name="isWonMultiple" label={`Trúng nhiều lần`} labelPlacement="start" />)} */}
-            <Divider />
+              <Divider />
 
               {watch('type') === TypeGameConstraints.DEFAULT && (
                 <DetailFormProvinceQuantities />
               )}
-             
+
               {watch('type') === TypeGameConstraints.ALLOCATION && (
                 <DetailFormAllocation />
               )}

@@ -22,5 +22,5 @@ export const CONFIG_APP_TABLE_HEAD = [
 ];
 
 export const DEFAULT_VALUE_CONFIG_APP = {
-    mobileVersion: 0,
-}
+  mobileVersion: 0,
+};

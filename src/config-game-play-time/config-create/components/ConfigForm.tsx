@@ -32,7 +32,7 @@ export default function ConfigPlayTimeForm() {
   });
 
   const dispatch = useDispatch();
-  const { searchProductGroupText } = useSelector(state => state.configPlayTime);
+  const { searchProductGroupText } = useSelector((state) => state.configPlayTime);
 
   const searchParams: ISearchProductGroup = {
     page: 1,
@@ -92,18 +92,11 @@ export default function ConfigPlayTimeForm() {
                 options={listProductGroup}
                 // value={value}
                 onChange={(event, newValue) => {
-                    if (newValue) {
-                        setValue(
-                            'productGroup',
-                            newValue?.productGroup
-                        );
-                        setValue(
-                            'weight',
-                            newValue?.weight
-                        );
-                    }
-                }
-                }
+                  if (newValue) {
+                    setValue('productGroup', newValue?.productGroup);
+                    setValue('weight', newValue?.weight);
+                  }
+                }}
                 inputValue={searchProductGroupText}
                 onInputChange={(event, newInputValue) => {
                   dispatch(setSearchProductGroupText(newInputValue));
@@ -143,7 +136,7 @@ export default function ConfigPlayTimeForm() {
             disabled
             label={t('configPlayTime.create.form.weight')}
             InputLabelProps={{
-                shrink: true,
+              shrink: true,
             }}
           />
           <RHFTextField

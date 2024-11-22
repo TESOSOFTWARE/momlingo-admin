@@ -4,8 +4,6 @@ import { getVariantById } from '../service';
 
 export const useGetVariantById = (id: number) => {
   return {
-    ...useQuery([QUERY_KEYS.DETAIL_PRODUCT_VARIANT, id], () => getVariantById(id),{
-    }),
-   
+    ...useQuery([QUERY_KEYS.DETAIL_PRODUCT_VARIANT, id], () => getVariantById(id), {}),
   };
 };

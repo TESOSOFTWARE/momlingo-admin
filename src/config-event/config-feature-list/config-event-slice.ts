@@ -1,9 +1,6 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState } from '../../common/redux/store';
-import {
-  IConfigEventItem,
-  IReduxPayloadEventConfigItem,
-} from './config-event-interface';
+import { IConfigEventItem, IReduxPayloadEventConfigItem } from './config-event-interface';
 
 const initialConfigEventState: StateProps = {
   isOpenConfirmModal: false,
@@ -11,8 +8,8 @@ const initialConfigEventState: StateProps = {
     code: '',
     desc: '',
     status: false,
-    startDate:'',
-    endDate:'',
+    startDate: '',
+    endDate: '',
   },
 };
 
@@ -22,8 +19,8 @@ type StateProps = {
     code: string;
     desc: string;
     status: boolean;
-    startDate:string;
-    endDate:string;
+    startDate: string;
+    endDate: string;
   };
 };
 
@@ -43,7 +40,6 @@ export const configEventReducer = createSlice({
       state.eventConfigRowItems.status = action.payload.status;
       state.eventConfigRowItems.startDate = action.payload.startDate;
       state.eventConfigRowItems.endDate = action.payload.endDate;
-
     },
   },
 });

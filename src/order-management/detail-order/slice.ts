@@ -31,15 +31,21 @@ export const detailOrderReducer = createSlice({
     setIsOpenModalRefund: (state, action: PayloadAction<boolean>) => {
       state.isOpenModalRefund = action.payload;
     },
-  }
+  },
 });
 
-export const { setOrderDelivery, setShowPopup, setDataDelivery, setCheckType, setIsOpenModalRefund } =
-  detailOrderReducer.actions;
+export const {
+  setOrderDelivery,
+  setShowPopup,
+  setDataDelivery,
+  setCheckType,
+  setIsOpenModalRefund,
+} = detailOrderReducer.actions;
 export const isShowPopup = (state: RootState) => state.detailOrder.isPopup;
 export const orderDelivery = (state: RootState) => state.detailOrder.orderDelivery;
 export const dataDelivery = (state: RootState) => state.detailOrder.dataDelivery;
 export const checkType = (state: RootState) => state.detailOrder.checkType;
-export const isOpenModalRefundSelector = (state: RootState) => state.detailOrder.isOpenModalRefund;
+export const isOpenModalRefundSelector = (state: RootState) =>
+  state.detailOrder.isOpenModalRefund;
 
 export default detailOrderReducer.reducer;

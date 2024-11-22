@@ -9,5 +9,5 @@ export const getListFileImport = (params: IParams) => {
 };
 
 export const retryImportFile = (id: number) => {
-  return axiosInstance.post(`${API_GET_LIST_FILE_IMPORT}/${id}/retry`)
+  return axiosInstance.post(`${API_GET_LIST_FILE_IMPORT}/${id}/retry`);
 };

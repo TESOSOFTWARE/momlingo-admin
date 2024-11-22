@@ -43,7 +43,7 @@ export default function FormCreateEvent() {
   const navigate = useNavigate();
   const methods = useForm<IFormCreateEvent>({
     resolver: yupResolver(schemaCreateEvent),
-    
+
     defaultValues: DEFAULT_VALUES_EVENT,
   });
   const { t } = useTranslation();
@@ -71,16 +71,18 @@ export default function FormCreateEvent() {
       showErrorSnackbar('Tạo mới thất bại !');
     },
   });
-  const listSystemConfigPoint= data?.items || [];
+  const listSystemConfigPoint = data?.items || [];
   const onSubmit = (dataSubmit: any) => {
     const dataCreate = {
-     name: dataSubmit?.name,
-     type: dataSubmit?.type,
-     startDate: dataSubmit?.startDate,
-     endDate: dataSubmit?.endDate,
-     eventReward: dataSubmit?.eventReward,
-     status: dataSubmit?.status ? "ACTIVE" : "IN_ACTIVE",
-     systemConfigPointIds: dataSubmit?.systemConfigPointIds?.map((item: ISystemConfigPoint) => item?.id),
+      name: dataSubmit?.name,
+      type: dataSubmit?.type,
+      startDate: dataSubmit?.startDate,
+      endDate: dataSubmit?.endDate,
+      eventReward: dataSubmit?.eventReward,
+      status: dataSubmit?.status ? 'ACTIVE' : 'IN_ACTIVE',
+      systemConfigPointIds: dataSubmit?.systemConfigPointIds?.map(
+        (item: ISystemConfigPoint) => item?.id
+      ),
     };
     mutate(dataCreate);
   };

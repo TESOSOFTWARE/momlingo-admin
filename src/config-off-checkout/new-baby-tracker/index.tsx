@@ -1,4 +1,3 @@
-
 import { Box, Container } from '@mui/material';
 import i18n from 'src/common/locales/i18n';
 import Page from '../../common/components/Page';
@@ -13,12 +12,12 @@ export default function NewBabyTrackerPage() {
     <Page title={i18n.t('featureConfig.title')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <ConfigFeatureHeader />
-          <h2>New Baby Tracker </h2>
-          <Box>
-            <NewBabyTracker/>
-            {/* <FormCreateSurvey/> */}
-            {/* <Button onClick={handleUpdateData}>Update Baby Tracker</Button> */}
-          </Box>
+        <h2>New Baby Tracker </h2>
+        <Box>
+          <NewBabyTracker />
+          {/* <FormCreateSurvey/> */}
+          {/* <Button onClick={handleUpdateData}>Update Baby Tracker</Button> */}
+        </Box>
       </Container>
     </Page>
   );

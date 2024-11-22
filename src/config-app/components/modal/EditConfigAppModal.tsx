@@ -20,7 +20,11 @@ import { schemaConfigApp } from '../../schema';
 import { DEFAULT_VALUE_CONFIG_APP } from '../../constants';
 import { useEditConfigApp } from '../../hooks/useEditConfigApp';
 import { pickedRowSelector, setIsOpenModal } from '../../configApp.slice';
-import { FormProvider, RHFSwitch, RHFTextField } from '../../../common/components/hook-form';
+import {
+  FormProvider,
+  RHFSwitch,
+  RHFTextField,
+} from '../../../common/components/hook-form';
 
 type ConfirmModalProps = {
   isOpen: boolean;
@@ -28,7 +32,7 @@ type ConfirmModalProps = {
 };
 
 export default function EditConfigAppModal(prop: ConfirmModalProps) {
-  const { isOpen, onClose} = prop;
+  const { isOpen, onClose } = prop;
   const { showSuccessSnackbar, showErrorSnackbar } = useShowSnackbar();
   const { t } = useTranslation();
 
@@ -54,11 +58,10 @@ export default function EditConfigAppModal(prop: ConfirmModalProps) {
     },
   });
   const itemConfigApp = useSelector(pickedRowSelector);
-  
+
   useEffect(() => {
     setValue('mobileVersion', itemConfigApp?.mobileVersion);
   }, [itemConfigApp]);
-
 
   const onSubmitForm = (data: any) => {
     const dataEdit = {
@@ -66,9 +69,8 @@ export default function EditConfigAppModal(prop: ConfirmModalProps) {
       data: {
         mobileVersion: data?.mobileVersion,
         deviceType: itemConfigApp?.deviceType,
-      }
-
-    }
+      },
+    };
     mutate(dataEdit);
     dispatch(setIsOpenModal(false));
   };
@@ -106,7 +108,11 @@ export default function EditConfigAppModal(prop: ConfirmModalProps) {
               <DialogContentText>
                 {t('configApp.os')}: {itemConfigApp?.deviceType}
               </DialogContentText>
-              <RHFTextField label={t('configApp.version')} type='number' name="mobileVersion" />
+              <RHFTextField
+                label={t('configApp.version')}
+                type="number"
+                name="mobileVersion"
+              />
             </Stack>
           </DialogContent>
           <DialogActions>

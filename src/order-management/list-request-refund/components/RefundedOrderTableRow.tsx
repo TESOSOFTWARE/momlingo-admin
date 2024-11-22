@@ -21,13 +21,8 @@ import RefundRequestModal from './RefundRequestModal';
 export default function RefundedTableRow({ row }: IPropsTableRow) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const {
-    id,
-    createdAt,
-    orderRefund,
-    user
-  } = row;
-  const {isOpenConfirmModal} = useSelector(state=>state.refundOrderRequest);
+  const { id, createdAt, orderRefund, user } = row;
+  const { isOpenConfirmModal } = useSelector((state) => state.refundOrderRequest);
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
   const handleOpenMenu = (event: React.MouseEvent<HTMLElement>) => {
     setOpenMenuActions(event.currentTarget);
@@ -46,7 +41,9 @@ export default function RefundedTableRow({ row }: IPropsTableRow) {
         <TableCell align="center">{user?.customer?.name}</TableCell>
         <TableCell align="center">{formatDate(createdAt)}</TableCell>
         <TableCell align="center">{formatDate(orderRefund?.createdDate)}</TableCell>
-        <TableCell align="center">{orderRefund?.reasonRefund ? orderRefund?.reasonRefund :"Chưa có" }</TableCell>
+        <TableCell align="center">
+          {orderRefund?.reasonRefund ? orderRefund?.reasonRefund : 'Chưa có'}
+        </TableCell>
         <TableCell align="center">
           <TableMoreMenu
             open={openMenu}
@@ -56,29 +53,30 @@ export default function RefundedTableRow({ row }: IPropsTableRow) {
               <>
                 <Stack>
                   <MenuItem
-                  sx={{
-                   textTransform:"uppercase",
-                    color:'green'
-                  }}
+                    sx={{
+                      textTransform: 'uppercase',
+                      color: 'green',
+                    }}
                     onClick={handleOpenModal}
                   >
                     Chấp nhận
                   </MenuItem>
                   <MenuItem
-                
-                  sx={{
-                   textTransform:"uppercase",
-                    color:'red'
-                  }}              
-                      onClick={()=>{dispatch(setReject(true)); handleOpenModal();}}
+                    sx={{
+                      textTransform: 'uppercase',
+                      color: 'red',
+                    }}
+                    onClick={() => {
+                      dispatch(setReject(true));
+                      handleOpenModal();
+                    }}
                   >
-                   Từ chối
+                    Từ chối
                   </MenuItem>
                 </Stack>
               </>
             }
           />
-        
         </TableCell>
       </TableRow>
       <RefundRequestModal

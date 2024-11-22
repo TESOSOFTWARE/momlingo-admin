@@ -11,12 +11,12 @@ export enum OrderStatus {
   CANCELLED = 'CANCELLED',
   REFUNDED = 'REFUNDED',
   FAILED = 'FAILED',
-  TRASH = 'TRASH'
+  TRASH = 'TRASH',
 }
 
 export enum EnumType {
   VOUCHER = 'VOUCHER',
-  PHYSICAL = 'PHYSICAL'
+  PHYSICAL = 'PHYSICAL',
 }
 
 export interface IStatusOrderGift {

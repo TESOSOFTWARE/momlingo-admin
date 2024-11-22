@@ -15,7 +15,7 @@ export default function NewsTableRow({
   onDetailRow,
 }: IPropTableRow) {
   const { t } = useTranslation();
-  const { id, subject, thumbnail, title , status } = row;
+  const { id, subject, thumbnail, title, status } = row;
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
 
   const handleOpenMenu = (category: React.MouseEvent<HTMLElement>) => {
@@ -31,9 +31,7 @@ export default function NewsTableRow({
       <TableCell padding="checkbox">
         <Checkbox checked={selected} onChange={(e) => onSelectRow(e.target.checked)} />
       </TableCell>
-      <TableCell align="center">
-        {id}
-      </TableCell>
+      <TableCell align="center">{id}</TableCell>
       <TableCell align="left" sx={{ maxWidth: '70px' }}>
         <Box
           component="img"

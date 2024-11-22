@@ -3,7 +3,6 @@ import { QUERY_KEYS } from '../../../common/constants/queryKeys.constant';
 import { getBabyTrackerByWeek } from '../baby-tracker-service';
 import { UpdateBabyTrackerParams } from '../baby-tracker-interface';
 
-
 export function useGetBabyTrackerWeek(week: string) {
   return useQuery(
     ['babyTracker', week], // Query key, cần phải duy trì sự khác biệt cho mỗi tuần

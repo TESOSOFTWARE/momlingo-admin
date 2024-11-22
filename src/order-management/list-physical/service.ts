@@ -13,6 +13,6 @@ export const getOrder = (params: IOrderParams) =>
       orderId: params.orderId,
       page: params.page,
       limit: params.limit,
-      type: EnumType.PHYSICAL
-    }
+      type: EnumType.PHYSICAL,
+    },
   });

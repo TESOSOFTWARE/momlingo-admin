@@ -6,7 +6,7 @@ import {
   Table,
   TableBody,
   TableContainer,
-  TablePagination
+  TablePagination,
 } from '@mui/material';
 import lodash from 'lodash';
 import { useEffect } from 'react';
@@ -23,9 +23,7 @@ import Scrollbar from '../../../../common/components/Scrollbar';
 import { useSelectMultiple } from '../../../../common/hooks/useSelectMultiple';
 import useTable from '../../../../common/hooks/useTable';
 import { dispatch } from '../../../../common/redux/store';
-import {
-  DEFAULT_VALUE_SEARCH_USER
-} from '../../../constants';
+import { DEFAULT_VALUE_SEARCH_USER } from '../../../constants';
 import { useGetListUser } from '../../../hooks/useGetListUser';
 import { IListUserParams } from '../../../interfaces';
 import { searchFormSelector, setSearchForm } from '../../../userManage.slice';
@@ -98,7 +96,6 @@ export default function PickUserDashBoard({ onClose }: Props) {
   // const totalItems = data?.meta?.totalItems || 0;
   const totalItems = Array.isArray(data) ? data.length : 0;
   const isCheckAllUser = useSelector(isCheckAllSelector);
-
 
   const {
     isCheckedAll,
@@ -182,14 +179,17 @@ export default function PickUserDashBoard({ onClose }: Props) {
         />
       </Stack>
       <Stack direction={'row'} justifyContent={'space-between'}>
-        <Button variant="contained" sx={{ textTransform: 'none' }} onClick={() => {
-          handleCheckAllUser();
-          // dispatch(setListPickedUser([]))
-          
-          dispatch(setIsCheckAll(true));
-          onClose();
+        <Button
+          variant="contained"
+          sx={{ textTransform: 'none' }}
+          onClick={() => {
+            handleCheckAllUser();
+            // dispatch(setListPickedUser([]))
 
-        }}>
+            dispatch(setIsCheckAll(true));
+            onClose();
+          }}
+        >
           Chọn tất cả {totalItems} users
         </Button>
         <Stack direction={'row'} spacing={2} justifyContent={'end'}>

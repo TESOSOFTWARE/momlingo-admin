@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next';
 import { FormProvider, RHFTextField } from '../../../common/components/hook-form';
 import Iconify from '../../../common/components/Iconify';
 import useMessage from '../../../common/hooks/useMessage';
-import { usePostStore} from '../hooks/usePostStore';
+import { usePostStore } from '../hooks/usePostStore';
 import { NewStoreSchema } from '../../common/schema';
 import { INewStore } from '../../common/interface';
 import { useNavigate } from 'react-router-dom';
@@ -15,8 +15,8 @@ import { PATH_DASHBOARD } from '../../../common/routes/paths';
 export default function NewStoreForm() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const methods = useForm<INewStore>({ 
-    resolver: yupResolver(NewStoreSchema) 
+  const methods = useForm<INewStore>({
+    resolver: yupResolver(NewStoreSchema),
   });
   const { handleSubmit } = methods;
 
@@ -33,9 +33,9 @@ export default function NewStoreForm() {
     const newData: INewStore = {
       name: data.name,
       address: data.address,
-      lat:data.lat,
-      long:data.long
-    }
+      lat: data.lat,
+      long: data.long,
+    };
     mutate(newData);
   };
   return (
@@ -47,7 +47,6 @@ export default function NewStoreForm() {
             <RHFTextField name="address" label="Địa chỉ" />
             <RHFTextField type="number" name="long" label="Kinh độ" />
             <RHFTextField type="number" name="lat" label="Vĩ độ" />
-
           </Stack>
         </Paper>
         <Stack

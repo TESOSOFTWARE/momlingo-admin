@@ -20,7 +20,7 @@ type IProps = {
   options: Array<any>;
   labelProp: string;
   disabledSelect?: boolean;
-  listBoxScroll: any; 
+  listBoxScroll: any;
   loadingScroll?: boolean;
 };
 
@@ -53,7 +53,7 @@ export default function RHFSelectPhoneNumber({
           onChange={(event, values) => field.onChange(values)}
           fullWidth
           ListboxComponent={ListBox}
-        //   isOptionEqualToValue={(option, value) => option.id === value.id}
+          //   isOptionEqualToValue={(option, value) => option.id === value.id}
           loading={loadingScroll}
           renderInput={(params) => {
             return (

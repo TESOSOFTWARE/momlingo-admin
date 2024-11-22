@@ -8,16 +8,16 @@ export const useGetGameById = (id: number) => {
     ...useQuery([QUERY_KEYS.DETAIL_GAME, id], () => getGameById(id), {
       select: (data) => {
         return {
-          id:data?.id,
-          name:data?.name,
-          status:data?.status,
-          startDate:data?.startDate,
-          endDate:data?.endDate,
-          gameType:data?.gameType,
-          imageId:data?.image?.url,
-          image:data?.image,
+          id: data?.id,
+          name: data?.name,
+          status: data?.status,
+          startDate: data?.startDate,
+          endDate: data?.endDate,
+          gameType: data?.gameType,
+          imageId: data?.image?.url,
+          image: data?.image,
           policyLink: data?.policyLink,
-        }
+        };
       },
     }),
   };

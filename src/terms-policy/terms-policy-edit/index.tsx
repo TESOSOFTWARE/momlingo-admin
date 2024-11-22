@@ -76,7 +76,7 @@ export default function TermPolicyEdit() {
 
   const id = params?.id as unknown as number;
 
-  const { data:dataTerm } = useGetTermPolicy(id);
+  const { data: dataTerm } = useGetTermPolicy(id);
 
   useDeepCompareEffect(() => {
     if (dataTerm) {
@@ -102,12 +102,12 @@ export default function TermPolicyEdit() {
   });
 
   const onSubmit = async (data: IUpdateTermPolicyForm) => {
-    let iconId = dataTerm?.iconId 
+    let iconId = dataTerm?.iconId;
 
-    if(typeof data?.icon === 'object'){
-    const image = await getImageInfo(data.icon as File);
+    if (typeof data?.icon === 'object') {
+      const image = await getImageInfo(data.icon as File);
 
-       iconId = image?.id
+      iconId = image?.id;
     }
     const updateTermPolicy: IUpdateTermsPolicy = {
       id: id,

@@ -18,7 +18,7 @@ export interface INotiForm {
   notiToUserGroups: INotiToUserGroups[];
   sfNotiCustomers: ISfNotiCustomers[];
 }
-export interface ISfNotiCustomers{
+export interface ISfNotiCustomers {
   id: number;
   campaignMemberId: string;
   notiId: number;
@@ -26,7 +26,7 @@ export interface ISfNotiCustomers{
 }
 
 export interface INotiToUserGroups {
-  id:number;
+  id: number;
   notiId: number;
   userGroupId: number;
   noti: any;

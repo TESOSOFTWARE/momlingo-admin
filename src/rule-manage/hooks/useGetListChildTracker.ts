@@ -8,5 +8,4 @@ export function useGetListChildTracker() {
       cacheTime: 0,
     }),
   };
-  
 }

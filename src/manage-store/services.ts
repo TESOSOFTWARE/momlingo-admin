@@ -54,8 +54,5 @@ export const deleteStore = (id: number) => {
 };
 
 export const getExternalReferrerHistory = (params: IExternalHistoryParams) => {
-  return axiosInstance.get<unknown, any>(
-    API_EXTERNAL_REFERRER_HISTORY,
-    { params }
-  );
+  return axiosInstance.get<unknown, any>(API_EXTERNAL_REFERRER_HISTORY, { params });
 };

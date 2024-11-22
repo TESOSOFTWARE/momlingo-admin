@@ -5,4 +5,4 @@ export const schemaEditAddress = Yup.object().shape({
   district: Yup.mixed().required('Vui lòng nhập thông tin'),
   ward: Yup.mixed().required('Vui lòng nhập thông tin'),
   address1: Yup.string().required('Vui lòng nhập thông tin'),
-});  
+});

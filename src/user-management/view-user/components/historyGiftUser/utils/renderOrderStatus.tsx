@@ -1,5 +1,5 @@
-import { StatusChip } from "../../../../../order-management/common/StatusChip";
-import { OrderStatus } from "../common/interfaces";
+import { StatusChip } from '../../../../../order-management/common/StatusChip';
+import { OrderStatus } from '../common/interfaces';
 
 export const renderOrderStatus = (value: string) => {
   const statusMap: Record<string, { label: string; color: string }> = {

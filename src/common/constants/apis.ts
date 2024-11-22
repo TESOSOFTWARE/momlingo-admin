@@ -164,7 +164,7 @@ export const API_SHARE_APP_CONFIG = 'merchant/share-app-config';
 // duplicate-scan
 export const API_DUPLICATE_SCAN = 'merchant/add-point-code-dup';
 
-// 
+//
 export const API_BABY_TRACKERS = '/api/v1/baby-trackers';
 export const API_BABY_REMOVE_TRACKERS = '/api/v1/baby-trackers/week';
 export const API_BABY_CREATE_TRACKERS = '/api/v1/baby-trackers';
@@ -173,7 +173,7 @@ export const API_BABY_GET_TRACKERS_WEEK = '/api/v1/baby-trackers/week';
 
 //
 export const API_CHILD_TRACKERS = '/api/v1/child-trackers';
-export const API_CHILD_REMOVE_TRACKERS = '/api/v1/baby-trackers/week';
-export const API_CHILD_CREATE_TRACKERS = '/api/v1/baby-trackers';
-export const API_CHILD_EDIT_TRACKERS = '/api/v1/baby-trackers';
+export const API_CHILD_REMOVE_TRACKERS = '/api/v1/child-trackers/week';
+export const API_CHILD_CREATE_TRACKERS = '/api/v1/child-trackers';
+export const API_CHILD_EDIT_TRACKERS = '/api/v1/child-trackers';
 export const API_CHILD_GET_TRACKERS_WEEK = '/api/v1/child-trackers/week';

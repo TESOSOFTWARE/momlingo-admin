@@ -4,9 +4,8 @@ import { getGamePlayTimeConfigById } from '../../common/service';
 
 export function useGetGamePlayTimeConfigById(id: number) {
   return {
-    ...useQuery(
-      [QUERY_KEYS.LIST_GAME_CONFIG_PLAYTIME, id],
-      () => getGamePlayTimeConfigById(id),
+    ...useQuery([QUERY_KEYS.LIST_GAME_CONFIG_PLAYTIME, id], () =>
+      getGamePlayTimeConfigById(id)
     ),
   };
 }

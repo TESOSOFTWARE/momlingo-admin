@@ -18,7 +18,7 @@ export const getListEvent = (params: IParamsEvent) => {
 
 export const getEventById = (id: number) => {
   return axiosInstance.get<unknown, IEvent>(`${API_EVENT}/${id}`);
-}
+};
 export const deleteEvent = (data: IDeleteEvent) => {
   return axiosInstance.delete(`${API_EVENT}/multiple`, { data: data });
 };
@@ -32,6 +32,5 @@ export const createEvent = (data: IFormDataEvent) => {
 };
 
 export const editEvent = (data: IFormDataEvent) => {
-  return axiosInstance.put(`${API_EVENT}`,  data );
+  return axiosInstance.put(`${API_EVENT}`, data);
 };
-

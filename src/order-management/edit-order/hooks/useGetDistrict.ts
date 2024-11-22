@@ -5,5 +5,5 @@ import { AddressParams } from '../interface';
 
 export const useGetDistrict = ({ params }: { params: AddressParams }) =>
   useQuery([QUERY_KEYS.GET_DISTRICT_CUSTOMER, params], () => getDistrict(params), {
-    cacheTime: 0,    
+    cacheTime: 0,
   });

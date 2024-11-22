@@ -44,7 +44,7 @@ export default function SpoonUnusedAnalyticsDashboard() {
     }, {} as { [key: string]: number });
     return { data: transformedTest };
   });
-  
+
   const temp: { [key: string]: number[] } = {};
   transformedData.forEach((item) => {
     const { data } = item;
@@ -85,7 +85,6 @@ export default function SpoonUnusedAnalyticsDashboard() {
           </Stack>
           <Grid item xs={12} md={6} lg={8} p={2}>
             <AppAreaInstalled
-              
               title="Chi tiết"
               chartLabels={
                 listLineChart?.map((item) => {

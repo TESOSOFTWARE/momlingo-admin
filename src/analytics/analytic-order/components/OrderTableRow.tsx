@@ -13,11 +13,8 @@ import { TableMoreMenu } from '../../../common/components/table';
 
 import { IPropsTableRow } from '../../interface';
 
-export default function OrderTableRow({
-  row,
-  index
-}: IPropsTableRow) {
-  const { date, total,totalPhysical,totalVoucher } = row;
+export default function OrderTableRow({ row, index }: IPropsTableRow) {
+  const { date, total, totalPhysical, totalVoucher } = row;
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
   const { t } = useTranslation();
   const handleOpenMenu = (category: React.MouseEvent<HTMLElement>) => {
@@ -28,14 +25,12 @@ export default function OrderTableRow({
   };
   return (
     <>
-      <TableRow >
-       
+      <TableRow>
         <TableCell align="center">{index + 1}</TableCell>
         <TableCell align="left">{date}</TableCell>
         <TableCell align="center">{totalVoucher}</TableCell>
         <TableCell align="center">{totalPhysical}</TableCell>
         <TableCell align="center">{total}</TableCell>
-        
       </TableRow>
     </>
   );

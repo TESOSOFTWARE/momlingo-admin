@@ -6,7 +6,12 @@ import { ITableProps } from '../interfaces';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import EditConfigAppModal from './modal/EditConfigAppModal';
-import { isOpenModalSelector, pickedRowSelector, setIsOpenModal, setPickedRow } from '../configApp.slice';
+import {
+  isOpenModalSelector,
+  pickedRowSelector,
+  setIsOpenModal,
+  setPickedRow,
+} from '../configApp.slice';
 
 export default function ConfigAppTableRow({ row }: ITableProps) {
   const navigate = useNavigate();
@@ -48,7 +53,7 @@ export default function ConfigAppTableRow({ row }: ITableProps) {
       <EditConfigAppModal
         isOpen={isOpenModalEdit}
         onClose={() => dispatch(setIsOpenModal(false))}
-      /> 
+      />
     </>
   );
 }

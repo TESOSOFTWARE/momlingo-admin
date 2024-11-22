@@ -6,7 +6,7 @@ import { getNewsSubject } from '../news-common/service';
 export const useGetSubject = (params: ISubjectParams) => {
   return {
     ...useQuery([QUERY_KEYS.LIST_NEWS_SUBJECT, params], () => getNewsSubject(params), {
-        cacheTime: 0,
+      cacheTime: 0,
     }),
   };
 };

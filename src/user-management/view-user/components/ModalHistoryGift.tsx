@@ -22,7 +22,7 @@ type ConfirmModalProps = {
 export const HistoryGiftModal = (props: ConfirmModalProps) => {
   const { isOpen, onClose } = props;
   const { t } = useTranslation();
-  
+
   return (
     <div>
       <Dialog
@@ -55,7 +55,7 @@ export const HistoryGiftModal = (props: ConfirmModalProps) => {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <HistoryGiftForm searchUserId={props?.userId}/>
+          <HistoryGiftForm searchUserId={props?.userId} />
         </DialogContent>
       </Dialog>
     </div>

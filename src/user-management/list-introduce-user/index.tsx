@@ -1,4 +1,4 @@
-import { Container,Button } from '@mui/material';
+import { Container, Button } from '@mui/material';
 import Page from '../../common/components/Page';
 import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 import { BREADCUMBS } from '../../common/constants/common.constants';
@@ -26,36 +26,30 @@ export default function AppIntroduceUser() {
   };
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
 
-  const {  confirmModal,filterParamsIntroduced } = useSelector(
+  const { confirmModal, filterParamsIntroduced } = useSelector(
     (state) => state.userManage
   );
   const { themeStretch } = useSettings();
-  const { mutate, isSuccess } = useExportIntroduced(
-    {
-      onSuccess: () => showSuccessSnackbar(t('manage_store.export.sucess')),
-      onError: () => showErrorSnackbar(t('manage_store.export.false')),
-    })
-    useEffect(() => {
-      if (isSuccess) {
-      
-          dispatch(
-            setConfirmModal({
-              isOpen: true,
-              text: t('survey.action.export.redirectExportList'),
-              callback: () => {
-                navigate(PATH_DASHBOARD.fileManage.listFileExport)
-              },
-            })
-          );
-          }
-  
-  
-    }, [isSuccess])
+  const { mutate, isSuccess } = useExportIntroduced({
+    onSuccess: () => showSuccessSnackbar(t('manage_store.export.sucess')),
+    onError: () => showErrorSnackbar(t('manage_store.export.false')),
+  });
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(
+        setConfirmModal({
+          isOpen: true,
+          text: t('survey.action.export.redirectExportList'),
+          callback: () => {
+            navigate(PATH_DASHBOARD.fileManage.listFileExport);
+          },
+        })
+      );
+    }
+  }, [isSuccess]);
   const handleRequestExport = () => {
-    
-    mutate(filterParamsIntroduced)
-
-  }
+    mutate(filterParamsIntroduced);
+  };
   return (
     <Page title={i18n.t('introduceUser.title')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -72,18 +66,23 @@ export default function AppIntroduceUser() {
             },
           ]}
           action={
-              <Button sx={{ background: "#64e30f", "&:hover": { background: "#3c7c12" } }} onClick={handleRequestExport} variant="contained" startIcon={<Iconify icon={'carbon:export'} />}>
-                {t('survey.userSurvey.export')}
-              </Button>            
+            <Button
+              sx={{ background: '#64e30f', '&:hover': { background: '#3c7c12' } }}
+              onClick={handleRequestExport}
+              variant="contained"
+              startIcon={<Iconify icon={'carbon:export'} />}
+            >
+              {t('survey.userSurvey.export')}
+            </Button>
           }
         />
-       <ConfirmModal
-            isOpen={confirmModal.isOpen}
-            onClose={handleCloseRedirectModal}
-            onSubmit={confirmModal.callback}
-            type={'warning'}
-            text={confirmModal.text}
-          />
+        <ConfirmModal
+          isOpen={confirmModal.isOpen}
+          onClose={handleCloseRedirectModal}
+          onSubmit={confirmModal.callback}
+          type={'warning'}
+          text={confirmModal.text}
+        />
         <ListIntroduceUserDashBoard />
       </Container>
     </Page>

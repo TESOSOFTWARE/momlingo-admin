@@ -9,7 +9,7 @@ import { TABLE_HEAD } from '../../constants';
 export default function ConfigEventList() {
   const { dense, order, orderBy } = useTable();
   const { data: productList, isLoading } = useGetConfigEvent();
-  console.log(productList)
+  console.log(productList);
   return (
     <Card
       sx={{
@@ -19,7 +19,7 @@ export default function ConfigEventList() {
       }}
     >
       <Stack spacing={3}>
-        <TableContainer sx={{position: 'relative' }}>
+        <TableContainer sx={{ position: 'relative' }}>
           <Table>
             <TableHeadCustom order={order} orderBy={orderBy} headLabel={TABLE_HEAD} />
             <TableBody>

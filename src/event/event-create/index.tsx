@@ -23,7 +23,7 @@ export default function CreateEvent() {
             },
           ]}
         />
-        <FormCreateEvent/> 
+        <FormCreateEvent />
       </Container>
     </Page>
   );

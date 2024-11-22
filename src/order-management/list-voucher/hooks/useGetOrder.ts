@@ -15,12 +15,12 @@ export const useGetOrder = (params: IOrderParams) => {
               createAt: item.createdAt,
               expressDeliveryCode: item?.expressDeliveryCode,
               phoneUser: item.user.customer.phoneNumber,
-              orderStatus: item.status
+              orderStatus: item.status,
             };
           }),
-          meta: data?.meta
+          meta: data?.meta,
         };
-      }
-    })
+      },
+    }),
   };
 };

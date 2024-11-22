@@ -4,7 +4,7 @@ import { StateProps } from './interface';
 const initialState: StateProps = {
   searchForm: '',
   confirmModal: {
-    callback: () => { },
+    callback: () => {},
     isOpen: false,
     text: '',
   },
@@ -19,18 +19,18 @@ export const tierRankSlice = createSlice({
     },
     closeConfirmModal: (state) => {
       state.confirmModal = {
-        callback: () => { },
+        callback: () => {},
         isOpen: false,
         text: '',
       };
     },
     setSearchForm: (state, action: PayloadAction<string>) => {
       state.searchForm = action.payload;
-
-    }
+    },
   },
 });
 
-export const { setConfirmModal, closeConfirmModal, setSearchForm } = tierRankSlice.actions;
+export const { setConfirmModal, closeConfirmModal, setSearchForm } =
+  tierRankSlice.actions;
 
 export default tierRankSlice.reducer;

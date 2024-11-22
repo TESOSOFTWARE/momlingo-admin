@@ -59,8 +59,7 @@ export default function EditShareAppBanner() {
 
   const { data: mobileRoutes } = useGetMobileRoute();
   const { dataRequest } = useSelector((state) => state.configShareApp);
-  const dataBanner = dataRequest.find(
-    (item) => item.id === idBanner);
+  const dataBanner = dataRequest.find((item) => item.id === idBanner);
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
 
   const navigate = useNavigate();
@@ -206,26 +205,26 @@ export default function EditShareAppBanner() {
   const saveEditBanner = () => {
     setIsLoadingSave(true);
     const data = dataRequest.map((item) => {
-        return {
-          ...item,
-          data: item.data?.map((i: any) => {
-            if (i?.params?.length) {
-              const params: any = {};
-              i?.params?.forEach((p: any) => {
-                params[p?.key] = p?.value;
-              });
-              return {
-                ...i,
-                params: params,
-              };
-            } else {
-              return {
-                ...i,
-              };
-            }
-          }),
-        };
-      });
+      return {
+        ...item,
+        data: item.data?.map((i: any) => {
+          if (i?.params?.length) {
+            const params: any = {};
+            i?.params?.forEach((p: any) => {
+              params[p?.key] = p?.value;
+            });
+            return {
+              ...i,
+              params: params,
+            };
+          } else {
+            return {
+              ...i,
+            };
+          }
+        }),
+      };
+    });
     mutate(data);
   };
 
@@ -237,7 +236,10 @@ export default function EditShareAppBanner() {
             heading={t('homeConfig')}
             links={[
               { name: t('dashboard'), href: PATH_DASHBOARD.root },
-              { name: t('configShareApp.root'), href: PATH_DASHBOARD.configShareApp.root },
+              {
+                name: t('configShareApp.root'),
+                href: PATH_DASHBOARD.configShareApp.root,
+              },
               { name: t('edit') },
             ]}
           />

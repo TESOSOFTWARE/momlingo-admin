@@ -31,7 +31,6 @@ export default function ViewUser() {
   const isOpenHistoryScan = useSelector(isOpenModalHistoryScanSelector);
   const isOpenHistoryGift = useSelector(isOpenModalHistoryGiftSelector);
 
-
   const handleViewHistoryScan = () => {
     dispatch(setIsOpenModalHistoryScan(true));
   };
@@ -65,7 +64,7 @@ export default function ViewUser() {
             </Stack>
           }
         />
-        <FormUserDetail isLoading={isLoading} data={data}/>
+        <FormUserDetail isLoading={isLoading} data={data} />
         <HistoryScanModal
           isOpen={isOpenHistoryScan}
           onClose={() => dispatch(setIsOpenModalHistoryScan(false))}

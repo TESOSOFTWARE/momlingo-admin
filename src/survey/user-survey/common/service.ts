@@ -25,11 +25,14 @@ export const getDetailUserSurvey = (params: IParamsDetailUserSurvey) => {
   });
 };
 export const requestExport = (id: number) => {
-  return axiosInstance.post(`${API_REQUEST_EXPORT_SURVEY_HISTORY}`,{surveyId:id});
+  return axiosInstance.post(`${API_REQUEST_EXPORT_SURVEY_HISTORY}`, { surveyId: id });
 };
-export const requestExportDetail = ({surveyUserId,surveyUserDetailId}:{[key in string]:number}) => {
-  return axiosInstance.post(`${API_REQUEST_EXPORT_SURVEY_HISTORY_DETAIL}`,{
+export const requestExportDetail = ({
+  surveyUserId,
+  surveyUserDetailId,
+}: { [key in string]: number }) => {
+  return axiosInstance.post(`${API_REQUEST_EXPORT_SURVEY_HISTORY_DETAIL}`, {
     surveyId: surveyUserId,
-    userId: surveyUserDetailId
+    userId: surveyUserDetailId,
   });
 };

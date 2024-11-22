@@ -2,9 +2,7 @@ import { MenuItem, Stack, Switch, TableCell, TableRow, Chip } from '@mui/materia
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import Iconify from '../../../../common/components/Iconify';
-import {
-  setIsOpenConfirmModal,
-} from '../../config-feature-slice';
+import { setIsOpenConfirmModal } from '../../config-feature-slice';
 import ConfirmChangeConfigFeatureModal from './ConfigFeatureModal';
 import { PregnancyWeekInfo } from '../../baby-tracker-interface';
 import { TableMoreMenu } from '../../../../common/components/table';
@@ -17,10 +15,7 @@ export interface IPropsBabyTrackerListTable {
   rowCode: string;
   TrackerList?: PregnancyWeekInfo[];
 }
-function BabyTrackerTableRow({
-  rowCode,
-  TrackerList,
-}: IPropsBabyTrackerListTable) {
+function BabyTrackerTableRow({ rowCode, TrackerList }: IPropsBabyTrackerListTable) {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const [dialogOpen, setDialogOpen] = React.useState(false);
@@ -33,34 +28,35 @@ function BabyTrackerTableRow({
   const handleCloseMenu = () => {
     setOpenMenuActions(null);
   };
-  const handleRemoveRow = () =>{
+  const handleRemoveRow = () => {
     setDialogOpen(true);
-  }
+  };
   // Kiểm tra và in ra thông tin của trackerItem
   const handleStatusChange = (newStatus: 'agree' | 'disagree') => {
-    setStatus(newStatus);  // Lưu trạng thái agree/disagree
+    setStatus(newStatus); // Lưu trạng thái agree/disagree
     console.log('User selected:', newStatus);
-    if(newStatus ==='agree')
-    {
+    if (newStatus === 'agree') {
       mutate(TrackerList?.[+rowCode].week.toString() || '');
-    }else{
+    } else {
       setDialogOpen(false);
     }
   };
   const handleDialogClose = () => {
-    setDialogOpen(false);  // Đóng dialog
+    setDialogOpen(false); // Đóng dialog
   };
   return (
     <>
       <AlertDialogSlide
-        open={dialogOpen}  // Điều khiển trạng thái mở của dialog
-        onClose={handleDialogClose}  // Đóng dialog khi cần
-        onStatusChange={handleStatusChange}  // Gửi trạng thái về parent
+        open={dialogOpen} // Điều khiển trạng thái mở của dialog
+        onClose={handleDialogClose} // Đóng dialog khi cần
+        onStatusChange={handleStatusChange} // Gửi trạng thái về parent
       />
       <TableRow hover sx={{ borderBottom: '1px dotted gray' }}>
         <TableCell align="center">{TrackerList?.[+rowCode].week}</TableCell>
         <TableCell align="left">{TrackerList?.[+rowCode].keyTakeaways}</TableCell>
-        <TableCell align="center">{formatDateNoTime(TrackerList?.[+rowCode].createdAt)}</TableCell>
+        <TableCell align="center">
+          {formatDateNoTime(TrackerList?.[+rowCode].createdAt)}
+        </TableCell>
         <TableCell align="center">
           <TableMoreMenu
             open={openMenu}
@@ -71,9 +67,14 @@ function BabyTrackerTableRow({
                 <Stack>
                   <MenuItem
                     onClick={() => {
-                      const weekValue = TrackerList?.[+rowCode]?.week;  // Lấy giá trị tuần
+                      const weekValue = TrackerList?.[+rowCode]?.week; // Lấy giá trị tuần
                       if (weekValue) {
-                        navigate(PATH_DASHBOARD.configFeature.edit.babyTracker.replace(':week', weekValue.toString()));
+                        navigate(
+                          PATH_DASHBOARD.configFeature.edit.babyTracker.replace(
+                            ':week',
+                            weekValue.toString()
+                          )
+                        );
                         console.log('Navigating to week', weekValue);
                       } else {
                         console.error('Invalid week value');
@@ -89,22 +90,20 @@ function BabyTrackerTableRow({
                       handleCloseMenu();
                     }}
                     sx={{
-                      color:'red'
+                      color: 'red',
                     }}
                   >
-                      <>
-                        <Iconify icon={'material-symbols:delete'} />
-                        Xoá tracker
-                      </>
+                    <>
+                      <Iconify icon={'material-symbols:delete'} />
+                      Xoá tracker
+                    </>
                   </MenuItem>
-
                 </Stack>
               </>
             }
           />
         </TableCell>
       </TableRow>
-     
     </>
   );
 }

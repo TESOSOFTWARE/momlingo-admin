@@ -25,7 +25,9 @@ export function useDeleteMultipleGamePlaytime() {
       const errorCount = data.affected - variables.length;
       if (errorCount) {
         showErrorSnackbar(
-          t('configPlayTime.list.action.delete.multiple_failed', { length: variables.length })
+          t('configPlayTime.list.action.delete.multiple_failed', {
+            length: variables.length,
+          })
         );
       }
     },

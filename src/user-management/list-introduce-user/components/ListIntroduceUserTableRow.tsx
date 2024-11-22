@@ -30,8 +30,7 @@ import useChangeUserStatusAccount from '../../hooks/useChangeStatusAccount';
 import { fDateTime24h } from '../../../common/utils/formatTime';
 
 export default function IntroduceUserTableRow({ row }: IPropsTableRowIntroduceUser) {
-  const { beReferred,referrer,createdAt } =
-    row;
+  const { beReferred, referrer, createdAt } = row;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -49,23 +48,23 @@ export default function IntroduceUserTableRow({ row }: IPropsTableRowIntroduceUs
     setOpenMenuActions(null);
   };
 
-
   return (
     <>
       <TableRow hover>
-        <TableCell
-          align="left"
-        >
-          {referrer?.customer?.name} {referrer?.customer?.email && (<span>({referrer?.customer?.email})</span>)}
+        <TableCell align="left">
+          {referrer?.customer?.name}{' '}
+          {referrer?.customer?.email && <span>({referrer?.customer?.email})</span>}
         </TableCell>
         <TableCell align="left">{referrer?.customer?.phoneNumber}</TableCell>
-        <TableCell align="left">{beReferred?.customer?.name} {beReferred?.customer?.email && (<span>({beReferred?.customer?.email})</span>)}</TableCell>
+        <TableCell align="left">
+          {beReferred?.customer?.name}{' '}
+          {beReferred?.customer?.email && <span>({beReferred?.customer?.email})</span>}
+        </TableCell>
         <TableCell align="center" sx={{ textTransform: 'uppercase' }}>
           {beReferred?.customer?.phoneNumber}
         </TableCell>
         <TableCell align="left">{fDateTime24h(createdAt)}</TableCell>
         <TableCell align="left">{referrer?.customer?.tierPoint}</TableCell>
-
       </TableRow>
     </>
   );

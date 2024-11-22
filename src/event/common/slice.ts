@@ -5,13 +5,12 @@ type StateProps = {
   searchText?: string;
   isOpenModalDelete: boolean;
   selectedRows: number[];
-}
+};
 
 const initialState: StateProps = {
   searchText: '',
   isOpenModalDelete: false,
   selectedRows: [],
-
 };
 
 export const eventSlice = createSlice({
@@ -30,12 +29,10 @@ export const eventSlice = createSlice({
   },
 });
 
-export const {
-  setIsOpenModalDelete,
-  setSearchText,
-  setSelectedRows,
-} = eventSlice.actions;
+export const { setIsOpenModalDelete, setSearchText, setSelectedRows } =
+  eventSlice.actions;
 export const searchTextSelector = (state: RootState) => state.event.searchText;
-export const isOpenModalDeleteSelector = (state: RootState) => state.event.isOpenModalDelete;
+export const isOpenModalDeleteSelector = (state: RootState) =>
+  state.event.isOpenModalDelete;
 export const selectedRowsSelector = (state: RootState) => state.event.selectedRows;
 export default eventSlice.reducer;

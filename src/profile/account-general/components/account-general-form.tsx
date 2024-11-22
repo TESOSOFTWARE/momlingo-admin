@@ -196,7 +196,13 @@ export default function AccountGeneralForm() {
                 InputLabelProps={{ shrink: true }}
               />
               <Stack direction={'row'} justifyContent={'space-between'}>
-                <Button variant='contained' color='inherit' onClick={() => navigate(PATH_DASHBOARD.merchant.change_password)}>{t('change_password')}</Button>
+                <Button
+                  variant="contained"
+                  color="inherit"
+                  onClick={() => navigate(PATH_DASHBOARD.merchant.change_password)}
+                >
+                  {t('change_password')}
+                </Button>
                 <LoadingButton type="submit" variant="contained" loading={isLoading}>
                   {t('Save')}
                 </LoadingButton>

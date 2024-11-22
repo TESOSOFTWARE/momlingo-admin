@@ -1,7 +1,11 @@
 import { Paper, Grid } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 
-import { AnalyticsConversionRates, AnalyticsCurrentSubject, AnalyticsWebsiteVisits } from '../../../../common/components/analytics';
+import {
+  AnalyticsConversionRates,
+  AnalyticsCurrentSubject,
+  AnalyticsWebsiteVisits,
+} from '../../../../common/components/analytics';
 import AppCurrentDownload from '../../../../common/components/analytics/AppCurrentDownload';
 import AppAreaInstalled from '../../../../common/components/analytics/AppAreaInstalled';
 
@@ -60,7 +64,14 @@ export default function AppAnalyticsDashboard() {
           <Grid item xs={12} md={6} lg={4}>
             <AnalyticsCurrentSubject
               title="Current Subject"
-              chartLabels={['English', 'History', 'Physics', 'Geography', 'Chinese', 'Math']}
+              chartLabels={[
+                'English',
+                'History',
+                'Physics',
+                'Geography',
+                'Chinese',
+                'Math',
+              ]}
               chartData={[
                 { name: 'Series 1', data: [80, 50, 30, 40, 100, 20] },
                 { name: 'Series 2', data: [20, 30, 40, 80, 20, 80] },
@@ -91,23 +102,35 @@ export default function AppAnalyticsDashboard() {
             <AppAreaInstalled
               title="Area Installed"
               subheader="(+43%) than last year"
-              chartLabels={['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep']}
-              chartData={[
-                // {
-                //   year: '2019',
-                //   data: [
-                //     { name: 'Asia', data: [10, 41, 35, 51, 49, 62, 69, 91, 148] },
-                //     { name: 'America', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
-                //   ],
-                // },
-                // {
-                //   year: '2020',
-                //   data: [
-                //     { name: 'Asia', data: [148, 91, 69, 62, 49, 51, 35, 41, 10] },
-                //     { name: 'America', data: [45, 77, 99, 88, 77, 56, 13, 34, 10] },
-                //   ],
-                // },
+              chartLabels={[
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
               ]}
+              chartData={
+                [
+                  // {
+                  //   year: '2019',
+                  //   data: [
+                  //     { name: 'Asia', data: [10, 41, 35, 51, 49, 62, 69, 91, 148] },
+                  //     { name: 'America', data: [10, 34, 13, 56, 77, 88, 99, 77, 45] },
+                  //   ],
+                  // },
+                  // {
+                  //   year: '2020',
+                  //   data: [
+                  //     { name: 'Asia', data: [148, 91, 69, 62, 49, 51, 35, 41, 10] },
+                  //     { name: 'America', data: [45, 77, 99, 88, 77, 56, 13, 34, 10] },
+                  //   ],
+                  // },
+                ]
+              }
             />
           </Grid>
         </Grid>

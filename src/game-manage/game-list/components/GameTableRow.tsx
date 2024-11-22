@@ -27,13 +27,13 @@ export default function GameTableRow({
   const handleCloseMenu = () => {
     setOpenMenuActions(null);
   };
-  const handleClickDetail=() => {
+  const handleClickDetail = () => {
     navigate(PATH_DASHBOARD.gameGift.list(id.toString()));
-  }
+  };
   return (
     <>
       <TableRow hover selected={selected}>
-        <TableCell align ="justify">
+        <TableCell align="justify">
           <Checkbox checked={selected} onChange={(e) => onSelectRow(e.target.checked)} />
         </TableCell>
         <TableCell>
@@ -78,7 +78,7 @@ export default function GameTableRow({
                   <Iconify icon={'mdi:eye-outline'} />
                   Xem giải
                 </MenuItem>
-                
+
                 <MenuItem
                   onClick={() => {
                     onEditRow();
@@ -88,7 +88,7 @@ export default function GameTableRow({
                   <Iconify icon={'eva:edit-fill'} />
                   {t('common.tooltip.edit.title')}
                 </MenuItem>
-              
+
                 <MenuItem
                   onClick={() => {
                     onDeleteRow();

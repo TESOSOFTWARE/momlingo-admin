@@ -19,15 +19,15 @@ export default function DetailOrderHeader() {
             { name: BREADCUMBS.DASHBOARD, href: PATH_DASHBOARD.root },
             {
               name: BREADCUMBS.ORDER_MANAGEMENT,
-              href: PATH_DASHBOARD.order_management.root
+              href: PATH_DASHBOARD.order_management.root,
             },
 
             {
               name: t('order.detail.headerPhysical'),
-              href: PATH_DASHBOARD.order_management.list_physical
+              href: PATH_DASHBOARD.order_management.list_physical,
             },
 
-            { name: t('order.detail.orderTitle') }
+            { name: t('order.detail.orderTitle') },
           ]}
         />
       ) : (
@@ -37,15 +37,15 @@ export default function DetailOrderHeader() {
             { name: BREADCUMBS.DASHBOARD, href: PATH_DASHBOARD.root },
             {
               name: BREADCUMBS.ORDER_MANAGEMENT,
-              href: PATH_DASHBOARD.order_management.root
+              href: PATH_DASHBOARD.order_management.root,
             },
 
             {
               name: t('order.detail.headerVoucher'),
-              href: PATH_DASHBOARD.order_management.list_voucher
+              href: PATH_DASHBOARD.order_management.list_voucher,
             },
 
-            { name: t('order.detail.orderTitle') }
+            { name: t('order.detail.orderTitle') },
           ]}
         />
       )}

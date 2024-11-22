@@ -3,7 +3,6 @@ import { QUERY_KEYS } from '../../../common/constants/queryKeys.constant';
 import { editBabyTrackerList, removeBabyTrackerList } from '../baby-tracker-service';
 import { UpdateBabyTrackerParams } from '../baby-tracker-interface';
 
-
 export function useUpdateBabyTracker() {
   const queryClient = useQueryClient();
 
@@ -16,7 +15,7 @@ export function useUpdateBabyTracker() {
         console.log('Data updated successfully:', data);
       },
       onError: (error) => {
-        console.error("Failed to update baby tracker:", error);
+        console.error('Failed to update baby tracker:', error);
       },
     }
   );

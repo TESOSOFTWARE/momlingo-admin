@@ -44,7 +44,14 @@ export default function ConfigAppDashBoard() {
   const isNotFound = !isLoading && !listItem.length;
 
   return (
-    <Card sx={{ paddingY: 1, borderRadius: '8px', boxShadow: 10, background: 'linear-gradient(to right bottom, white, #ECF9FF)' }}>
+    <Card
+      sx={{
+        paddingY: 1,
+        borderRadius: '8px',
+        boxShadow: 10,
+        background: 'linear-gradient(to right bottom, white, #ECF9FF)',
+      }}
+    >
       <TableContainer sx={{ position: 'relative' }}>
         <Table size={dense ? 'small' : 'medium'}>
           <TableHeadCustom headLabel={CONFIG_APP_TABLE_HEAD} rowCount={listItem.length} />

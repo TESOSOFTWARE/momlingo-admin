@@ -11,7 +11,7 @@ import {
   TablePagination,
   FormControlLabel,
   Switch,
-  Stack
+  Stack,
 } from '@mui/material';
 import HeaderBreadcrumbs from 'src/common/components/HeaderBreadcrumbs';
 import { BREADCUMBS } from 'src/common/constants/common.constants';
@@ -77,11 +77,10 @@ export default function ListUsersSurvey() {
     dispatch(closeConfirmModal());
   };
   const { data, isLoading } = useGetListUsersSurvey(searchParams, parseInt(id as string));
-  const { mutate, isSuccess } = useRequestExport(
-    {
-      onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
-      onError: () => showErrorSnackbar(t('survey.action.export.fail')),
-    })
+  const { mutate, isSuccess } = useRequestExport({
+    onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
+    onError: () => showErrorSnackbar(t('survey.action.export.fail')),
+  });
   const dataList: IUserSurvey[] = data?.items || [];
   const {
     isCheckedAll,
@@ -99,8 +98,8 @@ export default function ListUsersSurvey() {
   };
   const isNotFound = !isLoading && !dataList.length;
   const handleRequestExport = () => {
-    mutate(parseInt(id as string))
-  }
+    mutate(parseInt(id as string));
+  };
   useEffect(() => {
     if (isSuccess) {
       dispatch(
@@ -108,13 +107,12 @@ export default function ListUsersSurvey() {
           isOpen: true,
           text: t('survey.action.export.redirectExportList'),
           callback: () => {
-            navigate(PATH_DASHBOARD.fileManage.listFileExport)
+            navigate(PATH_DASHBOARD.fileManage.listFileExport);
           },
         })
       );
     }
-
-  }, [isSuccess])
+  }, [isSuccess]);
   return (
     <>
       <HeaderBreadcrumbs
@@ -125,10 +123,13 @@ export default function ListUsersSurvey() {
           { name: t('survey.list'), href: PATH_DASHBOARD.survey.list },
           { name: t('survey.userSurvey.list') },
         ]}
-
         action={
           <Stack direction={'row'} spacing={2}>
-            <Button onClick={handleRequestExport} variant="contained" startIcon={<Iconify icon={'carbon:export'} />}>
+            <Button
+              onClick={handleRequestExport}
+              variant="contained"
+              startIcon={<Iconify icon={'carbon:export'} />}
+            >
               {t('survey.userSurvey.export')}
             </Button>
           </Stack>

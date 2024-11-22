@@ -1,4 +1,4 @@
-import { Button, Container, Paper, Stack, FormLabel   } from '@mui/material';
+import { Button, Container, Paper, Stack, FormLabel } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
 import { LabelStyle } from '../../config-home/components/banners-section/BannerConfig';
@@ -27,7 +27,7 @@ import { useEditTierRank } from './hooks/useEditTierRank';
 import vn from '../../common/locales/vn';
 import { ITierRankForm, ITierRankList } from '../interface';
 import { schemaTierRank } from '../schema';
-import {nextCodeTierRank, TYPE_CODE } from '../constants';
+import { nextCodeTierRank, TYPE_CODE } from '../constants';
 import { useGetListTierRank } from '../tier-rank-list/hooks/useGetListTierRank';
 
 export default function TierRankEdit() {
@@ -47,8 +47,8 @@ export default function TierRankEdit() {
       maxPoint: 0,
       nextTierCode: '',
       code: '',
-      poinNextTierCode:"",
-      descriptionMember:""
+      poinNextTierCode: '',
+      descriptionMember: '',
     },
   });
 
@@ -79,10 +79,10 @@ export default function TierRankEdit() {
 
   useEffect(() => {
     const test = dataList?.items.find((item: any) => {
-      return item?.name.toUpperCase() === watch('nextTierCode')
-    })
-    setValue('poinNextTierCode',test ?  test?.conditionPoint.toString() : "Không có")
-  },[dataList,watch('nextTierCode')])
+      return item?.name.toUpperCase() === watch('nextTierCode');
+    });
+    setValue('poinNextTierCode', test ? test?.conditionPoint.toString() : 'Không có');
+  }, [dataList, watch('nextTierCode')]);
   useEffect(() => {
     setValue('nextTierCode', nextCodeTierRank[watch()?.code]);
   }, [watch()]);
@@ -94,7 +94,8 @@ export default function TierRankEdit() {
   const onSubmit = async (data: ITierRankForm) => {
     const dataEdit = {
       ...data,
-      nextTierCode:data?.nextTierCode === nextCodeTierRank["PLATINUM"] ? null : data?.nextTierCode,
+      nextTierCode:
+        data?.nextTierCode === nextCodeTierRank['PLATINUM'] ? null : data?.nextTierCode,
       conditionPoint: parseInt(data.conditionPoint.toString()),
       maxPoint: parseInt(data.maxPoint.toString()),
     };
@@ -127,19 +128,18 @@ export default function TierRankEdit() {
               <RHFTextField name="name" label="Tên" />
               <RHFTextField name="description" label="Mô tả" />
               <Stack spacing={1}>
-              <Stack
-                direction="row"
-                sx={{
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  alignItems: 'center',
-                }}
-              >
-                <FormLabel sx={{ marginLeft: '14px' }}>Mô tả thành viên</FormLabel>
+                <Stack
+                  direction="row"
+                  sx={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                  }}
+                >
+                  <FormLabel sx={{ marginLeft: '14px' }}>Mô tả thành viên</FormLabel>
+                </Stack>
+                <RHFEditor name="descriptionMember" />
               </Stack>
-              <RHFEditor name="descriptionMember"/>
-
-            </Stack>
               <RHFSwitch name="isActive" label="Trạng thái" />
               <RHFTextField
                 name="conditionPoint"
@@ -152,7 +152,7 @@ export default function TierRankEdit() {
                 type="number"
                 label="Điểm tối đa của thứ hạng"
               />
-              <RHFSelect name="code" disabled   label="Thứ hạng">
+              <RHFSelect name="code" disabled label="Thứ hạng">
                 {TYPE_CODE.map((item) => {
                   return (
                     <option key={item.value} value={item.value}>

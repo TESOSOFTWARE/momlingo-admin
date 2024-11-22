@@ -4,7 +4,7 @@ import NewSubjectHeader from './components/NewSubjectHeader';
 
 function NewSubject() {
   return (
-    <Page title='Tạo mới chủ đề'>
+    <Page title="Tạo mới chủ đề">
       <NewSubjectHeader />
       <NewSubjectForm />
     </Page>

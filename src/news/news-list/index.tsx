@@ -4,7 +4,7 @@ import NewsTable from './components/news-table/NewsTable';
 
 export default function NewsList() {
   return (
-    <Page title= 'Danh sách tin tức'>
+    <Page title="Danh sách tin tức">
       <NewsListHeader />
       <NewsTable />
     </Page>

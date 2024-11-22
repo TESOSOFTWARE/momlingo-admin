@@ -30,8 +30,8 @@ export const RefundCoinModal = (props: ConfirmModalProps) => {
     // resolver: yupResolver(),
     defaultValues: DEFAULT_REFUND_FORM,
   });
-  const {id: orderId} = useParams();
-  
+  const { id: orderId } = useParams();
+
   const {
     handleSubmit,
     control,
@@ -51,13 +51,13 @@ export const RefundCoinModal = (props: ConfirmModalProps) => {
     },
   });
   const onSubmit = (data: any) => {
-    const dataRefund ={
+    const dataRefund = {
       id: parseInt(orderId as string),
       data: {
         refundPoint: data?.refundPoint,
         content: data?.content,
-      }
-    }
+      },
+    };
     mutate(dataRefund);
     onClose();
   };
@@ -80,7 +80,9 @@ export const RefundCoinModal = (props: ConfirmModalProps) => {
             sx={{ mb: 2, textTransform: 'uppercase', justifyContent: 'space-between' }}
           >
             {t('order.detail.refundForm.title')}
-            <DialogContentText sx={{ textTransform: 'none'}}>{t('order.detail.refundForm.desc')}</DialogContentText>
+            <DialogContentText sx={{ textTransform: 'none' }}>
+              {t('order.detail.refundForm.desc')}
+            </DialogContentText>
             <IconButton
               aria-label="close"
               onClick={onClose}

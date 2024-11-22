@@ -17,7 +17,7 @@ export const useGetOrderById = ({ id, callback }: { id: number; callback: ICallb
         ward: data.orderShipping.ward,
         district: data.orderShipping.district,
         type: data.type,
-        address1: data.orderShipping.address1
+        address1: data.orderShipping.address1,
       };
-    }
+    },
   });

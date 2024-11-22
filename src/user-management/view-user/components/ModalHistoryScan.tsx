@@ -35,7 +35,9 @@ export const HistoryScanModal = (props: ConfirmModalProps) => {
         fullWidth
         maxWidth={'xl'}
       >
-        <DialogTitle sx={{ mb: 5, textTransform: 'uppercase', justifyContent:'space-between' }}>
+        <DialogTitle
+          sx={{ mb: 5, textTransform: 'uppercase', justifyContent: 'space-between' }}
+        >
           Lịch sử quét mã của người dùng
           <IconButton
             aria-label="close"
@@ -51,7 +53,7 @@ export const HistoryScanModal = (props: ConfirmModalProps) => {
           </IconButton>
         </DialogTitle>
         <DialogContent>
-          <HistoryScanDashBoard smallTable={true} searchUserId={props?.userId}/>
+          <HistoryScanDashBoard smallTable={true} searchUserId={props?.userId} />
         </DialogContent>
       </Dialog>
     </div>

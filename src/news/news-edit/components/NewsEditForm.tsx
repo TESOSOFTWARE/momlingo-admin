@@ -76,7 +76,7 @@ function NewsEditForm() {
     page: undefined,
     limit: undefined,
   });
-  
+
   const listSubject = dataSubject?.items || [];
 
   const handleDrop = useCallback(
@@ -110,9 +110,9 @@ function NewsEditForm() {
 
   const onSubmit = async (data: ISubmitData) => {
     let imgId = detailNews?.thumbnail?.id;
-    if(typeof data?.image !== 'string'){
+    if (typeof data?.image !== 'string') {
       const file = await handleUpload(data.image as File);
-      imgId = file?.id ;
+      imgId = file?.id;
     }
     const dataEdit: IDataFormEditNews = {
       id: parseInt(idDetail as string),
@@ -130,7 +130,6 @@ function NewsEditForm() {
       title: data.title,
     };
     mutate(dataEdit);
-    
   };
 
   return (
@@ -142,7 +141,12 @@ function NewsEditForm() {
               <RHFTextField name="title" label={t('news.new.labelTitle')} />
               <Stack direction="row" spacing={3}>
                 <RHFTextField name="author" label={t('news.new.author')} />
-                <RHFSelect name="status" fullWidth label={t('news.new.labelStatus')} SelectProps={{ native: false}}>
+                <RHFSelect
+                  name="status"
+                  fullWidth
+                  label={t('news.new.labelStatus')}
+                  SelectProps={{ native: false }}
+                >
                   {statusNews?.map((item) => (
                     <MenuItem value={item.value} key={item.key}>
                       {item.key}

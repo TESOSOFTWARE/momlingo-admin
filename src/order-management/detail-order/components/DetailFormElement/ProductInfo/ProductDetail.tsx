@@ -100,7 +100,7 @@ export default function ProductDetailForm() {
               <Stack direction="row" spacing={3}>
                 <StatusChip
                   labelProps="ACTIVE"
-                  isActive={product?.status === 'ACTIVE' ?? false}
+                  isActive={product?.status === 'ACTIVE' ? true : false}
                 />
                 <StatusChip
                   labelProps={product?.type ?? ''}

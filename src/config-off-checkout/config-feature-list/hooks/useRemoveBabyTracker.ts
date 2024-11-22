@@ -14,7 +14,7 @@ export function useRemoveBabyTracker() {
         console.log('Item removed successfully');
       },
       onError: (error) => {
-        console.error("Failed to remove baby tracker:", error);
+        console.error('Failed to remove baby tracker:', error);
       },
     }
   );

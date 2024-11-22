@@ -36,8 +36,6 @@ export const editGroupUserPickAll = (data: IParamsEditGroupUserAll) => {
   return axiosInstance.put(`${API_GROUP_USER}/all/${data?.id}`, data?.data);
 };
 
-
-
 export const getGroupUserById = (params: number) => {
   return axiosInstance.get<unknown, IGroupUser>(`${API_GROUP_USER}/${params}`);
 };

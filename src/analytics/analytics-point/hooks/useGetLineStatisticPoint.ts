@@ -5,8 +5,12 @@ import { IParamsStatisticPoint } from '../interfaces';
 
 export function useGetLineStatisticPoint(params: IParamsStatisticPoint) {
   return {
-    ...useQuery([QUERY_KEYS.STATISTIC_POINT_LINE, params], () => getStatisticPointLineChart(params), {
-      cacheTime: 0,
-    }),
+    ...useQuery(
+      [QUERY_KEYS.STATISTIC_POINT_LINE, params],
+      () => getStatisticPointLineChart(params),
+      {
+        cacheTime: 0,
+      }
+    ),
   };
 }

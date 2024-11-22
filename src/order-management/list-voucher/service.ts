@@ -4,4 +4,4 @@ import { API_ORDER_MANAGEMENT } from './../../common/constants/apis';
 import { IOrderList, IOrderParams } from './interface';
 
 export const getOrder = (params: IOrderParams) =>
-  axiosInstance.get<unknown, IOrderList>(`${API_ORDER_MANAGEMENT}`, {params});
+  axiosInstance.get<unknown, IOrderList>(`${API_ORDER_MANAGEMENT}`, { params });

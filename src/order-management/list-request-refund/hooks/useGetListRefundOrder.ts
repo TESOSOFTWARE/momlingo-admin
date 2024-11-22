@@ -5,8 +5,12 @@ import { getListRefundOrderRequest } from '../services';
 
 export function useGetListRefundOrderRequest(params: IParamsRefundedOrderRequest) {
   return {
-    ...useQuery([QUERY_KEYS.LIST_REFUND_ORDER, params], () => getListRefundOrderRequest(params), {
-      cacheTime: 0,
-    }),
+    ...useQuery(
+      [QUERY_KEYS.LIST_REFUND_ORDER, params],
+      () => getListRefundOrderRequest(params),
+      {
+        cacheTime: 0,
+      }
+    ),
   };
 }

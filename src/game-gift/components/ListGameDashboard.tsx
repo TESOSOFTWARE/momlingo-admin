@@ -31,7 +31,12 @@ import { useDeleteGameGift } from '../hooks/useDeleteGameGift';
 import useShowSnackbar from '../../common/hooks/useMessage';
 import { useDispatch, useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { isOpenConfirmModalSelector, selectedIdsSelector, setIsOpenConfirmModal, setSelectedRow } from '../gameGift.slice';
+import {
+  isOpenConfirmModalSelector,
+  selectedIdsSelector,
+  setIsOpenConfirmModal,
+  setSelectedRow,
+} from '../gameGift.slice';
 import { ConfirmModal } from '../../common/components/modal/ConfirmModal';
 import { PATH_DASHBOARD } from '../../common/routes/paths';
 
@@ -39,8 +44,8 @@ export default function ListGameGiftsDashBoard() {
   const { useDeepCompareEffect } = useDeepEffect();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const {t} = useTranslation();
-  const {id: gameId} = useParams();
+  const { t } = useTranslation();
+  const { id: gameId } = useParams();
 
   const { showSuccessSnackbar, showErrorSnackbar } = useShowSnackbar();
   const {
@@ -86,7 +91,7 @@ export default function ListGameGiftsDashBoard() {
   );
 
   const selectedRowRedux = useSelector(selectedIdsSelector);
-  const isOpenModal = useSelector(isOpenConfirmModalSelector); 
+  const isOpenModal = useSelector(isOpenConfirmModalSelector);
 
   const { mutate } = useDeleteGameGift({
     onSuccess: () => {
@@ -106,14 +111,14 @@ export default function ListGameGiftsDashBoard() {
     dispatch(setSelectedRow([]));
   };
   const handleEditRow = (id: number) => {
-    navigate(PATH_DASHBOARD.gameGift.edit(gameId as string, id.toString()))
-  }
+    navigate(PATH_DASHBOARD.gameGift.edit(gameId as string, id.toString()));
+  };
 
   const isNotFound = !isLoading && !listRequest.length;
 
   return (
     <Paper elevation={3} sx={{ paddingTop: 1, boxShadow: 10 }}>
-       <ConfirmModal
+      <ConfirmModal
         isOpen={isOpenModal}
         onClose={() => dispatch(setIsOpenConfirmModal(false))}
         onSubmit={onDeleteMultiple}
@@ -168,10 +173,12 @@ export default function ListGameGiftsDashBoard() {
                   }}
                 />
               ))}
-              {isLoading && 
-                <LoadingTableSkeleton column={GAME_GIFT_TABLE_HEAD.length + 1} row={rowsPerPage} />
-            
-              }
+              {isLoading && (
+                <LoadingTableSkeleton
+                  column={GAME_GIFT_TABLE_HEAD.length + 1}
+                  row={rowsPerPage}
+                />
+              )}
               <TableNoData isNotFound={isNotFound} />
             </TableBody>
           </Table>

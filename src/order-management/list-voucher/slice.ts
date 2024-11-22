@@ -5,7 +5,7 @@ import { InitialOrderState, IOrderParams } from './interface';
 
 const initialOrderState: InitialOrderState = {
   dataSearch: defaultValueFilter,
-  value: 0
+  value: 0,
 };
 
 export const listVoucherReducer = createSlice({
@@ -17,8 +17,8 @@ export const listVoucherReducer = createSlice({
     },
     setValue(state, action: PayloadAction<number>) {
       state.value = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setDataFilter, setValue } = listVoucherReducer.actions;

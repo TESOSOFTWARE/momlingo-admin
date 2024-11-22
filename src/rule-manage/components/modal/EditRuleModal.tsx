@@ -76,7 +76,7 @@ export default function RuleConfigModal(prop: ConfirmModalProps) {
     reset(rule);
     Object?.keys(rule?.values).forEach((rule1) => {
       setValue(rule1, rule?.values[rule1]);
-    })
+    });
   }, [rule]);
 
   const onSubmitForm = (data: any) => {
@@ -165,7 +165,7 @@ export default function RuleConfigModal(prop: ConfirmModalProps) {
                     key={ruleItem}
                     label={ruleItem}
                     name={ruleItem}
-                    type='number'
+                    type="number"
                   />
                 ))}
               </Stack>

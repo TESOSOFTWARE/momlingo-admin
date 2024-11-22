@@ -21,8 +21,8 @@ type StateProps = {
     callback: VoidFunction;
     isOpen: boolean;
     text: string;
-  },
-  filterParamsIntroduced:IListUserIntroduceParams;
+  };
+  filterParamsIntroduced: IListUserIntroduceParams;
 };
 
 const initialState: StateProps = {
@@ -40,20 +40,18 @@ const initialState: StateProps = {
   searchFormIntroduce: DEFAULT_VALUE_SEARCH_INTRODUCE,
   isOpenModalRequestExport: false,
   confirmModal: {
-    callback: () => { },
+    callback: () => {},
     isOpen: false,
     text: '',
-  
   },
-  filterParamsIntroduced:{
-    referrerName:null,
-    phoneNumber:null,
-    minReferralDate:null,
-    maxReferralDate:null,
-    page:0,
-    limit:0,
-  }
-
+  filterParamsIntroduced: {
+    referrerName: null,
+    phoneNumber: null,
+    minReferralDate: null,
+    maxReferralDate: null,
+    page: 0,
+    limit: 0,
+  },
 };
 
 export const userManageSlice = createSlice({
@@ -63,7 +61,10 @@ export const userManageSlice = createSlice({
     setSearchForm: (state, action: PayloadAction<ISearchUser>) => {
       state.searchForm = action.payload;
     },
-    setFilterParamsIntroduced: (state, action: PayloadAction<IListUserIntroduceParams>) => {
+    setFilterParamsIntroduced: (
+      state,
+      action: PayloadAction<IListUserIntroduceParams>
+    ) => {
       state.filterParamsIntroduced = action.payload;
     },
     setIsOpenModalAddPoint: (state, action: PayloadAction<boolean>) => {
@@ -92,7 +93,7 @@ export const userManageSlice = createSlice({
     },
     closeConfirmModal: (state) => {
       state.confirmModal = {
-        callback: () => { },
+        callback: () => {},
         isOpen: false,
         text: '',
       };

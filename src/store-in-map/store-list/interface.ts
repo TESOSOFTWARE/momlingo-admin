@@ -13,21 +13,20 @@ export interface IStoreItem {
   id: number;
   name: string;
   address: string;
-  lat:number;
+  lat: number;
   long: number;
 }
 
 export interface IParams {
   page: number;
   limit: number;
-  searchText?:string  | null;
-  
+  searchText?: string | null;
 }
 
 export interface IPropStoreTableRow {
   row: IStoreItem;
   selected: boolean;
-  onDeleteRow:VoidFunction;
+  onDeleteRow: VoidFunction;
   onSelectRow: (checked: boolean) => void;
   onEditRow: VoidFunction;
 }
@@ -37,14 +36,14 @@ export interface IDataStoreDelete {
 }
 
 export interface IStateProps {
-  searchForm: string,
+  searchForm: string;
   confirmModal: {
     callback: VoidFunction;
     isOpen: boolean;
     text: string;
-  },
-  searchParams:IParams,
-  isOpenPopupDelete:boolean,
+  };
+  searchParams: IParams;
+  isOpenPopupDelete: boolean;
 }
 
 export type ICallback = {

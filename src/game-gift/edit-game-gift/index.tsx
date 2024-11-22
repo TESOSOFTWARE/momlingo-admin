@@ -23,7 +23,7 @@ export default function EditGameGift() {
             },
           ]}
         />
-        <FormEditGameGift/>
+        <FormEditGameGift />
       </Container>
     </Page>
   );

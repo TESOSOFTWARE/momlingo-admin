@@ -8,7 +8,7 @@ type StateProps = {
   selectedRow: number[];
   isOpenModalPickUser: boolean;
   listPickedUser: number[];
-  isCheckAll:  boolean;
+  isCheckAll: boolean;
   dataCheckAllUsers: ISearchUser;
 };
 
@@ -63,12 +63,9 @@ export const isOpenModalPickUserSelector = (state: RootState) =>
   state.groupUserManage.isOpenModalPickUser;
 export const ListPickUserSelector = (state: RootState) =>
   state.groupUserManage.listPickedUser;
-export const isCheckAllSelector = (state: RootState) =>
-  state.groupUserManage.isCheckAll;
+export const isCheckAllSelector = (state: RootState) => state.groupUserManage.isCheckAll;
 
 export const dataCheckAllUserSelector = (state: RootState) =>
   state.groupUserManage.dataCheckAllUsers;
-
-
 
 export default groupUserManageSlice.reducer;

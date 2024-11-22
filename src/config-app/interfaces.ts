@@ -4,7 +4,7 @@ export interface ICallback {
 }
 
 export interface IResConfigApp {
-  [key: number]:IConfigApp; 
+  [key: number]: IConfigApp;
 }
 
 export interface IConfigApp {
@@ -17,7 +17,7 @@ export interface ITableProps {
   row: IConfigApp;
 }
 
-export interface IDataEditConfigApp{
+export interface IDataEditConfigApp {
   id?: number;
   data: IConfigApp;
 }

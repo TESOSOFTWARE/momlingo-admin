@@ -23,7 +23,7 @@ export default function ViewGameGift() {
             },
           ]}
         />
-        <FormViewGameGift/>
+        <FormViewGameGift />
       </Container>
     </Page>
   );

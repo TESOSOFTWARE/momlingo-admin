@@ -13,7 +13,6 @@ import RHFMultipleSelect from '../../../common/components/hook-form/RHFMultipleS
 import { useGetProvinceScan } from '../hooks/useGetProvinceScan';
 import RHFSearchSelect from '../../../common/components/hook-form/RHFSelectSearch';
 
-
 export default function FilterStatisticScan() {
   const { t } = useTranslation();
   const methods = useForm<IFormSearchStatisticScan>({
@@ -27,18 +26,14 @@ export default function FilterStatisticScan() {
     formState: { errors },
   } = methods;
 
-
-
   const onSubmit = (data: any) => {
     const dataFilter: IParamsStatisticScan = {
-      provinceKeys: [
-        'ALL', 'UNKNOWN', ...data.provinceId.map((item: any) => item.id)
-      ],
+      provinceKeys: ['ALL', 'UNKNOWN', ...data.provinceId.map((item: any) => item.id)],
       startDate: data.startDate,
       endDate: data.endDate,
     };
     dispatch(setSearchData(dataFilter));
-    dispatch(setProvincePicked(data?.provinceId))
+    dispatch(setProvincePicked(data?.provinceId));
   };
 
   const handleClickDelete = () => {
@@ -47,13 +42,13 @@ export default function FilterStatisticScan() {
       endDate: null,
       provinceId: [],
     });
-    dispatch(setSearchData({
-      startDate: null,
-      endDate: null,
-      provinceKeys: [
-        'ALL', 'UNKNOWN',
-      ],
-    }));
+    dispatch(
+      setSearchData({
+        startDate: null,
+        endDate: null,
+        provinceKeys: ['ALL', 'UNKNOWN'],
+      })
+    );
   };
 
   const { data: listProvince } = useGetProvinceScan({
@@ -65,21 +60,16 @@ export default function FilterStatisticScan() {
   return (
     <>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-        <Stack
-          direction="column"
-          spacing={2}
-          padding={2}
-        >
-            <RHFSearchSelect
-              multiple={true}
-              name='provinceId'
-              options={provinceData}
-              labelProp='name'
-              valueProp='id'
-              label='Tỉnh thành'
-            />
+        <Stack direction="column" spacing={2} padding={2}>
+          <RHFSearchSelect
+            multiple={true}
+            name="provinceId"
+            options={provinceData}
+            labelProp="name"
+            valueProp="id"
+            label="Tỉnh thành"
+          />
           <Stack direction="row" spacing={3}>
-           
             <Controller
               name="startDate"
               control={control}

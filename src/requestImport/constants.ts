@@ -8,7 +8,7 @@ export const TABLE_HEAD = [
   },
   {
     id: 'status',
-    label: 'Trạng thái',  
+    label: 'Trạng thái',
     align: 'center',
   },
   {

@@ -12,7 +12,7 @@ import {
   RHFSelect,
   RHFSwitch,
   RHFTextField,
-  RHFUploadSingleFile
+  RHFUploadSingleFile,
 } from '../../common/components/hook-form';
 import RHFSearchSelect from '../../common/components/hook-form/RHFSelectSearch';
 import Page from '../../common/components/Page';
@@ -94,12 +94,12 @@ export default function GameCreate() {
       ...data,
       status: data?.status ? 'ACTIVE' : 'INACTIVE',
       imageId: file?.id,
-      gameTypeId:data?.gameType?.id
+      gameTypeId: data?.gameType?.id,
     };
-    delete dataCreate?.gameType
+    delete dataCreate?.gameType;
     mutate(dataCreate);
   };
-  
+
   return (
     <Page title={t('gameManage.list.createButton')}>
       <Container maxWidth={themeStretch ? 'sm' : 'xl'}>
@@ -147,7 +147,9 @@ export default function GameCreate() {
               <Stack spacing={3} flex={2}>
                 <RHFTextField name="name" label="Tên" />
                 <RHFSearchSelect
-                onKeyPress={(e) => {e.preventDefault();}}
+                  onKeyPress={(e) => {
+                    e.preventDefault();
+                  }}
                   name="gameType"
                   options={listPolicies}
                   labelProp="type"

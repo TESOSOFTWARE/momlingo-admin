@@ -99,7 +99,7 @@ export default function FormCreateNoti() {
         watch('routeType') === typeLink[0].value ? data.link_mobile : data.link_web,
       timeSent: data.timeSent,
       type: data.type,
-      routeType:data.routeType,
+      routeType: data.routeType,
       shortContent: data.shortContent,
     };
     mutate(dataCreate);
@@ -184,7 +184,7 @@ export default function FormCreateNoti() {
                   <RHFSelect
                     name="link_mobile"
                     label="Chọn đường dẫn"
-                    SelectProps={{ native: false, MenuProps: { sx: { maxHeight: 300}}}}
+                    SelectProps={{ native: false, MenuProps: { sx: { maxHeight: 300 } } }}
                   >
                     <MenuItem value="" disabled>
                       {' '}
@@ -197,7 +197,7 @@ export default function FormCreateNoti() {
                   </RHFSelect>
                 )}
               </Stack>
-              <RHFTextField name="shortContent" label='Nội dung thông báo đẩy'/>
+              <RHFTextField name="shortContent" label="Nội dung thông báo đẩy" />
               <LabelStyle>Nội dung chi tiết</LabelStyle>
               <RHFEditor simple name="content" />
             </Stack>

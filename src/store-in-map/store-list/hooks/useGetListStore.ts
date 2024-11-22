@@ -6,6 +6,8 @@ import { dispatch } from '../../../common/redux/store';
 import { setSearchParams } from '../storeInMap.slice';
 export const useGetListStore = (searchParams: IParams) => {
   return {
-    ...useQuery([QUERY_KEYS.LIST_STORE_IN_MAP, searchParams], () => getListStore(searchParams)),
+    ...useQuery([QUERY_KEYS.LIST_STORE_IN_MAP, searchParams], () =>
+      getListStore(searchParams)
+    ),
   };
 };

@@ -1,4 +1,4 @@
-import { Container, Button,Stack } from '@mui/material';
+import { Container, Button, Stack } from '@mui/material';
 import i18n from 'src/common/locales/i18n';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
@@ -22,7 +22,6 @@ export default function AnalycticsPoint() {
 
   const navigate = useNavigate();
 
-
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
   const { confirmModal } = useSelector((state) => state.chart);
   const searchData = useSelector(searchDataSelector);
@@ -30,14 +29,13 @@ export default function AnalycticsPoint() {
   const handleCloseDeleteModal = () => {
     dispatch(closeConfirmModal());
   };
-  const { mutate, isSuccess } = useRequestExport(
-    {
-      onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
-      onError: () => showErrorSnackbar(t('survey.action.export.fail')),
-    })
+  const { mutate, isSuccess } = useRequestExport({
+    onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
+    onError: () => showErrorSnackbar(t('survey.action.export.fail')),
+  });
   const handleRequestExport = () => {
-    mutate(searchData)
-  }
+    mutate(searchData);
+  };
   useEffect(() => {
     if (isSuccess) {
       dispatch(
@@ -45,13 +43,12 @@ export default function AnalycticsPoint() {
           isOpen: true,
           text: t('survey.action.export.redirectExportList'),
           callback: () => {
-            navigate(PATH_DASHBOARD.fileManage.listFileExport)
+            navigate(PATH_DASHBOARD.fileManage.listFileExport);
           },
         })
       );
     }
-
-  }, [isSuccess])
+  }, [isSuccess]);
   return (
     <Page title={t('analystPoint.title')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -69,19 +66,23 @@ export default function AnalycticsPoint() {
           ]}
           action={
             <Stack direction={'row'} spacing={2}>
-              <Button variant="contained" onClick={handleRequestExport} startIcon={<Iconify icon={'carbon:export'} />}>
+              <Button
+                variant="contained"
+                onClick={handleRequestExport}
+                startIcon={<Iconify icon={'carbon:export'} />}
+              >
                 {t('feedbackManage.export')}
               </Button>
             </Stack>
           }
         />
-         <ConfirmModal
-        isOpen={confirmModal.isOpen}
-        onClose={handleCloseDeleteModal}
-        onSubmit={confirmModal.callback}
-        type={'warning'}
-        text={confirmModal.text}
-      />
+        <ConfirmModal
+          isOpen={confirmModal.isOpen}
+          onClose={handleCloseDeleteModal}
+          onSubmit={confirmModal.callback}
+          type={'warning'}
+          text={confirmModal.text}
+        />
         <PointAnalyticsDashboard />
       </Container>
     </Page>

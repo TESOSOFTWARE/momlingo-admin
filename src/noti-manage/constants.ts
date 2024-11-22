@@ -119,7 +119,7 @@ export const DEFAULT_FORM_CREATE_NOTI = {
 };
 
 export enum sourceType {
-  INTERNAL= 'INTERNAL',
+  INTERNAL = 'INTERNAL',
   SALE_FORCE = 'SALE_FORCE',
 }
 
@@ -144,6 +144,4 @@ export const TABLE_SALE_FORCE_LABEL = [
     label: 'CustomerID',
     align: 'center',
   },
-  
-
-]
+];

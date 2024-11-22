@@ -37,19 +37,20 @@ export default function ListRuleDashBoard() {
   // const totalItems = 0;
 
   return (
-    <Paper elevation={3} sx={{ padding: 2, boxShadow: 10,
-      background: `linear-gradient(to right bottom, white, #ECF2FF)`,
-    }}>
+    <Paper
+      elevation={3}
+      sx={{
+        padding: 2,
+        boxShadow: 10,
+        background: `linear-gradient(to right bottom, white, #ECF2FF)`,
+      }}
+    >
       <TableContainer sx={{ position: 'relative' }}>
         <Table size={dense ? 'small' : 'medium'}>
           <TableHeadCustom headLabel={RULE_TABLE_HEAD} />
           <TableBody>
             {Object.keys(data?.ruleConfig || {}).map((obj) => (
-              <RuleTableRow
-                key={obj}
-                rowCode={obj}
-                listRuleConfig={data?.ruleConfig}
-              />
+              <RuleTableRow key={obj} rowCode={obj} listRuleConfig={data?.ruleConfig} />
             ))}
             {isLoading && (
               <LoadingTableSkeleton column={RULE_TABLE_HEAD.length} row={rowsPerPage} />

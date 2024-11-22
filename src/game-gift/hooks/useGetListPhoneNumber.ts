@@ -16,7 +16,7 @@ export function useGetListPhoneNumber(params: IParamsListUser) {
       cacheTime: 0,
       onError: (error) => {
         console.error('Error fetching list phone numbers:', error);
-      }
+      },
     }
   );
 }

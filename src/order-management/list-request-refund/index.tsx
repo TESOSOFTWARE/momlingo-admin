@@ -11,10 +11,10 @@ import ListRefundOrderRequestDashBoard from './components/RefundOrderRequestDash
 
 export default function ListOrderRefundRequest() {
   const { themeStretch } = useSettings();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
 
-   return (
+  return (
     <Page title={t('order.detail.refundRequest.list')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <HeaderBreadcrumbs

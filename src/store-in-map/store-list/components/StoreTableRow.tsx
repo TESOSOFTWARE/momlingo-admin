@@ -31,7 +31,9 @@ export default function StoreTableRow({
       <TableCell align="center">{row.id}</TableCell>
       <TableCell align="center">{row.name}</TableCell>
       <TableCell align="center">{row.address}</TableCell>
-      <TableCell align="center">({row.long} , {row.lat})</TableCell>
+      <TableCell align="center">
+        ({row.long} , {row.lat})
+      </TableCell>
       <TableCell align="center">
         <TableMoreMenu
           open={openMenu}
@@ -41,7 +43,7 @@ export default function StoreTableRow({
             <>
               <MenuItem
                 onClick={(e) => {
-                  dispatch(setIsOpenPopupDelete(true))
+                  dispatch(setIsOpenPopupDelete(true));
                   onDeleteRow();
                   handleCloseMenu();
                 }}

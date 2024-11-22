@@ -66,7 +66,7 @@ export default function ConfirmChangeConfigEventModal(prop: ConfirmModalProps) {
   });
   const event = useSelector(eventConfigRowItemsSelector);
   useEffect(() => {
-    reset(event)
+    reset(event);
   }, [event]);
 
   const onSubmitForm = (data: any) => {
@@ -76,7 +76,7 @@ export default function ConfirmChangeConfigEventModal(prop: ConfirmModalProps) {
         desc: data?.desc,
         status: data?.status ? 1 : 0,
         endDate: data?.endDate,
-        startDate: data?.startDate
+        startDate: data?.startDate,
       },
     };
     const dataEdit = {
@@ -115,9 +115,15 @@ export default function ConfirmChangeConfigEventModal(prop: ConfirmModalProps) {
         <FormProvider methods={methods} onSubmit={handleSubmit(onSubmitForm)}>
           <DialogTitle>{t('configEvent.modal.title')}</DialogTitle>
           <DialogContent sx={{ marginTop: '20px' }}>
-            <Stack spacing={3} >
-           <LabelStyle ml="2px" color='red !important' >{event?.code}</LabelStyle>
-              <RHFTextField  label={t('configEvent.modal.desc')} InputLabelProps={{ shrink: true }} name="desc" />
+            <Stack spacing={3}>
+              <LabelStyle ml="2px" color="red !important">
+                {event?.code}
+              </LabelStyle>
+              <RHFTextField
+                label={t('configEvent.modal.desc')}
+                InputLabelProps={{ shrink: true }}
+                name="desc"
+              />
               <RHFSwitch
                 label={t('configEvent.modal.status')}
                 name="status"

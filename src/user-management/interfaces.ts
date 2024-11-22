@@ -15,19 +15,19 @@ export interface IResListUserIntroduce {
 export interface IUser {
   id: number;
   name: string;
-  province:{
-    id:number;
-    name:string;
+  province: {
+    id: number;
+    name: string;
   } | null;
-  ward:{
-    id:number;
-    name:string;
+  ward: {
+    id: number;
+    name: string;
   } | null;
-  district:{
-    id:number;
-    name:string;
+  district: {
+    id: number;
+    name: string;
   } | null;
-  role?:string;
+  role?: string;
   phoneNumber: string;
   email: string;
   status: string;
@@ -86,7 +86,7 @@ export interface IIntroduceUser {
       name: string;
       phoneNumber: number;
       email: string;
-      tierPoint:number;
+      tierPoint: number;
     };
   };
   beReferred: {
@@ -169,19 +169,19 @@ export interface IFormEditUser {
   name: string | null;
   phoneNumber: string | null;
   email: string | null;
-  status: string | null; 
+  status: string | null;
   address: string | null;
-  provinceId:{
-    id:number;
-    name:string;
+  provinceId: {
+    id: number;
+    name: string;
   } | null;
-  wardId:{
-    id:number;
-    name:string;
+  wardId: {
+    id: number;
+    name: string;
   } | null;
-  districtId:{
-    id:number;
-    name:string;
+  districtId: {
+    id: number;
+    name: string;
   } | null;
   birthDate?: string | null;
   tierCode: string | null;

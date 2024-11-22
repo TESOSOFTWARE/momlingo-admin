@@ -65,8 +65,10 @@ export default function BannerConfig({ item }: { item: IDataRequest }) {
           <Button
             sx={{ marginRight: '10px' }}
             variant="outlined"
-            onClick={() => {dispatch(removeSectionItem(id));
-                dispatch(setNumberSections(numberSections - 1))}}
+            onClick={() => {
+              dispatch(removeSectionItem(id));
+              dispatch(setNumberSections(numberSections - 1));
+            }}
             startIcon={<Iconify icon="fluent:delete-24-regular" />}
           >
             Xoá

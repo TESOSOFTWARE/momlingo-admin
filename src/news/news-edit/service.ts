@@ -8,5 +8,5 @@ export const getNewsById = (id: number) => {
   return axiosInstance.get<unknown, INews>(`${API_NEWS}/${id}`);
 };
 
-export const editNews = ( data: IDataFormEditNews) =>
+export const editNews = (data: IDataFormEditNews) =>
   axiosInstance.put(`${API_NEWS}`, data);

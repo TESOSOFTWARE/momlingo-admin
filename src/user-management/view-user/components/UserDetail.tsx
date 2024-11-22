@@ -184,7 +184,9 @@ export default function FormUserDetail({ data, isLoading }: Props) {
                 variant="contained"
                 loading={isSubmitting}
                 onClick={() =>
-                  navigate(PATH_DASHBOARD.userManagement.editUser(parseInt(idUser as string)))
+                  navigate(
+                    PATH_DASHBOARD.userManagement.editUser(parseInt(idUser as string))
+                  )
                 }
               >
                 {`${i18n.t('userManage.edit')}`}

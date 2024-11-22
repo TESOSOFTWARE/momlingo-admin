@@ -37,12 +37,8 @@ export default function ConfigPlayTimeTableRow({
         <TableCell align="center" sx={{ minWidth: '140px' }}>
           {productGroup}
         </TableCell>
-        <TableCell align="center">
-          {weight}
-        </TableCell>
-        <TableCell align="center">
-          {value}
-        </TableCell>
+        <TableCell align="center">{weight}</TableCell>
+        <TableCell align="center">{value}</TableCell>
         <TableCell align="right">
           <TableMoreMenu
             open={openMenu}

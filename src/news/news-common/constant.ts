@@ -1,4 +1,4 @@
-import { NewsStatus } from "./interface";
+import { NewsStatus } from './interface';
 
 export const subjectFilter = [
   { value: 'HEALTH_AND_LIFE', label: 'Sức khỏe & đời sống' },

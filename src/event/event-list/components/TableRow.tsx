@@ -29,8 +29,8 @@ export function TableRow({
   onSelectRow,
   onDeleteRow,
 }: TableRowProps) {
-  const { id, type, status , name, startDate, endDate, eventReward, eventSkus  } = row;
-  const navigate= useNavigate();
+  const { id, type, status, name, startDate, endDate, eventReward, eventSkus } = row;
+  const navigate = useNavigate();
 
   const [openMenu, setOpenMenu] = useState<HTMLElement | null>(null);
 
@@ -42,7 +42,9 @@ export function TableRow({
     setOpenMenu(null);
   };
 
-  const arrayProductApply = eventSkus?.map(item => item?.systemConfigPoint?.code).join(', ');
+  const arrayProductApply = eventSkus
+    ?.map((item) => item?.systemConfigPoint?.code)
+    .join(', ');
 
   return (
     <MuiTableRow hover selected={selected}>
@@ -50,8 +52,9 @@ export function TableRow({
         <Checkbox checked={selected} onChange={(e) => onSelectRow(e.target.checked)} />
       </TableCell>
       <TableCell align="left">{id}</TableCell>
-      <TableCell align="left" 
-         sx={{
+      <TableCell
+        align="left"
+        sx={{
           alignItems: 'center',
           '&:hover': { color: '#D5B4B4', cursor: 'pointer' },
           color: 'red',
@@ -64,10 +67,11 @@ export function TableRow({
         }}
         onClick={() => navigate(PATH_DASHBOARD.event.editEvent(id.toString()))}
       >
-       {name}
+        {name}
       </TableCell>
-      <TableCell align="left"
-         sx={{
+      <TableCell
+        align="left"
+        sx={{
           alignItems: 'center',
           textTransform: 'uppercase',
           fontWeight: 'bold',
@@ -84,20 +88,20 @@ export function TableRow({
 
       <TableCell align="left">{fDateTime24h(endDate)}</TableCell>
       <TableCell align="center">
-          <Chip
-            label={status}
-            sx={{
-              color: 'white',
-              minWidth: '100px',
-              fontWeight: 900,
-              borderRadius: '5px',
-              background:
-                status === 'ACTIVE'
-                  ? 'linear-gradient(to left top, #C0EEF2, #03C988)'
-                  : 'linear-gradient(to left bottom, #F55050, #FFACAC)',
-            }}
-          />
-        </TableCell>
+        <Chip
+          label={status}
+          sx={{
+            color: 'white',
+            minWidth: '100px',
+            fontWeight: 900,
+            borderRadius: '5px',
+            background:
+              status === 'ACTIVE'
+                ? 'linear-gradient(to left top, #C0EEF2, #03C988)'
+                : 'linear-gradient(to left bottom, #F55050, #FFACAC)',
+          }}
+        />
+      </TableCell>
 
       <TableCell align="center">
         <TableMoreMenu

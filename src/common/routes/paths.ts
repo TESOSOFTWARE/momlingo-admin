@@ -64,14 +64,14 @@ export const PATH_DASHBOARD = {
   configFeature: {
     root: path(ROOT_DASHBOARD, '/config'),
     list: path(ROOT_DASHBOARD, '/config/feature/list'),
-    new:{
-      babyTracker: path(ROOT_DASHBOARD,`/config/babyTrack/new`),
-      childTracker: path(ROOT_DASHBOARD,`/config/childTracker/new`)
+    new: {
+      babyTracker: path(ROOT_DASHBOARD, `/config/babyTrack/new`),
+      childTracker: path(ROOT_DASHBOARD, `/config/childTracker/new`),
     },
-    edit:{
-      babyTracker: path(ROOT_DASHBOARD,`/config/babyTrack/edit/:week`),
-      childTracker: path(ROOT_DASHBOARD,`/config/childTracker/edit/:week`)
-    }
+    edit: {
+      babyTracker: path(ROOT_DASHBOARD, `/config/babyTrack/edit/:week`),
+      childTracker: path(ROOT_DASHBOARD, `/config/childTracker/edit/:week`),
+    },
   },
   configEvent: {
     root: path(ROOT_DASHBOARD, '/config/event'),
@@ -111,14 +111,13 @@ export const PATH_DASHBOARD = {
     root: path(ROOT_DASHBOARD, '/order_management'),
     list_physical: path(ROOT_DASHBOARD, '/order_management/list-physical'),
     detail: path(ROOT_DASHBOARD, '/order_management/detail/:id'),
-    detailProd:path(ROOT_DASHBOARD, '/order_management/detailProduct/:id/:idProd'),
+    detailProd: path(ROOT_DASHBOARD, '/order_management/detailProduct/:id/:idProd'),
     edit: path(ROOT_DASHBOARD, '/order_management/edit/:id'),
     list_voucher: path(ROOT_DASHBOARD, '/order_management/list-voucher'),
     list_refund: path(ROOT_DASHBOARD, '/order_management/list-refund-coin'),
     view_refund: (id: string) =>
       path(ROOT_DASHBOARD, `/order_management/refund-detail/${id}`),
     list_refund_request: path(ROOT_DASHBOARD, '/order_management/list-refund-request'),
-
   },
   homeConfig: {
     root: path(ROOT_DASHBOARD, '/home-config'),
@@ -322,6 +321,7 @@ export const PATH_DASHBOARD = {
   },
   configShareApp: {
     root: path(ROOT_DASHBOARD, '/config-share-app'),
-    editBanner: (id: string) => path(ROOT_DASHBOARD, `/config-share-app/edit-banner/${id}`),
+    editBanner: (id: string) =>
+      path(ROOT_DASHBOARD, `/config-share-app/edit-banner/${id}`),
   },
 };
