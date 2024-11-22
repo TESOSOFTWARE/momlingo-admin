@@ -28,14 +28,13 @@ export const DEFAULT_ADDRESS = {
   district: undefined,
   ward: undefined,
   address1: '',
-}
+};
 
-export const DEFAULT_EDIT_ORDER ={
+export const DEFAULT_EDIT_ORDER = {
   id: 0,
   createAt: '',
   phone: '',
   status: '',
   name: '',
   fullAddress: '',
-
-}
+};

@@ -28,7 +28,6 @@ export default function TierRankTableSkeleton({ isLoading, row }: Props) {
                 <TableCell align="left">
                   <Skeleton />
                 </TableCell>
-               
                 <TableCell align="left">
                   <Skeleton />
                 </TableCell>

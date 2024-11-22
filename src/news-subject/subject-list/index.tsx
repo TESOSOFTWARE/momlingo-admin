@@ -4,7 +4,7 @@ import SubjectTable from './components/subject-table/subjectTable';
 
 function ListSubject() {
   return (
-    <Page title='Chủ đề'>
+    <Page title="Chủ đề">
       <ListSubjectHeader />
       <SubjectTable />
     </Page>

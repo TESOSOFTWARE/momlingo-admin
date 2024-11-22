@@ -13,6 +13,12 @@ export const schemaGame = yup
       .date()
       .typeError('Vui lòng nhập thông tin vào ô trống')
       .min(yup.ref('startDate'), 'Ngày kết thúc không thể trước ngày bắt đầu'),
-    gameType: yup.object().required('Vui lòng nhập thông tin').typeError('Vui lòng nhập thông tin').test('test', 'vui lòng nhập thông tin', (val: any) => { return val?.id}),
+    gameType: yup
+      .object()
+      .required('Vui lòng nhập thông tin')
+      .typeError('Vui lòng nhập thông tin')
+      .test('test', 'vui lòng nhập thông tin', (val: any) => {
+        return val?.id;
+      }),
   })
   .required();

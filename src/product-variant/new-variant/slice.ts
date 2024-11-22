@@ -7,7 +7,7 @@ const initialState: IVariantSlice = {
   page: 1,
   searchExternal: '',
   listTermIds: [],
-  termNewId: 0
+  termNewId: 0,
 };
 export const newVariantReducer = createSlice({
   name: 'newVariant',
@@ -27,8 +27,8 @@ export const newVariantReducer = createSlice({
     },
     setTermNewId: (state, action: PayloadAction<number>) => {
       state.termNewId = action.payload;
-    }
-  }
+    },
+  },
 });
 
 export const { setListForm, setPage, setSearchExternal, setListTermIds, setTermNewId } =

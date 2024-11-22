@@ -13,7 +13,7 @@ export const createGame = (data: IGameForm) => {
 };
 
 export const getListGame = (params: IListGameParams) => {
-  if(params.searchText === undefined) delete params.searchText;
+  if (params.searchText === undefined) delete params.searchText;
   return axiosInstance.get<unknown, IResListGame>(`${API_GAME}`, { params });
 };
 
@@ -29,6 +29,6 @@ export const getGameById = (id: number) => {
   return axiosInstance.get<any, IGetGameIDForm>(`${API_GAME}/${id}`);
 };
 
-export const editGame = (data:IGameForm) => {
+export const editGame = (data: IGameForm) => {
   return axiosInstance.put(`${API_GAME}`, data);
 };

@@ -28,49 +28,46 @@ export default function StoreList() {
   };
   const { handleUpload } = usePresignImg();
 
-  const { mutate, isSuccess } = useExportStore(
-    {
-      onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
-      onError: () => showErrorSnackbar(t('survey.action.export.fail')),
-    })
+  const { mutate, isSuccess } = useExportStore({
+    onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
+    onError: () => showErrorSnackbar(t('survey.action.export.fail')),
+  });
 
-  const { mutate : requestImport,isSuccess:successRequestImport } = useImportStoreMap(
-    searchParams?.searchText === null ?
-    {...searchParams,searchText: undefined}: searchParams);
+  const { mutate: requestImport, isSuccess: successRequestImport } = useImportStoreMap(
+    searchParams?.searchText === null
+      ? { ...searchParams, searchText: undefined }
+      : searchParams
+  );
   const handleRequestExport = () => {
-    if(searchParams?.searchText === null)  
-    mutate({...searchParams,searchText: undefined})
-    else mutate(searchParams)
-
-  }
+    if (searchParams?.searchText === null)
+      mutate({ ...searchParams, searchText: undefined });
+    else mutate(searchParams);
+  };
   useEffect(() => {
-    if (isSuccess  || successRequestImport) {
-      if(isSuccess){
+    if (isSuccess || successRequestImport) {
+      if (isSuccess) {
         dispatch(
           setConfirmModal({
             isOpen: true,
             text: t('survey.action.export.redirectExportList'),
             callback: () => {
-              navigate(PATH_DASHBOARD.fileManage.listFileExport)
+              navigate(PATH_DASHBOARD.fileManage.listFileExport);
             },
           })
         );
-      }
-      else{
+      } else {
         dispatch(
           setConfirmModal({
             isOpen: true,
             text: t('survey.action.export.redirectImportList'),
             callback: () => {
-              navigate(PATH_DASHBOARD.fileManage.listFileImport)
+              navigate(PATH_DASHBOARD.fileManage.listFileImport);
             },
           })
         );
       }
-     
     }
-
-  }, [isSuccess ,successRequestImport])
+  }, [isSuccess, successRequestImport]);
   const handleDrop = async (e: any) => {
     const file = e.target.files[0];
     if (file) {
@@ -103,36 +100,35 @@ export default function StoreList() {
                 {t('storeInMap.list.create')}
               </Button>
               <Button
-                  variant="contained"
-                  sx={{background:"#64e30f" , "&:hover":{background:"#3c7c12"}}}
-                  startIcon={<Iconify icon={'mdi:file-import'} />}
-                  component="label"
-                >
-                  {`${t('manage_store.import.title')}`}
-                  <input
-                    hidden
-                    multiple
-                    type="file"
-                    onChange={handleDrop}
-                    accept=".xlsx"
-                  />
-                </Button>
-              <Button onClick={handleRequestExport}  variant="contained" sx={{background:"#2c75ed" , "&:hover":{background:"#2858a7"}}} startIcon={<Iconify icon={'carbon:export'} />}>
+                variant="contained"
+                sx={{ background: '#64e30f', '&:hover': { background: '#3c7c12' } }}
+                startIcon={<Iconify icon={'mdi:file-import'} />}
+                component="label"
+              >
+                {`${t('manage_store.import.title')}`}
+                <input hidden multiple type="file" onChange={handleDrop} accept=".xlsx" />
+              </Button>
+              <Button
+                onClick={handleRequestExport}
+                variant="contained"
+                sx={{ background: '#2c75ed', '&:hover': { background: '#2858a7' } }}
+                startIcon={<Iconify icon={'carbon:export'} />}
+              >
                 {t('survey.userSurvey.export')}
               </Button>
-              
             </Stack>
           }
         />
-        {(isSuccess || successRequestImport) && (<ConfirmModal
-          isOpen={confirmModal.isOpen}
-          onClose={handleCloseDeleteModal}
-          onSubmit={confirmModal.callback}
-          type={'warning'}
-          text={confirmModal.text}
-        />)}
+        {(isSuccess || successRequestImport) && (
+          <ConfirmModal
+            isOpen={confirmModal.isOpen}
+            onClose={handleCloseDeleteModal}
+            onSubmit={confirmModal.callback}
+            type={'warning'}
+            text={confirmModal.text}
+          />
+        )}
         <StoreTable />
-
       </Container>
     </Page>
   );

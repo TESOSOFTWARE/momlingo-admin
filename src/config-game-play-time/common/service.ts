@@ -3,7 +3,7 @@ import { DeleteMultipleResponse } from '../../common/constants/common.interfaces
 import axiosInstance from '../../common/utils/axios';
 import { IListPoint } from '../../config-point/list-point/interface';
 import {
-    IFormCreateConfig,
+  IFormCreateConfig,
   IFormEditConfig,
   IGamePlayTime,
   IParamsSearch,

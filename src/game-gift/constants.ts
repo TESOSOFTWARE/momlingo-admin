@@ -54,8 +54,8 @@ export const DEFAULT_CONSTRAINTS = [
   {
     value: TypeGameConstraints.PROVINCE,
     name: 'Giải chỉ định theo tỉnh thành',
-  }
-]
+  },
+];
 
 export const DEFAULT_TYPE_PRIZE = [
   {
@@ -65,11 +65,10 @@ export const DEFAULT_TYPE_PRIZE = [
   {
     label: 'Nhập giải thưởng',
     value: 'prizeInput',
+  },
+];
 
-  }
-]
-
-export const DEFAULT_VALUE_GAME_GIFT= {
+export const DEFAULT_VALUE_GAME_GIFT = {
   constraintPhoneNumber: [],
   constraintProvince: [],
   type: TypeGameConstraints.DEFAULT,
@@ -83,12 +82,11 @@ export const DEFAULT_VALUE_GAME_GIFT= {
   isWinnable: false,
   status: false,
   ordinal: 0,
-  posInImage:0,
-  isWonMultiple:false,
-        winRate:0,
+  posInImage: 0,
+  isWonMultiple: false,
+  winRate: 0,
   quantity: 0,
   gameId: 0,
   name: '',
   typePrize: 'prizeAvailable',
-}
-
+};

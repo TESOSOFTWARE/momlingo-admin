@@ -57,7 +57,7 @@ export default function FormDetailUserSurvey() {
   };
 
   const { data } = useGetDetailUsersSurvey(searchParams);
- 
+
   useDeepCompareEffect(() => {
     if (data) {
       setValue('actionDate', formatDate(data?.actionDate));
@@ -78,106 +78,108 @@ export default function FormDetailUserSurvey() {
         type={'warning'}
         text={confirmModal.text}
       />
-    <Paper elevation={3} sx={{ boxShadow: 10, padding: 3 }}>
-      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-
-        <Stack spacing={3}>
-          <Stack direction={{ md: 'row', sm: 'column', xs: 'column' }} spacing={2}>
-            <RHFTextField
-              name="name"
-              label={t('survey.userSurvey.name')}
-              disabled
-              sx={{
-                '& .MuiInputBase-input.Mui-disabled': {
-                  WebkitTextFillColor: 'black',
-                },
-              }}
-            />
-            <RHFTextField
-              name="phoneNumber"
-              label={t('survey.userSurvey.phoneNumber')}
-              disabled
-              sx={{
-                '& .MuiInputBase-input.Mui-disabled': {
-                  WebkitTextFillColor: 'black',
-                },
-              }}
-            />
-            <RHFTextField
-              name="actionDate"
-              label={t('survey.userSurvey.time')}
-              disabled
-              sx={{
-                '& .MuiInputBase-input.Mui-disabled': {
-                  WebkitTextFillColor: 'black',
-                },
-              }}
-            />
-          </Stack>
-          <Stack spacing={2}>
-            <Typography variant="h6">{t('survey.userSurvey.answersDetail')}</Typography>
-            {data?.userSurveyAnswer?.map((question, indexQ: number) => (
-              <Card
-                key={indexQ}
+      <Paper elevation={3} sx={{ boxShadow: 10, padding: 3 }}>
+        <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+          <Stack spacing={3}>
+            <Stack direction={{ md: 'row', sm: 'column', xs: 'column' }} spacing={2}>
+              <RHFTextField
+                name="name"
+                label={t('survey.userSurvey.name')}
+                disabled
                 sx={{
-                  p: 3,
-                  background: `linear-gradient(to right bottom, white, white, ${DEFAULT_MAIN_COLOR})`,
-                  boxShadow: 3,
-                  borderRadius: '8px',
+                  '& .MuiInputBase-input.Mui-disabled': {
+                    WebkitTextFillColor: 'black',
+                  },
                 }}
-              >
-                <Stack direction="column" spacing={2}>
-                  <TextField
-                    size="medium"
-                    value={question?.questionContent}
-                    label={`Câu hỏi số ${indexQ + 1}`}
-                    disabled
-                    sx={{
-                      '& .MuiInputBase-input.Mui-disabled': {
-                        WebkitTextFillColor: 'black',
-                      },
-                    }}
-                  />
-                  <Stack
-                    spacing={2}
-                    sx={{
-                      borderRadius: '8px',
-                      bg: `linear-gradient(to left bottom, white, ${DEFAULT_MAIN_COLOR})`,
-                      p: 3,
-                      pr: 0,
-                    }}
-                  >
-                    {question?.answers?.map((answer, indexA: number) => (
-                      <Stack
-                        key={indexA}
-                        spacing={2}
-                        direction={'row'}
-                        width={'100%'}
-                        alignItems={'center'}
-                      >
-                        <Iconify icon={'ic:outline-question-answer'} fontSize={'30px'} />
-                        <TextField
-                          fullWidth
-                          disabled
-                          size="medium"
-                          value={answer?.content}
-                          label={`Câu trả lời số ${indexA + 1}`}
-                          sx={{
-                            '& .MuiInputBase-input.Mui-disabled': {
-                              WebkitTextFillColor: 'black',
-                            },
-                          }}
-                        />
-                      </Stack>
-                    ))}
+              />
+              <RHFTextField
+                name="phoneNumber"
+                label={t('survey.userSurvey.phoneNumber')}
+                disabled
+                sx={{
+                  '& .MuiInputBase-input.Mui-disabled': {
+                    WebkitTextFillColor: 'black',
+                  },
+                }}
+              />
+              <RHFTextField
+                name="actionDate"
+                label={t('survey.userSurvey.time')}
+                disabled
+                sx={{
+                  '& .MuiInputBase-input.Mui-disabled': {
+                    WebkitTextFillColor: 'black',
+                  },
+                }}
+              />
+            </Stack>
+            <Stack spacing={2}>
+              <Typography variant="h6">{t('survey.userSurvey.answersDetail')}</Typography>
+              {data?.userSurveyAnswer?.map((question, indexQ: number) => (
+                <Card
+                  key={indexQ}
+                  sx={{
+                    p: 3,
+                    background: `linear-gradient(to right bottom, white, white, ${DEFAULT_MAIN_COLOR})`,
+                    boxShadow: 3,
+                    borderRadius: '8px',
+                  }}
+                >
+                  <Stack direction="column" spacing={2}>
+                    <TextField
+                      size="medium"
+                      value={question?.questionContent}
+                      label={`Câu hỏi số ${indexQ + 1}`}
+                      disabled
+                      sx={{
+                        '& .MuiInputBase-input.Mui-disabled': {
+                          WebkitTextFillColor: 'black',
+                        },
+                      }}
+                    />
+                    <Stack
+                      spacing={2}
+                      sx={{
+                        borderRadius: '8px',
+                        bg: `linear-gradient(to left bottom, white, ${DEFAULT_MAIN_COLOR})`,
+                        p: 3,
+                        pr: 0,
+                      }}
+                    >
+                      {question?.answers?.map((answer, indexA: number) => (
+                        <Stack
+                          key={indexA}
+                          spacing={2}
+                          direction={'row'}
+                          width={'100%'}
+                          alignItems={'center'}
+                        >
+                          <Iconify
+                            icon={'ic:outline-question-answer'}
+                            fontSize={'30px'}
+                          />
+                          <TextField
+                            fullWidth
+                            disabled
+                            size="medium"
+                            value={answer?.content}
+                            label={`Câu trả lời số ${indexA + 1}`}
+                            sx={{
+                              '& .MuiInputBase-input.Mui-disabled': {
+                                WebkitTextFillColor: 'black',
+                              },
+                            }}
+                          />
+                        </Stack>
+                      ))}
+                    </Stack>
                   </Stack>
-                </Stack>
-              </Card>
-            ))}
+                </Card>
+              ))}
+            </Stack>
           </Stack>
-        </Stack>
-      </FormProvider>
-    </Paper>
+        </FormProvider>
+      </Paper>
     </>
   );
 }

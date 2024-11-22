@@ -44,7 +44,7 @@ export default function RHFSelectSystemConfigPoint({
           options={options}
           value={field.value}
           getOptionLabel={(option) => option[labelProp]}
-          onChange={(event, values) =>field.onChange(values)}
+          onChange={(event, values) => field.onChange(values)}
           fullWidth
           isOptionEqualToValue={(option, value) => option.id === value.id}
           ListboxComponent={ListBox}

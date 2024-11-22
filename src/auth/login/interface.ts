@@ -45,7 +45,7 @@ export interface AdminProps {
   childrenAsFather?: any;
   children?: any;
   accessToken: string;
-};
+}
 export interface IResLogin {
   accessToken: string;
   refreshToken: string;

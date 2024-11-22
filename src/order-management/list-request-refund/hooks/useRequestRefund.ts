@@ -5,15 +5,14 @@ import { QUERY_KEYS } from '../../../common/constants/queryKeys.constant';
 import { requestRefund } from '../services';
 import { IParamsRefundedOrderRequest } from '../interfaces';
 
-
-export function useRequestRefund(params:IParamsRefundedOrderRequest) {
+export function useRequestRefund(params: IParamsRefundedOrderRequest) {
   const queryClient = useQueryClient();
   const { t } = useTranslation();
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
 
   return useMutation(requestRefund, {
     onSuccess() {
-      queryClient.invalidateQueries([QUERY_KEYS.LIST_REFUND_ORDER,params]);
+      queryClient.invalidateQueries([QUERY_KEYS.LIST_REFUND_ORDER, params]);
       showSuccessSnackbar(t('order.detail.refundRequest.sucess'));
     },
     onError() {

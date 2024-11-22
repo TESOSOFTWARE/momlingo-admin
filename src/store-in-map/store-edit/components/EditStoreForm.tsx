@@ -58,16 +58,8 @@ export default function EditStoreForm() {
             label="Địa chỉ"
             InputLabelProps={{ shrink: true }}
           />
-           <RHFTextField
-            name="long"
-            label="Kinh độ"
-            InputLabelProps={{ shrink: true }}
-          />
-           <RHFTextField
-            name="lat"
-            label="Vĩ độ"
-            InputLabelProps={{ shrink: true }}
-          />
+          <RHFTextField name="long" label="Kinh độ" InputLabelProps={{ shrink: true }} />
+          <RHFTextField name="lat" label="Vĩ độ" InputLabelProps={{ shrink: true }} />
         </Stack>
       </Paper>
       <Stack

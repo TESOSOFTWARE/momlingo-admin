@@ -5,21 +5,21 @@ export interface IPropsTableRow {
 }
 
 export interface IRefundedOrderRequest {
-  id:number;
-  createdAt:string;
-  orderRefund:{
-    id:number;
-    contentRefund:string | null;
-    reasonRefund:string  | null;
-    status:string;
-    createdDate:string;
-  }
-  user:{
-    customer:{
-      phoneNumber:string;
-      name:string
-    }
-  }
+  id: number;
+  createdAt: string;
+  orderRefund: {
+    id: number;
+    contentRefund: string | null;
+    reasonRefund: string | null;
+    status: string;
+    createdDate: string;
+  };
+  user: {
+    customer: {
+      phoneNumber: string;
+      name: string;
+    };
+  };
 }
 
 export interface IResRefundedOrderRequest {
@@ -48,7 +48,6 @@ export interface IParamsRefundedOrderRequest {
   orderId?: number;
 }
 export interface IRequestRefundParams {
-  refundPoint?:number;
-  content:string;
+  refundPoint?: number;
+  content: string;
 }
-

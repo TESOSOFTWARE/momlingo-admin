@@ -38,26 +38,24 @@ export const schemaCreateGameGift = yup
       .typeError('Vui lòng nhập thông tin')
       .when('type', (type, field) => {
         if (type !== TypeGameConstraints.DEFAULT)
-          return field.required('Vui lòng nhập thông tin')
-      }).when('type', (type, field) => {
-        return field.test(
-          'minOne',
-          'Thứ tự ưu tiên lớn hơn 1',
-          (value: number) => {
-            if (type !== TypeGameConstraints.DEFAULT && value < 1) {
-              return false;
-            }
-            return true;
+          return field.required('Vui lòng nhập thông tin');
+      })
+      .when('type', (type, field) => {
+        return field.test('minOne', 'Thứ tự ưu tiên lớn hơn 1', (value: number) => {
+          if (type !== TypeGameConstraints.DEFAULT && value < 1) {
+            return false;
           }
-        );
+          return true;
+        });
       }),
-      winRate: yup
+    winRate: yup
       .number()
       .typeError('Vui lòng nhập thông tin')
       .when('type', (type, field) => {
         if (type === TypeGameConstraints.DEFAULT)
-          return field.required('Vui lòng nhập thông tin')
-      }).when('type', (type, field) => {
+          return field.required('Vui lòng nhập thông tin');
+      })
+      .when('type', (type, field) => {
         return field.test(
           'minOneWinRate',
           'Tỉ lệ trúng giải lớn hơn 1',
@@ -68,7 +66,8 @@ export const schemaCreateGameGift = yup
             return true;
           }
         );
-      }).when('type', (type, field) => {
+      })
+      .when('type', (type, field) => {
         return field.test(
           'maxhundred',
           'Tỉ lệ trúng giải nhỏ hơn 100',
@@ -80,7 +79,7 @@ export const schemaCreateGameGift = yup
           }
         );
       }),
-      posInImage: yup
+    posInImage: yup
       .number()
       .min(1, 'Giá trị tối thiểu là 1')
       .typeError('Vui lòng nhập thông tin')

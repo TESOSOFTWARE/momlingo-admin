@@ -17,31 +17,32 @@ import { LoadingButton } from '@mui/lab';
 import { useUpdateBabyTracker } from '../config-feature-list/hooks/useUpdateBabyTracker';
 import { UpdateBabyTrackerParams } from '../config-feature-list/baby-tracker-interface';
 
-
-
 export default function NewBabyTracker() {
   const navigate = useNavigate();
-  
+
   // init data
   const [week, setWeek] = React.useState('0');
   const [keyTakeaways, setKeyTakeaways] = React.useState('0');
-  const [momThumbnail3DUrl, setMomThumbnail3DUrl] = React.useState( "https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" ||'');
-  const [momImage3DUrl, setMomImage3DUrl] = React.useState("0");
+  const [momThumbnail3DUrl, setMomThumbnail3DUrl] = React.useState(
+    'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
+  );
+  const [momImage3DUrl, setMomImage3DUrl] = React.useState('0');
   const [symptoms, setSymptoms] = React.useState('0');
   const [thingsToAvoid, setThingsToAvoid] = React.useState('0');
   const [thingsTodo, setThingsTodo] = React.useState('0');
   const [high, setHigh] = React.useState('0');
   const [weight, setWeight] = React.useState('0');
-  const [thumbnail3DUrl, setThumbnail3DUrl] = React.useState( '0' );
-  const [image3DUrl, setImage3DUrl] = React.useState( "0" );
-  const [symbolicImageUrl, setSymbolicImageUrl] = React.useState("https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png" || "");
-  const [sizeShortDescription, setSizeShortDescription] = React.useState( '0'
+  const [thumbnail3DUrl, setThumbnail3DUrl] = React.useState('0');
+  const [image3DUrl, setImage3DUrl] = React.useState('0');
+  const [symbolicImageUrl, setSymbolicImageUrl] = React.useState(
+    'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
   );
-  const [babyOverallInfo, setBabyOverallInfo] = React.useState('0' );
-  const [babySizeInfo, setBabySizeInfo] = React.useState('0' );
-  
+  const [sizeShortDescription, setSizeShortDescription] = React.useState('0');
+  const [babyOverallInfo, setBabyOverallInfo] = React.useState('0');
+  const [babySizeInfo, setBabySizeInfo] = React.useState('0');
+
   // React.useEffect(() => {
-    
+
   // }, []);
   const methods = useForm<ISurVeyForm>({
     resolver: yupResolver(schemaAddSurvey),
@@ -74,25 +75,26 @@ export default function NewBabyTracker() {
       symbolicImage: sizeShortDescription,
       sizeShortDescription: sizeShortDescription,
       babyOverallInfo: babyOverallInfo,
-      babySizeInfo: babySizeInfo
-    }
+      babySizeInfo: babySizeInfo,
+    };
     console.log('data :', dataNew);
 
-  if (!week) {
-    console.error('Tuần không hợp lệ.');
-    return;
-  }
-  // const updateParams: UpdateBabyTrackerParams = {
-  //   week,
-  //   data: dataUpdate,
-  // };
-  // Gọi mutate với dữ liệu đã chuẩn bị
-  //  mutate(updateParams);
-  }
+    if (!week) {
+      console.error('Tuần không hợp lệ.');
+      return;
+    }
+    // const updateParams: UpdateBabyTrackerParams = {
+    //   week,
+    //   data: dataUpdate,
+    // };
+    // Gọi mutate với dữ liệu đã chuẩn bị
+    //  mutate(updateParams);
+  };
   return (
     <Stack spacing={3}>
-      <FormProvider methods={methods} 
-      // onSubmit={handleSubmit(onSubmit)}
+      <FormProvider
+        methods={methods}
+        // onSubmit={handleSubmit(onSubmit)}
       >
         <Card sx={{ padding: 2 }}>
           <Stack spacing={3}>
@@ -144,20 +146,22 @@ export default function NewBabyTracker() {
 
             <TextField
               id="weight"
-              label="Cân nặng (kg)" 
+              label="Cân nặng (kg)"
               variant="outlined"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
             />
 
-            <Box sx={{
-              display:'grid',
-              gridTemplateColumns: {
-                xs: '1fr', 
-                md: '1fr 1fr'
-              },
-              gap: 2 
-            }}>
+            <Box
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  md: '1fr 1fr',
+                },
+                gap: 2,
+              }}
+            >
               <TextField
                 id="image3DUrl"
                 label="URL Hình ảnh 3D"
@@ -169,16 +173,16 @@ export default function NewBabyTracker() {
                 sx={{
                   width: '100%',
                   height: 500, // Chiều cao của iframe, bạn có thể chỉnh sửa theo nhu cầu
-                  border: 'none' // Loại bỏ viền của iframe
+                  border: 'none', // Loại bỏ viền của iframe
                 }}
               >
                 <iframe
-                  src= {image3DUrl}
+                  src={image3DUrl}
                   title="3D Baby View"
                   width="100%"
                   height="100%"
                   style={{ border: 'none' }}
-                  allowFullScreen 
+                  allowFullScreen
                 ></iframe>
               </Box>
             </Box>
@@ -191,14 +195,15 @@ export default function NewBabyTracker() {
               onChange={(e) => setSizeShortDescription(e.target.value)}
             />
             <Box
-            sx={{
-              display:'grid',
-              gridTemplateColumns: {
-                xs: '1fr', 
-                md: '1fr 1fr'
-              },
-              gap: 2 
-            }}>
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  md: '1fr 1fr',
+                },
+                gap: 2,
+              }}
+            >
               <TextField
                 id="symbolicImageUrl"
                 label="URL Hình ảnh tượng trưng"
@@ -206,17 +211,23 @@ export default function NewBabyTracker() {
                 value={symbolicImageUrl}
                 onChange={(e) => setSymbolicImageUrl(e.target.value)}
               />
-              <img src={symbolicImageUrl} width={'100%'} height={'300px'} alt='img tượng trưng'/>
+              <img
+                src={symbolicImageUrl}
+                width={'100%'}
+                height={'300px'}
+                alt="img tượng trưng"
+              />
             </Box>
             <Box
-            sx={{
-              display:'grid',
-              gridTemplateColumns: {
-                xs: '1fr', 
-                md: '1fr 1fr'
-              },
-              gap: 2 
-            }}>
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  md: '1fr 1fr',
+                },
+                gap: 2,
+              }}
+            >
               <TextField
                 id="thumbnail3DUrl"
                 label="URL Hình ảnh thu nhỏ 3D"
@@ -224,9 +235,14 @@ export default function NewBabyTracker() {
                 value={thumbnail3DUrl}
                 onChange={(e) => setThumbnail3DUrl(e.target.value)}
               />
-              <img src={thumbnail3DUrl} width={'100%'} height={'300px'} alt='URL Hình ảnh thu nhỏ 3D'/>
+              <img
+                src={thumbnail3DUrl}
+                width={'100%'}
+                height={'300px'}
+                alt="URL Hình ảnh thu nhỏ 3D"
+              />
             </Box>
-        
+
             {/* Hiển thị thông tin mẹ */}
             <Typography variant="h6">Thông tin mẹ:</Typography>
             <TextField
@@ -254,14 +270,15 @@ export default function NewBabyTracker() {
               onChange={(e) => setThingsTodo(e.target.value)}
             />
             <Box
-            sx={{
-              display:'grid',
-              gridTemplateColumns: {
-                xs: '1fr', 
-                md: '1fr 1fr'
-              },
-              gap: 2 
-            }}>
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  md: '1fr 1fr',
+                },
+                gap: 2,
+              }}
+            >
               <TextField
                 id="momThumbnail3DUrl"
                 label="URL Hình ảnh thu nhỏ 3D"
@@ -273,7 +290,7 @@ export default function NewBabyTracker() {
                 sx={{
                   width: '100%',
                   height: 500, // Chiều cao của iframe, bạn có thể chỉnh sửa theo nhu cầu
-                  border: 'none' // Loại bỏ viền của iframe
+                  border: 'none', // Loại bỏ viền của iframe
                 }}
               >
                 <iframe
@@ -282,19 +299,20 @@ export default function NewBabyTracker() {
                   width="100%"
                   height="100%"
                   style={{ border: 'none' }}
-                  allowFullScreen 
+                  allowFullScreen
                 ></iframe>
               </Box>
             </Box>
             <Box
-            sx={{
-              display:'grid',
-              gridTemplateColumns: {
-                xs: '1fr', 
-                md: '1fr 1fr'
-              },
-              gap: 2 
-            }}>
+              sx={{
+                display: 'grid',
+                gridTemplateColumns: {
+                  xs: '1fr',
+                  md: '1fr 1fr',
+                },
+                gap: 2,
+              }}
+            >
               <TextField
                 id="momThumbnail3DUrl"
                 label="URL Hình ảnh thu nhỏ 3D"
@@ -302,7 +320,12 @@ export default function NewBabyTracker() {
                 value={momThumbnail3DUrl}
                 onChange={(e) => setThumbnail3DUrl(e.target.value)}
               />
-              <img src={momThumbnail3DUrl} width={'100%'} height={'300px'} alt='URL Hình ảnh thu nhỏ 3D'/>
+              <img
+                src={momThumbnail3DUrl}
+                width={'100%'}
+                height={'300px'}
+                alt="URL Hình ảnh thu nhỏ 3D"
+              />
             </Box>
           </Stack>
         </Card>
@@ -320,7 +343,7 @@ export default function NewBabyTracker() {
             variant="contained"
             loading={isSubmitting}
             // type="submit"
-            onClick={()=>dataNewTracker()}
+            onClick={() => dataNewTracker()}
           >
             Cập nhật
           </LoadingButton>

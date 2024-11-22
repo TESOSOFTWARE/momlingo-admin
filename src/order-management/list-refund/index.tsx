@@ -7,26 +7,30 @@ import useSettings from '../../common/hooks/useSettings';
 import i18n from 'src/common/locales/i18n';
 import ListRefundedOrderDashBoard from './components/RefundedOrderDashboard';
 import { useTranslation } from 'react-i18next';
-import { IsOpenModalExportSelector, setCloseRedirectModal, setIsOpenModalExport } from './refunded.slice';
+import {
+  IsOpenModalExportSelector,
+  setCloseRedirectModal,
+  setIsOpenModalExport,
+} from './refunded.slice';
 import { RefundExportModal } from './components/ModalExport';
 import { ConfirmModal } from '../../common/components/modal/ConfirmModal';
 import { useSelector, useDispatch } from '../../common/redux/store';
 
 export default function ListOrderRefund() {
   const { themeStretch } = useSettings();
-  const dispatch= useDispatch();
+  const dispatch = useDispatch();
   const { t } = useTranslation();
   const handleExport = () => {
     dispatch(setIsOpenModalExport(true));
   };
-  const { redirectModal } = useSelector(state => state.refundedOrder);
-  
+  const { redirectModal } = useSelector((state) => state.refundedOrder);
+
   const isOpenModalExport = useSelector(IsOpenModalExportSelector);
 
   const handleCloseRedirectModal = () => {
     dispatch(setCloseRedirectModal());
-  }
-   return (
+  };
+  return (
     <Page title={i18n.t('order.detail.refund')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <HeaderBreadcrumbs
@@ -50,7 +54,7 @@ export default function ListOrderRefund() {
         <ListRefundedOrderDashBoard />
       </Container>
       <RefundExportModal
-        isOpen= {isOpenModalExport}
+        isOpen={isOpenModalExport}
         onClose={() => dispatch(setIsOpenModalExport(false))}
       />
       <ConfirmModal

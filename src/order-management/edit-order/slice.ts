@@ -28,13 +28,15 @@ export const editOrderReducer = createSlice({
     setPickedAddress(state, action: PayloadAction<IAddress>) {
       state.pickAddress = action.payload;
     },
-  }
+  },
 });
 
-export const { setProvinceId, setIsOpenModalEditAddress, setPickedAddress } = editOrderReducer.actions;
+export const { setProvinceId, setIsOpenModalEditAddress, setPickedAddress } =
+  editOrderReducer.actions;
 
 export const provinceId = (state: RootState) => state.editOrder.provinceId;
-export const isOpenModalEditAddressSelector = (state: RootState) => state.editOrder.isOpenModalEditAddress;
+export const isOpenModalEditAddressSelector = (state: RootState) =>
+  state.editOrder.isOpenModalEditAddress;
 export const pickedAddressSelector = (state: RootState) => state.editOrder.pickAddress;
 
 export default editOrderReducer.reducer;

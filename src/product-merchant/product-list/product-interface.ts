@@ -129,7 +129,7 @@ export interface IProductRow {
     type: string;
     url: string;
     size: number;
-  }
+  };
 }
 
 export interface IDeleteParams {

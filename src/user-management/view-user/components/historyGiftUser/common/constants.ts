@@ -1,4 +1,4 @@
-import { IStatusOrderGift } from "./interfaces";
+import { IStatusOrderGift } from './interfaces';
 
 export const TABLE_HEAD = [
   { id: 'id', label: 'ID', align: 'center' },
@@ -7,7 +7,7 @@ export const TABLE_HEAD = [
   { id: 'expressDeliveryCode', label: 'Mã giao hàng', align: 'center' },
   { id: 'typeOrder', label: 'Loại', align: 'center' },
   { id: 'orderStatus', label: 'Trạng thái', align: 'center' },
-  { id: 'option', label: 'Tùy chọn', align: 'center'},
+  { id: 'option', label: 'Tùy chọn', align: 'center' },
 ];
 export const TABLE_HEAD_ON_HOLD = [
   { id: 'id', label: 'Id đơn hàng', align: 'center' },
@@ -15,7 +15,7 @@ export const TABLE_HEAD_ON_HOLD = [
   { id: 'createAt', label: 'Ngày đặt', align: 'center' },
   { id: 'expressDeliveryCode', label: 'Mã giao hàng', align: 'center' },
   { id: 'orderStatus', label: 'Trạng thái', align: 'center' },
-  { label: '' }
+  { label: '' },
 ];
 
 export const OrderStatusLabel = [
@@ -23,33 +23,33 @@ export const OrderStatusLabel = [
   { label: 'Processing', value: 'PROCESSING', color: '#2EA9FF' },
   { label: 'On Hold', value: 'ON_HOLD', color: '#7975A9' },
   { label: 'Completed', value: 'COMPLETED', color: '#00AB55' },
-  { label: 'Cancelled', value: 'CANCELLED', color: '#FF9CB5' }
+  { label: 'Cancelled', value: 'CANCELLED', color: '#FF9CB5' },
 ];
 
 export const defaultValueFilter = {
   startDate: null,
   endDate: null,
-  phone: "",
+  phone: '',
   orderId: null,
-  status: "All",
+  status: 'All',
   userId: undefined,
-  type: "",
+  type: '',
 };
 
 export const STATUS_ORDER_GIFT_STYLE: IStatusOrderGift = {
-  PROCESSING:{
-    label: "Processing",
-    color: "#85CDFD",
-  }, 
-  ON_HOLD :{
-    label: "On hold",
-    color: "#635985",
+  PROCESSING: {
+    label: 'Processing',
+    color: '#85CDFD',
   },
-  COMPLETED:{
-    label: "Completed",
+  ON_HOLD: {
+    label: 'On hold',
+    color: '#635985',
+  },
+  COMPLETED: {
+    label: 'Completed',
     color: 'green',
-  }, 
-  CANCELLED :{
+  },
+  CANCELLED: {
     label: 'Canceled',
     color: 'red',
   },

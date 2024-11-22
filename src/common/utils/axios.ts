@@ -12,7 +12,7 @@ import { PATH_AUTH } from '../routes/paths';
 
 const axiosInstance = axios.create({
   baseURL: '',
-  paramsSerializer:(param) => toQueryString(param),
+  paramsSerializer: (param) => toQueryString(param),
 });
 const axiosInstance2 = axios.create({
   baseURL: HOST_API,
@@ -22,17 +22,18 @@ axiosInstance.interceptors.response.use(
   (error) => {
     const { response } = error;
     const refreshToken = store.getState()?.authLogin.refreshToken;
-    if (response?.status === 401  ) {
-      axiosInstance2.post<any, { accessToken: string }>('/merchant/auth/refresh-token', {
-        refreshToken: refreshToken
-      })
-        .then((res:any) => {
+    if (response?.status === 401) {
+      axiosInstance2
+        .post<any, { accessToken: string }>('/merchant/auth/refresh-token', {
+          refreshToken: refreshToken,
+        })
+        .then((res: any) => {
           store.dispatch(setAccessToken('Bearer ' + res?.data?.accessToken));
-        }) 
-        .catch((e)=>{
+        })
+        .catch((e) => {
           store.dispatch(setIsExpired(true));
           window.location.href = PATH_AUTH.login;
-        })
+        });
     }
     return Promise.reject(error);
   }

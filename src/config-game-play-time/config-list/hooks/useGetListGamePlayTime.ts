@@ -5,9 +5,8 @@ import { getListGamePlayTimeConfig } from '../../common/service';
 
 export function useGetListGamePlaytime(params: IParamsSearch) {
   return {
-    ...useQuery(
-      [QUERY_KEYS.LIST_GAME_CONFIG_PLAYTIME, params],
-      () => getListGamePlayTimeConfig(params),
+    ...useQuery([QUERY_KEYS.LIST_GAME_CONFIG_PLAYTIME, params], () =>
+      getListGamePlayTimeConfig(params)
     ),
   };
 }

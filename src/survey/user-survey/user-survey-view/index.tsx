@@ -19,33 +19,33 @@ export default function ViewUserSurvey() {
   const navigate = useNavigate();
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
 
-  const { surveyId,userId } = useParams();
-  const { mutate, isSuccess } = useRequestExportUserDetail(
-    {
-      onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
-      onError: () => showErrorSnackbar(t('survey.action.export.fail')),
-    })
-    useEffect(() => {
-      if (isSuccess) {
-        dispatch(
-          setConfirmModal({
-            isOpen: true,
-            text: t('survey.action.export.redirectExportList'),
-            callback: () => {
-              navigate(PATH_DASHBOARD.fileManage.listFileExport)
-            },
-          })
-        );
-      }
-  
-    }, [isSuccess])
+  const { surveyId, userId } = useParams();
+  const { mutate, isSuccess } = useRequestExportUserDetail({
+    onSuccess: () => showSuccessSnackbar(t('survey.action.export.sucess')),
+    onError: () => showErrorSnackbar(t('survey.action.export.fail')),
+  });
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(
+        setConfirmModal({
+          isOpen: true,
+          text: t('survey.action.export.redirectExportList'),
+          callback: () => {
+            navigate(PATH_DASHBOARD.fileManage.listFileExport);
+          },
+        })
+      );
+    }
+  }, [isSuccess]);
   const handleRequestExport = () => {
-    mutate({surveyUserId:parseInt(surveyId as string),surveyUserDetailId:parseInt(userId as string)})
-  }
+    mutate({
+      surveyUserId: parseInt(surveyId as string),
+      surveyUserDetailId: parseInt(userId as string),
+    });
+  };
   return (
     <Page title={t('survey.userSurvey.header')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
-    
         <HeaderBreadcrumbs
           heading={t('survey.userSurvey.header')}
           links={[
@@ -70,7 +70,11 @@ export default function ViewUserSurvey() {
               >
                 {t('survey.back')}
               </Button>
-              <Button onClick={handleRequestExport} variant="contained" startIcon={<Iconify icon={'carbon:export'} />}>
+              <Button
+                onClick={handleRequestExport}
+                variant="contained"
+                startIcon={<Iconify icon={'carbon:export'} />}
+              >
                 {t('survey.userSurvey.export')}
               </Button>
             </Stack>

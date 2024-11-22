@@ -7,9 +7,9 @@ export interface ITierRankForm {
   conditionPoint: number;
   maxPoint: number;
   nextTierCode: string | null;
-  descriptionMember:string;
+  descriptionMember: string;
   code: string;
-  poinNextTierCode?:string;
+  poinNextTierCode?: string;
 }
 export interface ITierRankList {
   id: number;
@@ -36,7 +36,7 @@ export interface IResListTierRank {
 export interface IListTierRankParams {
   page?: number;
   limit: number;
-  search?:string  | null;
+  search?: string | null;
 }
 export interface IPropsTableRow {
   row: ITierRankList;
@@ -46,7 +46,7 @@ export interface IPropsTableRow {
   onEditRow: VoidFunction;
 }
 export type StateProps = {
-  searchForm: string,
+  searchForm: string;
   confirmModal: {
     callback: VoidFunction;
     isOpen: boolean;

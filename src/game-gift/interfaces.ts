@@ -43,9 +43,9 @@ export interface IGameGifts {
   endDate: string;
   status: string;
   ordinal: number;
-  posInImage:number;
-  isWonMultiple:boolean;
-  winRate:number;
+  posInImage: number;
+  isWonMultiple: boolean;
+  winRate: number;
   quantity: number;
   wonQuantity: number;
   game: any;
@@ -133,7 +133,7 @@ export interface IParamsDeleteGameGift {
 }
 
 export interface IFormDataGameGift {
-  isWinnable?:boolean;
+  isWinnable?: boolean;
   type?: string;
   gameGiftProvinceQuantities?: any;
   gameGiftProvinceConstraints: IFormGameGiftProvinceConstraints[];
@@ -142,13 +142,13 @@ export interface IFormDataGameGift {
   endDate?: string | null;
   status?: string | boolean;
   ordinal?: number;
-  posInImage?:number;
+  posInImage?: number;
   productId?: number;
   productVariantId?: any;
   quantity?: number;
   gameId?: number;
   winRate?: number;
-  isWonMultiple?:boolean;
+  isWonMultiple?: boolean;
   imageId?: CustomFile | string;
   image?: {
     id?: number;
@@ -159,7 +159,7 @@ export interface IFormDataGameGift {
 }
 
 export interface IFormCreateGameGift {
-  isWinnable?:boolean;
+  isWinnable?: boolean;
   type?: string;
   constraintPhoneNumber: string[];
   constraintProvince: {
@@ -176,8 +176,8 @@ export interface IFormCreateGameGift {
   endDate?: string | null;
   status?: boolean;
   ordinal?: number;
-  posInImage?:number;
-  isWonMultiple?:boolean;
+  posInImage?: number;
+  isWonMultiple?: boolean;
   productId?: any;
   productVariantId?: any;
   quantity?: number;
@@ -191,7 +191,6 @@ export interface IFormCreateGameGift {
   name?: string;
   typePrize?: string;
 }
-
 
 export interface IFormGameGiftProvinceConstraints {
   provinceId?: any;
@@ -207,12 +206,12 @@ export interface IFormEditGameGift extends IFormDataGameGift {
 
 export interface IResGameGiftProvinceConstraints {
   id: number;
-  province?:{
+  province?: {
     id?: number;
     name?: string;
     type?: string;
     parentId?: number;
-  }
+  };
   provinceId?: any;
   addWinRate: number;
 }
@@ -227,7 +226,7 @@ export interface IResGameGiftById {
   status?: string;
   type?: string;
   totalQuantity?: number;
-  isWinnable?:boolean;
+  isWinnable?: boolean;
   gameGiftConstraints?: any;
   gameGiftProvinceQuantities?: any;
   gameGiftProvinceConstraints?: IResGameGiftProvinceConstraints[];
@@ -235,8 +234,8 @@ export interface IResGameGiftById {
   startDate?: string | null;
   endDate?: string | null;
   ordinal?: number;
-  posInImage?:number;
-  isWonMultiple?:boolean;
+  posInImage?: number;
+  isWonMultiple?: boolean;
   productVariant?: {
     id: number;
     price: number;
@@ -278,7 +277,7 @@ export interface IParamsProductVirtual {
   productType?: string;
 }
 
-export interface IParamsListUser{
+export interface IParamsListUser {
   page?: number;
   limit?: number;
   phoneNumber?: string;

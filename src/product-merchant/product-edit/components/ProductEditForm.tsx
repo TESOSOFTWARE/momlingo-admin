@@ -181,7 +181,6 @@ export default function ProductEditFrom() {
     );
   };
 
-
   const handleClickDeleteVariant = (idVariant: number) => {
     client.setQueryData([QUERY_KEYS.GET_PRODUCT_BY_ID, idDetail], (old: any) => {
       return {

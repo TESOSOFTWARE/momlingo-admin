@@ -21,7 +21,9 @@ export const useCreateGameGift = (callback: ICallback) => {
       },
       onError: (data: any) => {
         callback.onError && callback.onError();
-        showErrorSnackbar(data.response.data.message ? data?.response?.data?.message : "Tạo mới thất bại" );
+        showErrorSnackbar(
+          data.response.data.message ? data?.response?.data?.message : 'Tạo mới thất bại'
+        );
       },
     }),
   };

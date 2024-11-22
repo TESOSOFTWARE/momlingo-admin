@@ -8,7 +8,6 @@ export const usePostStore = (callback: ICallback) => {
   return {
     ...useMutation(postStore, {
       onSuccess: (_result, variables) => {
-
         callback.onSuccess && callback.onSuccess();
       },
       onError: () => {

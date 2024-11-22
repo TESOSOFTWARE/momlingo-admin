@@ -11,13 +11,15 @@ export const useAuthlogin = ({ onError, onSuccess }: ILoginCallback) => {
       onSuccess: (data) => {
         if (!data) return;
         const { accessToken, user } = data;
-        const userData:AdminProps = {
+        const userData: AdminProps = {
           id: user.id,
           name: user.name,
           email: user.email,
-          avatarUrl: user.avatarUrl || 'https://png.pngtree.com/png-vector/20240724/ourlarge/pngtree-administrator-admin-avatar-png-image_12853673.png',
+          avatarUrl:
+            user.avatarUrl ||
+            'https://png.pngtree.com/png-vector/20240724/ourlarge/pngtree-administrator-admin-avatar-png-image_12853673.png',
           accessToken: accessToken,
-        }
+        };
         dispatch(setAccessToken('Bearer ' + accessToken));
         dispatch(setAdminData(userData));
         dispatch(setLogin(true));

@@ -31,8 +31,7 @@ export const configAppSlice = createSlice({
 
 export const { setIsOpenModal, setPickedRow } = configAppSlice.actions;
 
-export const isOpenModalSelector = (state: RootState) =>
-  state.configApp.isOpenModal;
+export const isOpenModalSelector = (state: RootState) => state.configApp.isOpenModal;
 export const pickedRowSelector = (state: RootState) => state.configApp.pickedRow;
 
 export default configAppSlice.reducer;

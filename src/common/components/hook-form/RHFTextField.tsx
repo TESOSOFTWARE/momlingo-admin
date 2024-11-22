@@ -28,7 +28,10 @@ export default function RHFTextField({ name, ...other }: Props) {
           helperText={error?.message}
           sx={{ zIndex: 0 }}
           {...other}
-          onWheel={event => { event.currentTarget.querySelector('input')?.blur(); event.stopPropagation(); }}
+          onWheel={(event) => {
+            event.currentTarget.querySelector('input')?.blur();
+            event.stopPropagation();
+          }}
         />
       )}
     />

@@ -11,30 +11,28 @@ export const HEAD_LABELS = [
 ];
 
 export enum TypeEvent {
-  FIRST_SCAN=  'FIRST_SCAN',
-  SECOND_SCAN= 'SECOND_SCAN',
+  FIRST_SCAN = 'FIRST_SCAN',
+  SECOND_SCAN = 'SECOND_SCAN',
 }
 
 export enum TypeEventReward {
-  PERCENT_POINT=  'PERCENT_POINT',
-  AMOUNT_POINT= 'AMOUNT_POINT',
+  PERCENT_POINT = 'PERCENT_POINT',
+  AMOUNT_POINT = 'AMOUNT_POINT',
   // COUPON = 'COUPON',
 }
 
-export const DEFAULT_VALUE_SEARCH_EVENT= {
+export const DEFAULT_VALUE_SEARCH_EVENT = {
   searchText: '',
 };
 
-export const DEFAULT_VALUES_EVENT ={
+export const DEFAULT_VALUES_EVENT = {
   name: '',
   startDate: null,
   endDate: null,
   systemConfigPointIds: [],
   type: '',
-  eventReward:{
+  eventReward: {
     type: '',
     value: 0,
-  }
-  
-
-}
+  },
+};

@@ -61,16 +61,16 @@ export const colorPresets = [
     darker: '#7A0930',
     contrastText: '#fff',
   },
-  // 
+  //
   {
-    name: 'baseMain',      // Tên màu chủ đạo
-    lighter: '#a0e6e8',   // Màu nhạt hơn
-    light: '#5fd1d3',     // Màu sáng hơn
-    main: '#27adb1',      // Màu chính (màu chủ đạo)
-    dark: '#1d7f81',      // Màu tối hơn
-    darker: '#125354',    // Màu đậm hơn
+    name: 'baseMain', // Tên màu chủ đạo
+    lighter: '#a0e6e8', // Màu nhạt hơn
+    light: '#5fd1d3', // Màu sáng hơn
+    main: '#27adb1', // Màu chính (màu chủ đạo)
+    dark: '#1d7f81', // Màu tối hơn
+    darker: '#125354', // Màu đậm hơn
     contrastText: '#fff', // Màu chữ tương phản (trắng)
-  }
+  },
 ];
 
 export const defaultPreset = colorPresets[0];
@@ -88,7 +88,7 @@ export default function getColorPresets(presetsKey: ThemeColorPresets) {
     blue: bluePreset,
     orange: orangePreset,
     red: redPreset,
-    baseMain:baseMain,
+    baseMain: baseMain,
     default: defaultPreset,
   }[presetsKey];
 }

@@ -13,7 +13,7 @@ export default function GameGiftManagement() {
   const { themeStretch } = useSettings();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const {id: gameId} = useParams();
+  const { id: gameId } = useParams();
   return (
     <Page title={i18n.t('gameGifts.title')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
@@ -29,7 +29,7 @@ export default function GameGiftManagement() {
               href: '',
             },
           ]}
-          action= {
+          action={
             <Button
               variant="contained"
               onClick={() => navigate(PATH_DASHBOARD.gameGift.create(gameId as string))}
@@ -39,7 +39,7 @@ export default function GameGiftManagement() {
             </Button>
           }
         />
-        <ListGameGiftsDashBoard/>
+        <ListGameGiftsDashBoard />
       </Container>
     </Page>
   );

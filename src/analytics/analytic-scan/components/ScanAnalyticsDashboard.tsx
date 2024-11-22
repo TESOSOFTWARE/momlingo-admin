@@ -40,7 +40,7 @@ export default function ScanAnalyticsDashboard() {
   };
 
   const circleChart = Object?.keys(listCircleChart)?.map((item) => {
-    if(item ==='ALL') {
+    if (item === 'ALL') {
       return {
         label: changeIdProvinceToName(item),
         value: listCircleChart[item] - listCircleChart['UNKNOWN'],
@@ -80,7 +80,7 @@ export default function ScanAnalyticsDashboard() {
     lineChart.push({
       name: changeIdProvinceToName('ALL'),
       data: listLineChart?.map((dataValue) => {
-        return dataValue?.data['ALL'] - dataValue?.data['UNKNOWN'] ;
+        return dataValue?.data['ALL'] - dataValue?.data['UNKNOWN'];
       }),
     });
     lineChart.push({

@@ -20,7 +20,7 @@ export const TABLE_HEAD = [
   {
     id: 'code',
     label: 'Thứ hạng tiếp theo',
-    align: 'center'
+    align: 'center',
   },
   {
     id: '',

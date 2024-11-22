@@ -139,7 +139,7 @@ export enum OrderStatus {
   TRASH = 'TRASH',
   CREATED = 'CREATED',
   IMPORTED = 'IMPORTED',
-  ALL = ''
+  ALL = '',
 }
 
 export type IOrderFilter = {
@@ -159,7 +159,7 @@ export interface IOrderParams {
   page?: number;
   limit?: number;
   userId?: number;
-  
+
   type: string;
 }
 

@@ -215,7 +215,7 @@ export default function DetailOrderForm() {
             {t('order.detail.productInfo')}
           </Typography>
         </Stack>
-          <ProductInfoTable dataOrder={data?.orderLineItemReqDto} type={data?.type} />
+        <ProductInfoTable dataOrder={data?.orderLineItemReqDto} type={data?.type} />
         <Stack
           sx={{ display: 'flex', justifyContent: 'flex-end', marginTop: 3 }}
           direction="row"

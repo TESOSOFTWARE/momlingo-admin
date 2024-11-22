@@ -20,7 +20,7 @@ type IProps = {
   options: Array<any>;
   labelProp: string;
   disabledSelect?: boolean;
-  listBoxScroll: any; 
+  listBoxScroll: any;
   loadingScroll?: boolean;
   linkedFieldName: string;
 };
@@ -50,7 +50,10 @@ export default function RHFSelectProductVirtual({
           options={options}
           getOptionLabel={(option) => option[labelProp]}
           value={field.value}
-          onChange={(event, values) => { field.onChange(values); setValue(linkedFieldName, null);}}
+          onChange={(event, values) => {
+            field.onChange(values);
+            setValue(linkedFieldName, null);
+          }}
           fullWidth
           ListboxComponent={ListBox}
           isOptionEqualToValue={(option, value) => option.id === value.id}

@@ -38,7 +38,7 @@ export interface orderLineItemReqDto {
     onSale: boolean;
     id: number;
     type: string;
-    status:string;
+    status: string;
     isFeatured: boolean;
     taxStatus: string;
     defaultProductVariantId: number;
@@ -82,7 +82,8 @@ export interface orderLineItemReqDto {
       }>;
     }>;
   };
-}[]
+}
+[];
 export interface IOrder {
   expressDeliveryCode?: string;
   createdAt: string;
@@ -192,7 +193,7 @@ export enum OrderStatus {
   TRASH = 'TRASH',
   CREATED = 'CREATED',
   IMPORTED = 'IMPORTED',
-  ALL = ''
+  ALL = '',
 }
 
 export type IOrderFilter = {

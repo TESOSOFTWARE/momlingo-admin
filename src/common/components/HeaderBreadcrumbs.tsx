@@ -16,7 +16,7 @@ export default function HeaderBreadcrumbs({
   links,
   action,
   heading,
-  moreLink = '' || [],
+  moreLink = [],
   sx,
   ...other
 }: Props) {

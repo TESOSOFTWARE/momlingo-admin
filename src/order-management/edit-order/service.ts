@@ -17,20 +17,20 @@ export const getOrderById = (id: number) => {
 export const getProvince = (params: AddressParams) => {
   if (params.searchText === '') delete params.searchText;
   return axiosInstance.get<unknown, AddressData>(API_GET_ADDRESS, {
-    params: params
+    params: params,
   });
 };
 
 export const getDistrict = (params: AddressParams) => {
   if (params.searchText === '') delete params.searchText;
   return axiosInstance.get<unknown, AddressData>(`${API_GET_ADDRESS}`, {
-    params: params
+    params: params,
   });
 };
 
 export const getWard = (params: AddressParams) => {
   if (params.searchText === '') delete params.searchText;
   return axiosInstance.get<unknown, AddressData>(`${API_GET_ADDRESS}`, {
-    params: params
+    params: params,
   });
 };

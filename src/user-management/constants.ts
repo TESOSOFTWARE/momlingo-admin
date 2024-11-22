@@ -129,16 +129,16 @@ export const DEFAULT_VALUE_USER_BY_ID = {
   status: '',
   address: '',
   provinceId: {
-    id:0,
-    name:''
+    id: 0,
+    name: '',
   },
   districtId: {
-    id:0,
-    name:''
+    id: 0,
+    name: '',
   },
   wardId: {
-    id:0,
-    name:''
+    id: 0,
+    name: '',
   },
   birthDate: '',
   tierCode: '',
@@ -190,7 +190,7 @@ export enum UserGender {
   FEMALE = 'FEMALE',
 }
 
-export const TYPE_GENDER =[
+export const TYPE_GENDER = [
   {
     label: 'Nam',
     value: UserGender.MALE,
@@ -198,5 +198,5 @@ export const TYPE_GENDER =[
   {
     label: 'Nữ',
     value: UserGender.FEMALE,
-  }
-]
+  },
+];

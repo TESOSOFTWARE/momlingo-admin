@@ -1,4 +1,10 @@
-import { API_DISTRICT, API_SHOP, API_SERVICES, API_REFUND_ORDER, API_REFUND_POINT } from './../../common/constants/apis';
+import {
+  API_DISTRICT,
+  API_SHOP,
+  API_SERVICES,
+  API_REFUND_ORDER,
+  API_REFUND_POINT,
+} from './../../common/constants/apis';
 import {
   API_ORDER_DELIVERY,
   API_ORDER_MANAGEMENT,
@@ -22,7 +28,7 @@ export const getOrderById = (id: number) => {
 export const postOrderDelivery = ({ data, id }: { data: IOrderDelivery; id: number }) =>
   axiosInstance.post(`${API_ORDER_DELIVERY}/${id}`, data);
 
-  export const refundCoin = (data: IDataRefundPoint) =>
+export const refundCoin = (data: IDataRefundPoint) =>
   axiosInstance.post(`${API_REFUND_POINT}/${data?.id}`, data?.data);
 
 export const getProvinces = () => {

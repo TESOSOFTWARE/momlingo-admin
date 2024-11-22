@@ -46,7 +46,12 @@ export default function ProductInfoTable({ type, dataOrder }: idProps) {
   const totalItem = infoProduct.length || 0;
 
   const handleDetailRow = (idDetail: number) => {
-    navigate(replacePathParams(PATH_DASHBOARD.order_management.detailProd, { id: idOrder,idProd:idDetail }));
+    navigate(
+      replacePathParams(PATH_DASHBOARD.order_management.detailProd, {
+        id: idOrder,
+        idProd: idDetail,
+      })
+    );
   };
   return (
     <Paper elevation={3} sx={{ pt: 1 }}>

@@ -3,7 +3,7 @@ export const HEAD_TABLE_PROPS = [
   { id: 'img', label: '', align: 'center' },
   { id: 'title', label: 'Tiêu đề', align: 'left' },
   { id: 'subject', label: 'Chủ đề', align: 'center' },
-  { id: '', label: 'Tùy chọn', align: 'center' }, 
+  { id: '', label: 'Tùy chọn', align: 'center' },
 ];
 
 export const defaultValueFilter = {

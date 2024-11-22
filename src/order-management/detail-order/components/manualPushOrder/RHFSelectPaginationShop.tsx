@@ -58,7 +58,7 @@ export const RHFSelectPaginationShop = ({
       return {
         value: item.district_id,
         label: `${item.name} - ${item.address}`,
-        _id: item._id
+        _id: item._id,
       };
     });
 

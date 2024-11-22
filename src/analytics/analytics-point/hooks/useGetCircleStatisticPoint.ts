@@ -5,8 +5,12 @@ import { IParamsStatisticPoint } from '../interfaces';
 
 export function useGetCircleStatisticPoint(params: IParamsStatisticPoint) {
   return {
-    ...useQuery([QUERY_KEYS.STATISTIC_POINT_CIRCLE, params], () => getStatisticPointCircleChart(params), {
-      cacheTime: 0,
-    }),
+    ...useQuery(
+      [QUERY_KEYS.STATISTIC_POINT_CIRCLE, params],
+      () => getStatisticPointCircleChart(params),
+      {
+        cacheTime: 0,
+      }
+    ),
   };
 }

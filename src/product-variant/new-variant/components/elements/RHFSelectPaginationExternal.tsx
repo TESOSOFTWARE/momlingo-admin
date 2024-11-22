@@ -40,7 +40,7 @@ export const RHFSelectPaginationExternal = ({
   placeholder,
   searchParams,
   error,
-  types
+  types,
 }: IProps) => {
   const { control } = useFormContext();
   const loadOptions = async (
@@ -53,7 +53,7 @@ export const RHFSelectPaginationExternal = ({
       page: page,
       limit: 20,
       types,
-      searchText: search
+      searchText: search,
     });
 
     const hasMore = page < response?.meta.totalPages;
@@ -64,7 +64,7 @@ export const RHFSelectPaginationExternal = ({
         image: item.productInfo.thumbnail,
         condition: item.productInfo?.condition,
         office: item.productInfo?.office,
-        content: item.productInfo?.content
+        content: item.productInfo?.content,
       };
     });
 
@@ -72,8 +72,8 @@ export const RHFSelectPaginationExternal = ({
       options: optionSelects,
       hasMore: hasMore,
       additional: {
-        page: page + 1
-      }
+        page: page + 1,
+      },
     };
   };
 
@@ -86,7 +86,7 @@ export const RHFSelectPaginationExternal = ({
             height: 50,
             width: 50,
             borderRadius: '7px',
-            objectFit: 'cover'
+            objectFit: 'cover',
           }}
           alt={option.label}
           src={`${option.image}`}
@@ -122,7 +122,7 @@ export const RHFSelectPaginationExternal = ({
             onChange={onChange}
             styles={colourStyles(isFocus, error, name)}
             components={{
-              ValueContainer: CustomValueContainer
+              ValueContainer: CustomValueContainer,
             }}
           />
         );
@@ -139,7 +139,7 @@ const colourStyles = (isFocus: boolean, error: any, name: string) => {
       borderRadius: '8px',
       boxShadow: 'none',
       '&:hover': {
-        border: '1px solid black'
+        border: '1px solid black',
       },
       border: error[name]?.message
         ? '1.5px solid #ff4842!important'
@@ -147,23 +147,23 @@ const colourStyles = (isFocus: boolean, error: any, name: string) => {
         ? '1px solid #00ab55!important'
         : !state.hasValue || !state.selectProps.inputValue
         ? '1px solid #e2dbdb'
-        : '1px solid #00ab55!important'
+        : '1px solid #00ab55!important',
     }),
     container: (provided, state) => ({
-      ...provided
+      ...provided,
     }),
 
     menu: (provided) => ({
       ...provided,
       zIndex: 9999,
-      position: 'relative'
+      position: 'relative',
     }),
 
     valueContainer: (provided, state) => ({
       ...provided,
       overflow: 'visible',
       padding: 10,
-      color: (isFocus as unknown as ControlProps<boolean>) && 'black!important'
+      color: (isFocus as unknown as ControlProps<boolean>) && 'black!important',
     }),
 
     placeholder: (base, state) => ({
@@ -200,8 +200,8 @@ const colourStyles = (isFocus: boolean, error: any, name: string) => {
         ? '#00ab55'
         : state.hasValue || state.selectProps.inputValue
         ? '#919EAB'
-        : '#919eab'
-    })
+        : '#919eab',
+    }),
   };
   return styles;
 };

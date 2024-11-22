@@ -28,7 +28,7 @@ export default function ProductInfoTableRow({ row, onDetailRow }: IPropsTableRow
               height: 50,
               width: 50,
               borderRadius: '7px',
-              objectFit: 'cover'
+              objectFit: 'cover',
             }}
             alt={row?.product?.productDetails[0]?.name}
             src={`${row?.product?.thumbnail?.url}`}

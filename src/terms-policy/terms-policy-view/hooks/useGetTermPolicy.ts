@@ -19,7 +19,7 @@ export const useGetTermPolicy = (id: number) => {
           content: data.termsPolicyDetails[0].content,
           updatedAt: data.termsPolicyDetails[0].updatedAt,
           iconUrl: data.icon.url,
-          iconId:data.icon.id
+          iconId: data.icon.id,
         };
       },
     }),

@@ -31,10 +31,10 @@ import HistoryGiftTableRow from './HistoryGiftTableRow';
 import LoadingTableSkeleton from '../../../../common/components/LoadingTableSkeleton';
 
 type Props = {
-    searchUserId?: number;
-  };
+  searchUserId?: number;
+};
 
-export default function HistoryGiftTable({searchUserId}: Props) {
+export default function HistoryGiftTable({ searchUserId }: Props) {
   const {
     dense,
     page,

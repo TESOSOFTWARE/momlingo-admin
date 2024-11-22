@@ -12,14 +12,12 @@ import {
   useTheme,
   TableContainer,
   Table,
-  Card
+  Card,
 } from '@mui/material';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import {
-  TableHeadCustom, TableNoData
-} from 'src/common/components/table';
+import { TableHeadCustom, TableNoData } from 'src/common/components/table';
 import useDeepEffect from 'src/common/hooks/useDeepEffect';
 import { useSelectMultiple } from '../../../common/hooks/useSelectMultiple';
 import useTable from '../../../common/hooks/useTable';
@@ -54,8 +52,8 @@ export default function OrderChart() {
   useEffect(() => {
     return () => {
       dispatch(setSearchParams(DEFAULT_VALUE_SEARCH_STATISTIC_POINT));
-    }
-  }, [])
+    };
+  }, []);
   const { data: detail, isLoading } = useGetOrderChart(searchParams);
   const { data: overview } = useGetOrderChartPie(searchParams);
 
@@ -72,7 +70,6 @@ export default function OrderChart() {
     onChangeRowsPerPage,
   } = useTable();
 
-
   const dataList = stableSort(detail || []).slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
@@ -80,16 +77,13 @@ export default function OrderChart() {
   return (
     <Paper elevation={3} sx={{ paddingTop: 3 }}>
       <Stack direction="column" spacing={3}>
-        <Stack direction="row" spacing={3} p={3} >
-          <Stack flex={3}    >
-
+        <Stack direction="row" spacing={3} p={3}>
+          <Stack flex={3}>
             <OrderFilter />
           </Stack>
 
-          <Stack sx={{ width: "60% !important" }}>
-
+          <Stack sx={{ width: '60% !important' }}>
             <AppCurrentDownload
-
               title="Tổng quan"
               chartColors={[
                 theme.palette.primary.lighter,
@@ -100,7 +94,6 @@ export default function OrderChart() {
               chartData={[
                 { label: 'Tổng đơn quà vật lý ', value: overview?.totalPhysical || 0 },
                 { label: 'Tổng e-voucher ', value: overview?.totalVoucher || 0 },
-
               ]}
             />
           </Stack>
@@ -108,26 +101,51 @@ export default function OrderChart() {
         <Grid item xs={12} md={6} lg={8} p={2}>
           <AppAreaInstalled
             title="Chi tiết"
-            chartLabels={detail?.map(item => { return item?.date }) || []}
-            chartData={
-              [
-                { name: 'total', data: detail?.map(item => { return item?.total }) || [] },
-                { name: 'Tổng đơn quà vật lý ', data: detail?.map(item => { return item?.totalPhysical }) || [] },
-                { name: 'Tổng e-voucher', data: detail?.map(item => { return item?.totalVoucher }) || [] },
-
-              ]
+            chartLabels={
+              detail?.map((item) => {
+                return item?.date;
+              }) || []
             }
+            chartData={[
+              {
+                name: 'total',
+                data:
+                  detail?.map((item) => {
+                    return item?.total;
+                  }) || [],
+              },
+              {
+                name: 'Tổng đơn quà vật lý ',
+                data:
+                  detail?.map((item) => {
+                    return item?.totalPhysical;
+                  }) || [],
+              },
+              {
+                name: 'Tổng e-voucher',
+                data:
+                  detail?.map((item) => {
+                    return item?.totalVoucher;
+                  }) || [],
+              },
+            ]}
           />
         </Grid>
-        <Stack direction="column" sx={{
-          margin: "20px !important"
-        }}>
+        <Stack
+          direction="column"
+          sx={{
+            margin: '20px !important',
+          }}
+        >
           <Card
             sx={{
               boxShadow: 3,
             }}
           >
-            <Typography variant='h5' p={3} > Danh sách</Typography>
+            <Typography variant="h5" p={3}>
+              {' '}
+              Danh sách
+            </Typography>
             <TableContainer sx={{ position: 'relative' }}>
               <Table size={dense ? 'small' : 'medium'}>
                 <TableHeadCustom
@@ -142,7 +160,7 @@ export default function OrderChart() {
                     <OrderTableRow
                       key={index + 1}
                       row={row}
-                      index={index + (page * rowsPerPage)}
+                      index={index + page * rowsPerPage}
                     />
                   ))}
 
@@ -160,12 +178,10 @@ export default function OrderChart() {
                 onPageChange={onChangePage}
                 onRowsPerPageChange={onChangeRowsPerPage}
               />
-
             </Box>
           </Card>
         </Stack>
-
       </Stack>
-    </Paper >
+    </Paper>
   );
 }

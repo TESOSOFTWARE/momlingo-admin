@@ -4,7 +4,7 @@ import NewsEditHeader from './components/NewsEditHeader';
 
 function NewsEdit() {
   return (
-    <Page title= 'Chỉnh sửa Tin tức'>
+    <Page title="Chỉnh sửa Tin tức">
       <NewsEditHeader />
       <NewsEditForm />
     </Page>

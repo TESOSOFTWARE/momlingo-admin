@@ -22,7 +22,6 @@ import { useDispatch, useSelector } from '../../../common/redux/store';
 import { setOpenRedirectModal } from '../refunded.slice';
 import { PATH_DASHBOARD } from '../../../common/routes/paths';
 
-
 type ConfirmModalType = 'delete' | 'warning';
 type ConfirmModalProps = {
   isOpen: boolean;
@@ -39,7 +38,7 @@ export const RefundExportModal = (props: ConfirmModalProps) => {
     defaultValues: DEFAULT_VALUE_EXPORT_REFUNDED_ORDER,
   });
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
-  const searchData = useSelector(state => state.refundedOrder.dataSearch);
+  const searchData = useSelector((state) => state.refundedOrder.dataSearch);
 
   const navigate = useNavigate();
   const {
@@ -54,18 +53,18 @@ export const RefundExportModal = (props: ConfirmModalProps) => {
   const { mutate, isSuccess } = useExportRefundedOrders({
     onSuccess: () => showSuccessSnackbar(t('order.detail.refundForm.export_success')),
     onError: () => showErrorSnackbar(t('order.detail.refundForm.export_failed')),
-  })
+  });
 
   useEffect(() => {
     setValue('startDate', searchData?.startDate);
     setValue('endDate', searchData?.endDate);
-  }, [searchData])
+  }, [searchData]);
 
-  const onSubmit =  (data: any) => {
-    const formSubmitExport={
-        startDate: data?.startDate,
-        endDate: data?.endDate,
-    }
+  const onSubmit = (data: any) => {
+    const formSubmitExport = {
+      startDate: data?.startDate,
+      endDate: data?.endDate,
+    };
     mutate(formSubmitExport);
   };
 
@@ -76,14 +75,13 @@ export const RefundExportModal = (props: ConfirmModalProps) => {
           isOpen: true,
           text: t('survey.action.export.redirectImportList'),
           callback: () => {
-            navigate(PATH_DASHBOARD.fileManage.listFileExport)
+            navigate(PATH_DASHBOARD.fileManage.listFileExport);
           },
         })
       );
     }
+  }, [isSuccess]);
 
-  }, [isSuccess])
-  
   return (
     <div>
       <Dialog

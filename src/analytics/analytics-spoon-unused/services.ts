@@ -18,5 +18,3 @@ export const getStatisticLineChart = (params: IParamsStatisticSpoon) => {
 export const requestExport = (params: IParamsStatisticSpoon) => {
   return axiosInstance.post(`${API_STATISTIC_SPOON}/request-export`, params);
 };
-
-

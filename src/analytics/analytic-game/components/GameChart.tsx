@@ -12,14 +12,12 @@ import {
   TablePagination,
   Grid,
   useTheme,
-  Typography
+  Typography,
 } from '@mui/material';
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import {
-  TableHeadCustom, TableNoData
-} from 'src/common/components/table';
+import { TableHeadCustom, TableNoData } from 'src/common/components/table';
 import useDeepEffect from 'src/common/hooks/useDeepEffect';
 import { useSelectMultiple } from '../../../common/hooks/useSelectMultiple';
 import useTable from '../../../common/hooks/useTable';
@@ -54,8 +52,8 @@ export default function GameChart() {
   useEffect(() => {
     return () => {
       dispatch(setSearchParamsGame(DEFAULT_VALUE_SEARCH_STATISTIC_POINT));
-    }
-  }, [])
+    };
+  }, []);
   const { data: detail, isLoading } = useGetGameChart(searchParamsGame);
   const { data: overview } = useGetGameChartPie(searchParamsGame);
   const {
@@ -71,24 +69,19 @@ export default function GameChart() {
     onChangeRowsPerPage,
   } = useTable();
 
-
   const dataList = stableSort(detail || []).slice(
     page * rowsPerPage,
     page * rowsPerPage + rowsPerPage
   );
   return (
     <Paper elevation={3} sx={{ paddingTop: 3 }}>
-      <Stack direction="column" spacing={3} >
-        <Stack direction="row" spacing={3} p={3} >
-          <Stack flex={3}    >
-
+      <Stack direction="column" spacing={3}>
+        <Stack direction="row" spacing={3} p={3}>
+          <Stack flex={3}>
             <GameFilter />
           </Stack>
-          <Stack sx={{ width: "60% !important" }}>
-
-
+          <Stack sx={{ width: '60% !important' }}>
             <AppCurrentDownload
-
               title="Tổng quan"
               chartColors={[
                 theme.palette.primary.lighter,
@@ -97,9 +90,11 @@ export default function GameChart() {
                 theme.palette.primary.dark,
               ]}
               chartData={[
-                { label: 'Tổng lượt chơi chưa trúng giải', value: ((overview?.total || 0) - (overview?.totalWon || 0)) },
+                {
+                  label: 'Tổng lượt chơi chưa trúng giải',
+                  value: (overview?.total || 0) - (overview?.totalWon || 0),
+                },
                 { label: 'Tổng lượt chơi trúng giải ', value: overview?.totalWon || 0 },
-
               ]}
             />
           </Stack>
@@ -107,25 +102,44 @@ export default function GameChart() {
         <Grid item xs={12} md={6} lg={8} p={2}>
           <AppAreaInstalled
             title="Chi tiết"
-            chartLabels={detail?.map(item => { return item?.date }) || []}
-            chartData={
-              [
-                { name: 'total', data: detail?.map(item => { return item?.total }) || [] },
-                { name: 'totalWon', data: detail?.map(item => { return item?.totalWon }) || [] },
-
-              ]
+            chartLabels={
+              detail?.map((item) => {
+                return item?.date;
+              }) || []
             }
+            chartData={[
+              {
+                name: 'total',
+                data:
+                  detail?.map((item) => {
+                    return item?.total;
+                  }) || [],
+              },
+              {
+                name: 'totalWon',
+                data:
+                  detail?.map((item) => {
+                    return item?.totalWon;
+                  }) || [],
+              },
+            ]}
           />
         </Grid>
-        <Stack direction="column" sx={{
-          margin: "20px !important"
-        }}>
+        <Stack
+          direction="column"
+          sx={{
+            margin: '20px !important',
+          }}
+        >
           <Card
             sx={{
               boxShadow: 3,
             }}
           >
-            <Typography variant='h5' p={3} > Danh sách</Typography>
+            <Typography variant="h5" p={3}>
+              {' '}
+              Danh sách
+            </Typography>
             <TableContainer sx={{ position: 'relative' }}>
               <Table size={dense ? 'small' : 'medium'}>
                 <TableHeadCustom
@@ -140,7 +154,7 @@ export default function GameChart() {
                     <GameTableRow
                       key={index + 1}
                       row={row}
-                      index={index + (page * rowsPerPage)}
+                      index={index + page * rowsPerPage}
                     />
                   ))}
 
@@ -158,7 +172,6 @@ export default function GameChart() {
                 onPageChange={onChangePage}
                 onRowsPerPageChange={onChangeRowsPerPage}
               />
-
             </Box>
           </Card>
         </Stack>

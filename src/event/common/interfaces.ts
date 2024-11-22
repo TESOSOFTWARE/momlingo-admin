@@ -89,7 +89,7 @@ export interface IFormCreateEvent {
   status: string;
   startDate: string | null;
   endDate: string | null;
-  systemConfigPointIds:ISystemConfigPoint[];
+  systemConfigPointIds: ISystemConfigPoint[];
   eventReward: IEventReward;
 }
 

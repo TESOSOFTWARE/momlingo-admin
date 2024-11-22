@@ -1,7 +1,6 @@
 import { type } from 'os';
 import { CustomFile } from '../common/components/upload';
 
-
 export interface IFeedbackList {
   id: number;
   content: string;
@@ -23,11 +22,11 @@ export interface IResListFeedback {
   };
 }
 export interface IFilterForm {
-  phone?:string ;
-  name?:string ;
-  startDate?:string ;
-  endDate?:string ;
-  type?:string ;
+  phone?: string;
+  name?: string;
+  startDate?: string;
+  endDate?: string;
+  type?: string;
 }
 export interface IListFeedbackParams extends IFilterForm {
   page?: number;
@@ -39,7 +38,7 @@ export interface IPropsTableRow {
   onSelectRow: (checked: boolean) => void;
 }
 export type StateProps = {
-  searchParams:IListFeedbackParams,
+  searchParams: IListFeedbackParams;
   confirmModal: {
     callback: VoidFunction;
     isOpen: boolean;

@@ -10,7 +10,11 @@ import {
   IUser,
 } from './interfaces';
 import axiosInstance from '../common/utils/axios';
-import { API_GET_ADDRESS_MERCHANT, API_GET_LIST_USER, API_GET_LIST_USER_INTRODUCE } from '../common/constants/apis';
+import {
+  API_GET_ADDRESS_MERCHANT,
+  API_GET_LIST_USER,
+  API_GET_LIST_USER_INTRODUCE,
+} from '../common/constants/apis';
 
 // export const getListUserOld = (params: IListUserParams) => {
 //   return axiosInstance.get<unknown, IResListUser>(API_GET_LIST_USER, { params });
@@ -47,12 +51,13 @@ export const requestExportListUser = (params: IListUserParams) => {
   return axiosInstance.post(`${API_GET_LIST_USER}/request-export`, params);
 };
 
-
 export const getProvinceScan = (params: IProvinceParams) => {
   return axiosInstance.get<unknown, IResProvince>(API_GET_ADDRESS_MERCHANT, { params });
 };
 
-
-export const requestExport = (searchParams:IListUserIntroduceParams) => {
-  return axiosInstance.post(`${API_GET_LIST_USER_INTRODUCE}/request-export`,searchParams);
+export const requestExport = (searchParams: IListUserIntroduceParams) => {
+  return axiosInstance.post(
+    `${API_GET_LIST_USER_INTRODUCE}/request-export`,
+    searchParams
+  );
 };

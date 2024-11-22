@@ -34,10 +34,7 @@ export const TABLE_HEAD = [
     label: 'Nội dung',
     align: 'center',
   },
-  
 ];
-
-
 
 export const typeFeedback: {
   [key: string]: string;
@@ -57,13 +54,12 @@ export const typeFeedback: {
   {
     label: 'Vòng quay',
     value: 'WHEEL',
-  }
-]
+  },
+];
 export const typeFeedbackTable: {
   [key: string]: string;
 } = {
   ADD_POINT: 'Tích xu',
   EXCHANGE_GIFT: 'Đổi quà',
   WHEEL: 'Vòng quay',
-
 };

@@ -31,7 +31,6 @@ export default function ListIntroduceUserTableSkeleton({ isLoading, row }: Props
                 <TableCell align="left">
                   <Skeleton />
                 </TableCell>
-                
               </>
             ) : (
               <TableCell colSpan={12} sx={{ p: 0 }} />

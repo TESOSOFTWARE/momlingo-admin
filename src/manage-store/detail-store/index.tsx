@@ -25,9 +25,7 @@ export const DetailStoreContainer = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const { showSuccessSnackbar, showErrorSnackbar } = useShowSnackbar();
-  const { confirmModal } = useSelector(
-    (state) => state.manageStore
-  );
+  const { confirmModal } = useSelector((state) => state.manageStore);
   const { mutate, isSuccess } = useExportDetailExternal({
     onSuccess: () => {
       showSuccessSnackbar(t('manage_store.export.sucess'));
@@ -53,7 +51,6 @@ export const DetailStoreContainer = () => {
     }
   }, [isSuccess]);
   const handleExport = () => {
-
     mutate(parseInt(id as string));
   };
 
@@ -110,13 +107,15 @@ export const DetailStoreContainer = () => {
 
           <ReferralHistoryTable />
         </Container>
-        {(isSuccess) && (<ConfirmModal
+        {isSuccess && (
+          <ConfirmModal
             isOpen={confirmModal.isOpen}
             onClose={() => dispatch(closeConfirmModal())}
             onSubmit={confirmModal.callback}
             type={'warning'}
             text={confirmModal.text}
-          />)}
+          />
+        )}
       </Page>
     </>
   );

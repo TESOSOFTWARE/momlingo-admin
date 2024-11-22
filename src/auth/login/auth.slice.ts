@@ -70,7 +70,8 @@ export const authLoginSlice = createSlice({
   },
 });
 
-export const { setLogin, setLogout, setAccessToken, setRefreshToken, setAdminData } = authLoginSlice.actions;
+export const { setLogin, setLogout, setAccessToken, setRefreshToken, setAdminData } =
+  authLoginSlice.actions;
 export const loginSelector = (state: RootState) => state.authLogin.isAuthenticated;
 export const accessTokenSelector = (state: RootState) => state.authLogin.accessToken;
 export const refreshTokenSelector = (state: RootState) => state.authLogin.refreshToken;

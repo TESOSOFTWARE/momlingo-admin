@@ -23,7 +23,7 @@ export default function EditEvent() {
             },
           ]}
         />
-        <FormEditEvent/>
+        <FormEditEvent />
       </Container>
     </Page>
   );

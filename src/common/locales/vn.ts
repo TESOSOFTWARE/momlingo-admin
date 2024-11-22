@@ -1,7 +1,6 @@
 const vn = {
-
-  babyTracker:{
-    title: ''
+  babyTracker: {
+    title: '',
   },
 
   confirmModal: {
@@ -70,7 +69,7 @@ const vn = {
     order: 'Đơn đặt hàng',
     title: {
       order: 'Thống kê theo đơn hàng',
-      game: 'Thống kê theo trò chơi'
+      game: 'Thống kê theo trò chơi',
     },
     game: 'Trò chơi',
     export: 'Xuất dữ liệu',

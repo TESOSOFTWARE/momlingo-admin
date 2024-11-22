@@ -6,7 +6,7 @@ export interface IEditOrder {
   status: OrderStatus | string;
   name: string;
   phone: string;
-  fullAddress: string
+  fullAddress: string;
 }
 
 export interface IEditDataOrder {

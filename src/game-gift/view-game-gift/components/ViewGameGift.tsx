@@ -329,7 +329,11 @@ export default function FormViewGameGift() {
                     ))}
                   </RHFSelect>
                 </Box>
-                {giftId ? (<Typography variant="h6">Tổng số giải: {dataGameGiftById?.totalQuantity || 0} </Typography>) : null}
+                {giftId ? (
+                  <Typography variant="h6">
+                    Tổng số giải: {dataGameGiftById?.totalQuantity || 0}{' '}
+                  </Typography>
+                ) : null}
               </Stack>
               <Divider />
               {watch('type') === TypeGameConstraints.DEFAULT && (

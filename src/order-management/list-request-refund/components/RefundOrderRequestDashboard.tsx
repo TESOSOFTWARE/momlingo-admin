@@ -18,7 +18,7 @@ import LoadingTableSkeleton from '../../../common/components/LoadingTableSkeleto
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useGetOrder } from '../../list-physical/hooks/useGetOrder';
-import {  useGetListRefundOrderRequest } from '../hooks/useGetListRefundOrder';
+import { useGetListRefundOrderRequest } from '../hooks/useGetListRefundOrder';
 import { IParamsRefundedOrderRequest } from '../interfaces';
 import { REFUND_REQUEST_TABLE_HEAD } from '../constants';
 import { setParamsRefundRequest } from '../slice';
@@ -42,7 +42,7 @@ export default function ListRefundOrderRequestDashBoard() {
   const searchParams: IParamsRefundedOrderRequest = {
     page: page + 1,
     limit: rowsPerPage,
-    orderRefundStatus:"REQUEST_REFUND_POINT"
+    orderRefundStatus: 'REQUEST_REFUND_POINT',
     // orderId: searchData?.orderId === 0 ? undefined : searchData?.orderId,
     // name: searchData?.name === '' ? undefined : searchData?.name,
     // startDate: searchData?.startDate === null ? undefined : searchData?.startDate,
@@ -51,9 +51,7 @@ export default function ListRefundOrderRequestDashBoard() {
   };
 
   useEffect(() => {
-  
-      dispatch(setParamsRefundRequest(searchParams));
-    
+    dispatch(setParamsRefundRequest(searchParams));
   }, [searchParams]);
 
   // useDeepCompareEffect(() => {

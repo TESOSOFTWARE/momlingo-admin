@@ -10,7 +10,5 @@ export const REFUND_REQUEST_TABLE_HEAD = [
 
 export const DEFAULT_VALUE_MODAL_FORM = {
   refundPoint: 0,
-  content: ""
+  content: '',
 };
-
-

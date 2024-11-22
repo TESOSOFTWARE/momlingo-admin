@@ -20,8 +20,8 @@ export const PATH_AFTER_LOGIN = PATH_DASHBOARD.event.list; // as '/dashboard/app
 // Config for App
 export const CONFIG_APP_DETAIL = {
   name: 'MomLingo Admin',
-  specialPath: process.env.BASE_PATH_DEPLOY ||'/'
-}
+  specialPath: process.env.BASE_PATH_DEPLOY || '/',
+};
 
 // LAYOUT
 // ----------------------------------------------------------------------

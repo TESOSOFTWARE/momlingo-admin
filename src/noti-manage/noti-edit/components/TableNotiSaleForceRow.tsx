@@ -28,7 +28,7 @@ export default function SaleForceNotiTableRow({ row }: IPropsSaleForceTable) {
             whiteSpace: 'nowrap',
             maxWidth: 200,
           }}
-          align='center'
+          align="center"
         >
           {campaignMemberId}
         </TableCell>

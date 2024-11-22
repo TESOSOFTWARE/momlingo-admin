@@ -1,4 +1,4 @@
-import { IPoint } from "../../config-point/list-point/interface";
+import { IPoint } from '../../config-point/list-point/interface';
 
 export interface IPropsTableRow {
   row: IConfigPlayTimeRow;
@@ -16,7 +16,7 @@ export interface IConfigPlayTimeRow {
   game?: {
     id: number;
     name: string;
-  }
+  };
 }
 
 export interface IParamsSearch {
@@ -57,8 +57,8 @@ export interface IGamePlayTime {
       wonQuantity: number;
       name: string;
       winRate: number;
-    }
-  }
+    };
+  };
 }
 
 export interface IResListGamePlayTime {
@@ -69,7 +69,7 @@ export interface IResListGamePlayTime {
     itemsPerPage: number;
     totalPages: number;
     currentPage: number;
-  }
+  };
 }
 
 export interface IFormCreateConfig {
@@ -95,6 +95,6 @@ export interface ISearchProductGroup {
 }
 
 export interface IFormCallback {
-  onSuccess: VoidFunction,
-  onError: VoidFunction,
+  onSuccess: VoidFunction;
+  onError: VoidFunction;
 }

@@ -6,7 +6,7 @@ export const TABLE_HEAD_PHYSICAL = [
   { id: 'point', label: 'Giá xu', align: 'center' },
   { id: 'price', label: 'Giá tiền', align: 'center' },
   { id: 'total', label: 'Tổng tiền', align: 'center' },
-  { label: '' }
+  { label: '' },
 ];
 
 export const TABLE_HEAD_VOUCHER = [
@@ -24,7 +24,7 @@ export const TABLE_HEAD_VOUCHER = [
 export const Required_Note = [
   { value: 'CHOTHUHANG', label: 'Cho Xem Hàng' },
   { value: 'CHOXEMHANGKHONGTHU', label: 'Cho Xem Hàng Không Thử' },
-  { value: 'KHONGCHOXEMHANG', label: 'Không Cho Xem Hàng' }
+  { value: 'KHONGCHOXEMHANG', label: 'Không Cho Xem Hàng' },
 ];
 
 export const defaultDelivery = {
@@ -49,14 +49,14 @@ export const defaultDelivery = {
       price: 0,
       length: 0,
       width: 0,
-      height: 0
-    }
+      height: 0,
+    },
   ],
   name: '',
-  quantity: 0
+  quantity: 0,
 };
 
-export const DEFAULT_REFUND_FORM ={
+export const DEFAULT_REFUND_FORM = {
   refundPoint: 0,
   content: '',
-}
+};

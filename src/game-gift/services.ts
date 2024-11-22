@@ -1,5 +1,10 @@
 import axiosInstance from '../common/utils/axios';
-import { API_GAME_GIFTS, API_GET_LIST_USER, API_PRODUCT, API_VARIANT } from '../common/constants/apis';
+import {
+  API_GAME_GIFTS,
+  API_GET_LIST_USER,
+  API_PRODUCT,
+  API_VARIANT,
+} from '../common/constants/apis';
 import {
   IFormCreateGameGift,
   IFormDataGameGift,

@@ -14,7 +14,7 @@ export function useDeleteStore() {
 
   return {
     ...useMutation(deleteStore, {
-      onSuccess: ()  => {
+      onSuccess: () => {
         queryClient.invalidateQueries([QUERY_KEYS.LIST_EXTERNAL_REFERRER]);
         // callback.onSuccess && callback.onSuccess();
         showSuccessSnackbar('Xoá cửa hàng thành công!');
@@ -22,7 +22,6 @@ export function useDeleteStore() {
       onError: (data: any) => {
         // callback.onError && callback.onError();
         showErrorSnackbar(data?.response?.data?.message);
-
       },
     }),
   };

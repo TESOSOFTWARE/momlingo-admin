@@ -29,7 +29,8 @@ export const gameGiftManageSlice = createSlice({
   },
 });
 
-export const { setIsOpenConfirmModal, setSelectedRow, setIdProduct } = gameGiftManageSlice.actions;
+export const { setIsOpenConfirmModal, setSelectedRow, setIdProduct } =
+  gameGiftManageSlice.actions;
 
 export const isOpenConfirmModalSelector = (state: RootState) =>
   state.gameGiftManage.isOpenConfirmModal;

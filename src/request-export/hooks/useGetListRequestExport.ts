@@ -5,8 +5,12 @@ import { IParamsGetList } from '../interfaces';
 
 export function useGetListRequestExport(params: IParamsGetList) {
   return {
-    ...useQuery([QUERY_KEYS.REQUEST_EXPORT_LIST,params], () => getListRequestExport(params), {
-      cacheTime: 0,
-    }),
+    ...useQuery(
+      [QUERY_KEYS.REQUEST_EXPORT_LIST, params],
+      () => getListRequestExport(params),
+      {
+        cacheTime: 0,
+      }
+    ),
   };
 }

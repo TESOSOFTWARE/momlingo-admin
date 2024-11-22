@@ -38,7 +38,15 @@ export default function ProductAttributeTableRow({
         <TableCell align="center">
           <Checkbox checked={selected} onChange={(e) => onSelectRow(e.target.checked)} />
         </TableCell>
-        <TableCell align="center" onClick={() =>  navigate(replacePathParams(PATH_DASHBOARD.product_attribute.edit, { id: id }))} sx={{ color: 'red', fontWeight: 'bold', cursor: 'pointer' }}>{productAttributeDetails[0]?.name}</TableCell>
+        <TableCell
+          align="center"
+          onClick={() =>
+            navigate(replacePathParams(PATH_DASHBOARD.product_attribute.edit, { id: id }))
+          }
+          sx={{ color: 'red', fontWeight: 'bold', cursor: 'pointer' }}
+        >
+          {productAttributeDetails[0]?.name}
+        </TableCell>
         <TableCell align="center">{row?.type}</TableCell>
         <TableCell align="center">{productAttributeDetails[0]?.description}</TableCell>
         <TableCell align="center">{productAttributeDetails[0]?.lang}</TableCell>

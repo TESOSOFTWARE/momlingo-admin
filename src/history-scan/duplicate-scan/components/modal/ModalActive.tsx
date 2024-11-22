@@ -32,9 +32,9 @@ const mapTypeToColor: Record<
 };
 
 export const ConfirmActiveModal = (props: ConfirmModalProps) => {
-  const { isOpen, onClose, onSubmit,  isLoading } = props;
+  const { isOpen, onClose, onSubmit, isLoading } = props;
   const { t } = useTranslation();
-  const unblockStatusRow =  useSelector(unBlockSelector);
+  const unblockStatusRow = useSelector(unBlockSelector);
   return (
     <div>
       <Dialog
@@ -46,10 +46,14 @@ export const ConfirmActiveModal = (props: ConfirmModalProps) => {
         PaperProps={{
           sx: {
             boxShadow: 0,
-          }
+          },
         }}
       >
-        <DialogTitle id="alert-dialog-title">{unblockStatusRow? "Bạn có chắc muốn khóa mã này ?": "Bạn có chắc muốn mở khóa mã này ?"}</DialogTitle>
+        <DialogTitle id="alert-dialog-title">
+          {unblockStatusRow
+            ? 'Bạn có chắc muốn khóa mã này ?'
+            : 'Bạn có chắc muốn mở khóa mã này ?'}
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-description">
             {t('confirmModal.content')}
@@ -65,11 +69,11 @@ export const ConfirmActiveModal = (props: ConfirmModalProps) => {
               onSubmit();
               onClose();
             }}
-            color={unblockStatusRow? "error": "success"}
+            color={unblockStatusRow ? 'error' : 'success'}
             autoFocus
             variant="contained"
           >
-            {unblockStatusRow? "Khóa": "Mở khóa"}
+            {unblockStatusRow ? 'Khóa' : 'Mở khóa'}
           </LoadingButton>
         </DialogActions>
       </Dialog>

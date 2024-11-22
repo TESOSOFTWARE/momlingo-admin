@@ -18,12 +18,8 @@ import { fDateTime24h } from '../../../common/utils/formatTime';
 import { isValidURL } from '../../../common/constants/common.utils';
 import { IPropsTableRow } from '../../interface';
 
-export default function FeedbackTableRow({
-  row,
-  selected,
-  onSelectRow,
-}: IPropsTableRow) {
-  const { id , name,phone,type,createdDate,rating, content } = row;
+export default function FeedbackTableRow({ row, selected, onSelectRow }: IPropsTableRow) {
+  const { id, name, phone, type, createdDate, rating, content } = row;
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
   const { t } = useTranslation();
   const handleOpenMenu = (category: React.MouseEvent<HTMLElement>) => {
@@ -40,10 +36,9 @@ export default function FeedbackTableRow({
         <TableCell align="left">{phone}</TableCell>
         <TableCell align="left">{fDateTime24h(createdDate)}</TableCell>
         <TableCell align="left">{typeFeedbackTable[type]}</TableCell>
-        
+
         <TableCell align="center">{rating}</TableCell>
         <TableCell align="center">{content}</TableCell>
-        
       </TableRow>
     </>
   );

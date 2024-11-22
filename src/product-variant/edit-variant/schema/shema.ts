@@ -26,5 +26,5 @@ export const EditVariantSchema = Yup.object().shape({
     .typeError('Giá sale phải là số'),
   salePoint: Yup.number()
     .transform((cv, ov) => (ov === '' ? 0 : cv))
-    .typeError('điểm sale phải là số')
+    .typeError('điểm sale phải là số'),
 });

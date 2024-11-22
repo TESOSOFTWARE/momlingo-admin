@@ -95,7 +95,7 @@ export const EditStoreForm = () => {
 
   return (
     <>
-      <Paper elevation={3} sx={{ paddingY: 3}}>
+      <Paper elevation={3} sx={{ paddingY: 3 }}>
         <Container>
           <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
             <Stack spacing={3}>

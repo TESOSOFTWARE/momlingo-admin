@@ -1,4 +1,16 @@
-import { Paper, Table, TableBody, TableContainer, Stack, Card, Box, TablePagination, FormControlLabel, Switch, Button } from '@mui/material';
+import {
+  Paper,
+  Table,
+  TableBody,
+  TableContainer,
+  Stack,
+  Card,
+  Box,
+  TablePagination,
+  FormControlLabel,
+  Switch,
+  Button,
+} from '@mui/material';
 import { TableHeadCustom } from '../../../../common/components/table';
 import useTable from '../../../../common/hooks/useTable';
 import { useGetConfigFeature } from '../../hooks/useGetConfigFeature';
@@ -11,10 +23,10 @@ import { BabyTrackerTableRow } from './BabyTrackerTableRow';
 import { useNavigate } from 'react-router-dom';
 import { PATH_DASHBOARD } from '../../../../common/routes/paths';
 export default function ConfigFeatureList() {
-  const { 
-    dense, 
+  const {
+    dense,
     page,
-    order, 
+    order,
     orderBy,
     rowsPerPage,
     setPage,
@@ -24,14 +36,14 @@ export default function ConfigFeatureList() {
   } = useTable();
   const navigate = useNavigate();
   const { data: productList } = useGetConfigFeature();
-  const { data: trackerList, isLoading} = useGetBabyTracker();
-  console.log(trackerList )
-   // const listRequest = DATA_LIST_USER;
+  const { data: trackerList, isLoading } = useGetBabyTracker();
+  console.log(trackerList);
+  // const listRequest = DATA_LIST_USER;
   const totalItems = Array.isArray(trackerList) ? trackerList.length : 0;
   const paginatedList = Array.isArray(trackerList)
-  ? trackerList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-  : [];
-  console.log(paginatedList)
+    ? trackerList.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
+    : [];
+  console.log(paginatedList);
   return (
     <Card
       sx={{
@@ -43,7 +55,7 @@ export default function ConfigFeatureList() {
       <Stack spacing={3}>
         <Button
           sx={{
-            maxWidth: '300px'
+            maxWidth: '300px',
           }}
           onClick={() => navigate(PATH_DASHBOARD.configFeature.new.babyTracker)} // Đóng ngoặc đúng cách
         >
@@ -65,21 +77,21 @@ export default function ConfigFeatureList() {
           </Table>
         </TableContainer>
         <Box sx={{ position: 'relative' }}>
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 15]}
-          component="div"
-          count={lodash.isEmpty(totalItems) ? (totalItems as number) : 0}
-          rowsPerPage={rowsPerPage}
-          page={page}
-          onPageChange={onChangePage}
-          onRowsPerPageChange={onChangeRowsPerPage}
-        />
-        <FormControlLabel
-          control={<Switch checked={dense} onChange={onChangeDense} />}
-          label="Dense"
-          sx={{ px: 3, py: 1.5, top: 0, position: { md: 'absolute' } }}
-        />
-      </Box>
+          <TablePagination
+            rowsPerPageOptions={[5, 10, 15]}
+            component="div"
+            count={lodash.isEmpty(totalItems) ? (totalItems as number) : 0}
+            rowsPerPage={rowsPerPage}
+            page={page}
+            onPageChange={onChangePage}
+            onRowsPerPageChange={onChangeRowsPerPage}
+          />
+          <FormControlLabel
+            control={<Switch checked={dense} onChange={onChangeDense} />}
+            label="Dense"
+            sx={{ px: 3, py: 1.5, top: 0, position: { md: 'absolute' } }}
+          />
+        </Box>
       </Stack>
     </Card>
   );

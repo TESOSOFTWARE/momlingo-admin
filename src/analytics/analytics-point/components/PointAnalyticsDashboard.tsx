@@ -44,7 +44,7 @@ export default function PointAnalyticsDashboard() {
         <FilterStatisticPoint />
         <Grid container spacing={3} sx={{ mt: 3 }}>
           <Grid item xs={12} md={12} lg={12}>
-            {!!searchData?.startDate  && !!searchData?.endDate  ? (
+            {!!searchData?.startDate && !!searchData?.endDate ? (
               <Typography variant="h4">
                 {'Thống kê từ: ' +
                   formatDateNoTime(searchData?.startDate as string) +

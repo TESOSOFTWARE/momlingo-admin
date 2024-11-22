@@ -1,11 +1,11 @@
-import HistoryGiftFilterFilter from "./HistoryGiftFIlter";
-import HistoryGiftTable from "./HistoryGiftTable";
+import HistoryGiftFilterFilter from './HistoryGiftFIlter';
+import HistoryGiftTable from './HistoryGiftTable';
 
 type Props = {
-    searchUserId?: number;
-  };
+  searchUserId?: number;
+};
 
-export default function HistoryGiftForm({searchUserId}: Props) {
+export default function HistoryGiftForm({ searchUserId }: Props) {
   return (
     <>
       <HistoryGiftFilterFilter searchUserId={searchUserId} />

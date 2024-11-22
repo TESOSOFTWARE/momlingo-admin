@@ -73,8 +73,8 @@ export default function FormEditUser() {
   useDeepCompareEffect(() => {
     if (data) {
       reset(data);
-      setValue('provinceId', data?.province );
-      setValue('districtId',data?.district || null);
+      setValue('provinceId', data?.province);
+      setValue('districtId', data?.district || null);
       setValue('wardId', data?.ward || null);
       setValue('totalPoints', data?.userPoint?.totalPoints);
       setValue('createdAt', formatDate(data?.createdAt));
@@ -93,7 +93,7 @@ export default function FormEditUser() {
   const provinceData = listProvince?.items || [];
 
   const { data: listDistrict } = useGetProvince({
-    parentId:watch('provinceId')?.id,
+    parentId: watch('provinceId')?.id,
     type: 'DISTRICT',
     page: 1,
     limit: 100,
@@ -101,7 +101,7 @@ export default function FormEditUser() {
   const districtData = listDistrict?.items || [];
 
   const { data: listWard } = useGetProvince({
-    parentId:watch('districtId')?.id || 0,
+    parentId: watch('districtId')?.id || 0,
     type: 'WARD',
     page: 1,
     limit: 100,
@@ -127,7 +127,7 @@ export default function FormEditUser() {
         gender: dataSubmit?.gender === '' ? null : dataSubmit?.gender,
         address: dataSubmit?.address === '' ? null : dataSubmit?.address,
         provinceId: dataSubmit?.provinceId?.id === '' ? null : dataSubmit?.provinceId?.id,
-        wardId: dataSubmit?.wardId?.id === '' ? null :  dataSubmit?.wardId?.id,
+        wardId: dataSubmit?.wardId?.id === '' ? null : dataSubmit?.wardId?.id,
         districtId: dataSubmit?.districtId?.id === '' ? null : dataSubmit?.districtId?.id,
         birthDate: dataSubmit?.birthDate === '' ? null : dataSubmit?.birthDate,
         tierCode: dataSubmit?.tierCode,
@@ -146,15 +146,13 @@ export default function FormEditUser() {
       },
     };
     mutate(dataEditUser);
-    
   };
-  useEffect(()=>{
-if(data?.province?.id !== watch('provinceId')?.id){
-  setValue('wardId',null)
-  setValue('districtId',null)
-
-}
-  },[watch('provinceId')?.id])
+  useEffect(() => {
+    if (data?.province?.id !== watch('provinceId')?.id) {
+      setValue('wardId', null);
+      setValue('districtId', null);
+    }
+  }, [watch('provinceId')?.id]);
   return (
     <Paper elevation={3} sx={{ boxShadow: 10, padding: 3 }}>
       <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
@@ -186,30 +184,30 @@ if(data?.province?.id !== watch('provinceId')?.id){
 
           <RHFTextField name="address" label={`${i18n.t('userManage.address')}`} />
           <Stack direction={'row'} spacing={2}>
-          <RHFSearchSelect
-              name='provinceId'
+            <RHFSearchSelect
+              name="provinceId"
               options={provinceData}
-              labelProp='name'
-              valueProp='id'
-              label='Tỉnh thành'
+              labelProp="name"
+              valueProp="id"
+              label="Tỉnh thành"
             />
             <RHFSearchSelect
-              name='districtId'
+              name="districtId"
               options={districtData}
-              labelProp='name'
-              valueProp='id'
-              label='Quận'
-              disableSelect={watch('provinceId')?.id? false :true}
+              labelProp="name"
+              valueProp="id"
+              label="Quận"
+              disableSelect={watch('provinceId')?.id ? false : true}
             />
-             <RHFSearchSelect
-              name='wardId'
+            <RHFSearchSelect
+              name="wardId"
               options={wardData}
-              labelProp='name'
-              valueProp='id'
-              label='Phường'
-              disableSelect={watch('districtId')?.id ? false :true}
+              labelProp="name"
+              valueProp="id"
+              label="Phường"
+              disableSelect={watch('districtId')?.id ? false : true}
             />
-            </Stack>
+          </Stack>
           <Stack direction={'row'} spacing={2}>
             <Controller
               name="birthDate"

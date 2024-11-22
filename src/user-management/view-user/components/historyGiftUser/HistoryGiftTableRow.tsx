@@ -80,7 +80,9 @@ export default function HistoryGiftTableRow({
             <Typography color="grey">Không có</Typography>
           )}
         </TableCell>
-        <TableCell align="center" sx ={{ fontWeight: 'bold'}}>{type}</TableCell>
+        <TableCell align="center" sx={{ fontWeight: 'bold' }}>
+          {type}
+        </TableCell>
         <TableCell align="center">
           <Chip
             sx={{
@@ -90,7 +92,7 @@ export default function HistoryGiftTableRow({
               fontWeight: 'bold',
               borderRadius: '8px',
             }}
-            label= {STATUS_ORDER_GIFT_STYLE[status].label}
+            label={STATUS_ORDER_GIFT_STYLE[status].label}
           />
         </TableCell>
         <TableCell align="center">

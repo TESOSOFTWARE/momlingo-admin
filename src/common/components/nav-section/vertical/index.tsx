@@ -34,17 +34,15 @@ export default function NavSectionVertical({
           >
             {translate(group.subheader)}
           </ListSubheaderStyle>
-            {
-              group.items.map((list, index) => (
-                <NavList
-                  key={list.title + list.path}
-                  data={list}
-                  depth={1}
-                  hasChildren={!!list.children}
-                  isCollapse={isCollapse}
-                />
-              ))
-            }
+          {group.items.map((list, index) => (
+            <NavList
+              key={list.title + list.path}
+              data={list}
+              depth={1}
+              hasChildren={!!list.children}
+              isCollapse={isCollapse}
+            />
+          ))}
           {/* {policies?.isRootAccount
             ? group.items.map((list) => (
                 <NavList
@@ -67,7 +65,6 @@ export default function NavSectionVertical({
                   />
                 </Can>
               ))} */}
-              
         </List>
       ))}
     </Box>

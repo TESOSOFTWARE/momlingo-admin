@@ -23,16 +23,14 @@ export default function SubjectTableRow({
 
   const handleCloseMenu = () => {
     setOpenMenuActions(null);
-  }; 
+  };
 
   return (
     <TableRow hover selected={selected}>
       <TableCell padding="checkbox">
         <Checkbox checked={selected} onChange={(e) => onSelectRow(e.target.checked)} />
       </TableCell>
-      <TableCell align="center">
-        {id}
-      </TableCell>
+      <TableCell align="center">{id}</TableCell>
       <TableCell
         align="left"
         sx={{

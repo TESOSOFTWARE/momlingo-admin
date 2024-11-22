@@ -161,7 +161,7 @@ export default function GroupPolicyList() {
           type="delete"
         />
 
-        <Card sx={{ padding: 1}}>
+        <Card sx={{ padding: 1 }}>
           <GroupPolicyToolbar
             filterName={searchText}
             filterStatus={searchStatus || ''}

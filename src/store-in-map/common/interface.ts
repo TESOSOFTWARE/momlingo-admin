@@ -6,16 +6,14 @@ export interface ICallback {
 export interface INewStore {
   name: string;
   address: string;
-  lat:number;
-  long:number;
+  lat: number;
+  long: number;
 }
 
 export interface IStoreItem {
   id: number;
   name: string;
   address: string;
-  lat:number;
-  long:number;
+  lat: number;
+  long: number;
 }
-
-

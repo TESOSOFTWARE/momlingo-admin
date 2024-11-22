@@ -78,16 +78,22 @@ export default function ListUserDashBoard() {
       <UserFilterBar onSetPage={setPage} />
       <TableContainer sx={{ position: 'relative' }}>
         <Table size={dense ? 'small' : 'medium'}>
-          <TableHeadCustom headLabel={USER_TABLE_HEAD} rowCount={Array.isArray(listRequest) ? listRequest.length : 0} />
+          <TableHeadCustom
+            headLabel={USER_TABLE_HEAD}
+            rowCount={Array.isArray(listRequest) ? listRequest.length : 0}
+          />
 
           <TableBody>
-            {Array.isArray(listRequest) && listRequest.map((row: IUser) => (
-              <UserTableRow key={row.id} row={row} />
-            ))}
+            {Array.isArray(listRequest) &&
+              listRequest.map((row: IUser) => <UserTableRow key={row.id} row={row} />)}
             {isLoading && (
               <ListUserTableSkeleton isLoading={isLoading} row={rowsPerPage} />
             )}
-            <TableNoData isNotFound={!isLoading && Array.isArray(listRequest) && listRequest.length === 0} />
+            <TableNoData
+              isNotFound={
+                !isLoading && Array.isArray(listRequest) && listRequest.length === 0
+              }
+            />
           </TableBody>
         </Table>
       </TableContainer>

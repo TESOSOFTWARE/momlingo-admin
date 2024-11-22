@@ -3,7 +3,6 @@ import { QUERY_KEYS } from '../../../common/constants/queryKeys.constant';
 import { getBabyTrackerList } from '../baby-tracker-service';
 import { PregnancyWeekInfo } from '../baby-tracker-interface';
 
-
 export function useGetBabyTracker() {
   return useQuery<PregnancyWeekInfo[]>(
     [QUERY_KEYS.LIST_BABY_TRACKERS], // Query key

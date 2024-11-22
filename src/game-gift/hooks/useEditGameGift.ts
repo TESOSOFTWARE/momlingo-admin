@@ -21,7 +21,11 @@ export const useEditGameGift = (callback: ICallback) => {
       },
       onError: (data: any) => {
         callback.onError && callback.onError();
-        showErrorSnackbar(data.response.data.message ? data?.response?.data?.message : "Chỉnh sửa thất bại!" )
+        showErrorSnackbar(
+          data.response.data.message
+            ? data?.response?.data?.message
+            : 'Chỉnh sửa thất bại!'
+        );
       },
     }),
   };

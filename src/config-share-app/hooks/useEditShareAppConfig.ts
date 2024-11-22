@@ -3,7 +3,6 @@ import { QUERY_KEYS } from 'src/common/constants/queryKeys.constant';
 import { ICallback } from '../interface';
 import { editShareAppConfig } from '../service';
 
-
 export const useEditShareAppConfig = (callback: ICallback) => {
   const queryClient = useQueryClient();
   return {

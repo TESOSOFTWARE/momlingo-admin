@@ -137,9 +137,11 @@ export default function HistoryGiftFilterFilter({ searchUserId }: Props) {
                 label={'Loại sản phẩm'}
                 SelectProps={{ native: false }}
               >
-                <MenuItem value="" disabled/>
+                <MenuItem value="" disabled />
                 {Object.values(EnumType)?.map((typeOrder) => (
-                  <MenuItem value={typeOrder} key={typeOrder}>{typeOrder}</MenuItem>
+                  <MenuItem value={typeOrder} key={typeOrder}>
+                    {typeOrder}
+                  </MenuItem>
                 ))}
               </RHFSelect>
             </Stack>

@@ -55,7 +55,7 @@ export default function TermPolicyTableRow({
             {type}
           </Label>
         </TableCell>
-        <TableCell align="center">{fDateTime24h(createdAt) }</TableCell>
+        <TableCell align="center">{fDateTime24h(createdAt)}</TableCell>
         <TableCell align="center">{fDateTime24h(updatedAt)}</TableCell>
         <TableCell align="right">
           <TableMoreMenu

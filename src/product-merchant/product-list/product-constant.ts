@@ -36,4 +36,4 @@ export const DEFAULT_SEARCH_PRODUCT = {
   productStatus: undefined,
   taxStatus: undefined,
   productType: undefined,
-}
+};

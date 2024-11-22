@@ -164,7 +164,7 @@ export interface IHistoryGiftUserParams {
   startDate?: string | null;
   endDate?: string | null;
   phone?: string;
-  orderId?: number| null;
+  orderId?: number | null;
   page?: number;
   limit?: number;
   userId?: number;

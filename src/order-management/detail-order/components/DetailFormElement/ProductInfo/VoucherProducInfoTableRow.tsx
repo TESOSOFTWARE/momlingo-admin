@@ -64,10 +64,11 @@ export default function VoucherProductInfoTableRow({ row, onDetailRow }: IPropsT
             {row?.externalProductUsedInfos?.map((item, index) => (
               <Typography
                 key={index}
-                sx={{ fontWeight: 'bold', fontStyle: item.status ? 'normal' : 'italic',
-                color:  item?.status === 'USED' ?'green': 'red',
-              
-              }}
+                sx={{
+                  fontWeight: 'bold',
+                  fontStyle: item.status ? 'normal' : 'italic',
+                  color: item?.status === 'USED' ? 'green' : 'red',
+                }}
               >
                 {item.status ? item?.status : 'Không xác định'}
               </Typography>

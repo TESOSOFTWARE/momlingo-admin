@@ -5,6 +5,6 @@ import { getHistoryGift } from '../common/services';
 
 export const useGetHistoryGift = (params: IHistoryGiftUserParams) => {
   return {
-    ...useQuery([QUERY_KEYS.HISTORY_GIFT, params], () => getHistoryGift(params), {})
+    ...useQuery([QUERY_KEYS.HISTORY_GIFT, params], () => getHistoryGift(params), {}),
   };
 };

@@ -12,12 +12,8 @@ import Iconify from '../../../common/components/Iconify';
 import { TableMoreMenu } from '../../../common/components/table';
 import { IPropsTableRowGame } from '../../interface';
 
-
-export default function GameTableRow({
-  row,
-  index
-}: IPropsTableRowGame) {
-  const { date, total,totalWon } = row;
+export default function GameTableRow({ row, index }: IPropsTableRowGame) {
+  const { date, total, totalWon } = row;
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
   const { t } = useTranslation();
   const handleOpenMenu = (category: React.MouseEvent<HTMLElement>) => {
@@ -28,8 +24,7 @@ export default function GameTableRow({
   };
   return (
     <>
-      <TableRow >
-       
+      <TableRow>
         <TableCell align="center">{index + 1}</TableCell>
         <TableCell align="left">{date}</TableCell>
         <TableCell align="center">{total}</TableCell>

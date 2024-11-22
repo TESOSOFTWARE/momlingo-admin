@@ -1,4 +1,3 @@
-
 import { Box, Button, Container } from '@mui/material';
 import Page from '../../common/components/Page';
 import i18n from 'src/common/locales/i18n';
@@ -16,7 +15,6 @@ export default function EditBabyTracker() {
   const { mutate } = useUpdateBabyTracker(); // Gọi mutation hook
 
   const { data, isLoading, error } = useGetBabyTrackerWeek(week || ''); // Sử dụng hook để lấy dữ liệu
-   
 
   const handleUpdateData = () => {
     if (!week) {
@@ -46,12 +44,12 @@ export default function EditBabyTracker() {
     <Page title={i18n.t('featureConfig.title')}>
       <Container maxWidth={themeStretch ? false : 'xl'}>
         <ConfigFeatureHeader />
-          <h2>Edit Baby Tracker - Week {week}</h2>
-          <Box>
-            {/* <FormCreateSurvey/> */}
-            <FormCreateSurvey babyTrackerData={data} />
-            {/* <Button onClick={handleUpdateData}>Update Baby Tracker</Button> */}
-          </Box>
+        <h2>Edit Baby Tracker - Week {week}</h2>
+        <Box>
+          {/* <FormCreateSurvey/> */}
+          <FormCreateSurvey babyTrackerData={data} />
+          {/* <Button onClick={handleUpdateData}>Update Baby Tracker</Button> */}
+        </Box>
       </Container>
     </Page>
   );

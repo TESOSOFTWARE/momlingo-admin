@@ -6,37 +6,45 @@ export interface IRuleConfig {
   [key: string]: {
     desc: string;
     status: boolean;
-    values:{
+    values: {
       [key: string]: string;
     };
   };
 }
 
 export interface IPropsTableRow {
-    rowCode: string;
-    listRuleConfig?: IRuleConfig;
+  rowCode: string;
+  listRuleConfig?: IRuleConfig;
 }
 
 export interface IFormChangeRuleConfig {
-    name?: string;
-    status?: boolean; 
+  name?: string;
+  status?: boolean;
 }
 export type ICallback = {
-    onSuccess?: VoidFunction;
-    onError?: VoidFunction;
+  onSuccess?: VoidFunction;
+  onError?: VoidFunction;
 };
 
 export interface IFormRuleConfigItem {
-    code: string;
-    desc?: string;
-    status?: boolean;
-    values?: {
-      [key: string]:string;
-    };
+  code: string;
+  desc?: string;
+  status?: boolean;
+  values?: {
+    [key: string]: string;
+  };
 }
 
-export interface ChildTracker{
-  id: string,
-  week: string,
-  content: string
+// child
+
+export interface ChildTracker {
+  id: string;
+  week: string;
+  content: string;
 }
+
+export interface UpdateChildTrackerParams {
+  week: string;
+  content: string;
+}
+//

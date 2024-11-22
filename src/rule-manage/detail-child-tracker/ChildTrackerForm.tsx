@@ -1,24 +1,20 @@
-
-import * as React from 'react';
-import TextField from '@mui/material/TextField';
-import { CKEditor } from '@ckeditor/ckeditor5-react';
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-
-import "./styles.css";
-import { Box, Button, Card, Stack, Typography } from '@mui/material';
-import { ISurVeyForm } from '../../survey/common/survey.interface';
-import { useNavigate } from 'react-router-dom';
-import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schemaAddSurvey } from '../../survey/schema';
-import { DEFAULT_ADD_SURVEY } from '../../survey/contanst';
-import useMessage from '../../common/hooks/useMessage';
-import { useSurveyCreate } from '../../survey/survey-create/hooks/useSurveyCreate';
-import { PATH_DASHBOARD } from '../../common/routes/paths';
-import { IStatus } from '../../game-manage/constants';
-import { FormProvider, RHFSwitch, RHFTextField } from '../../common/components/hook-form';
 import { LoadingButton } from '@mui/lab';
-
+import { Card, Stack } from '@mui/material';
+import TextField from '@mui/material/TextField';
+import * as React from 'react';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { FormProvider } from '../../common/components/hook-form';
+import useMessage from '../../common/hooks/useMessage';
+import { PATH_DASHBOARD } from '../../common/routes/paths';
+import { ISurVeyForm } from '../../survey/common/survey.interface';
+import { DEFAULT_ADD_SURVEY } from '../../survey/contanst';
+import { schemaAddSurvey } from '../../survey/schema';
+import { useSurveyCreate } from '../../survey/survey-create/hooks/useSurveyCreate';
+import InputComponent from '../components/input/input';
+import './styles.css';
+import { useUpdateChildTracker } from '../hooks/useUpdateChildTracker';
 // Sửa lại để nhận data từ parent
 interface ChildTracker {
   childTrackerData?: any; // Thông tin dữ liệu truyền từ parent
@@ -31,7 +27,13 @@ export default function FormChildTracker({ childTrackerData }: ChildTracker) {
     defaultValues: childTrackerData || DEFAULT_ADD_SURVEY, // Sử dụng dữ liệu truyền vào nếu có
   });
 
-  console.log(childTrackerData)
+  const [data, setData] = React.useState<string>(childTrackerData?.content);
+
+  // Hàm xử lý dữ liệu nhận từ con
+  const handleDataFromChild = (updatedData: string): void => {
+    setData(updatedData);
+  };
+
   const {
     handleSubmit,
     formState: { isSubmitting },
@@ -39,70 +41,61 @@ export default function FormChildTracker({ childTrackerData }: ChildTracker) {
 
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
 
-  const { mutate } = useSurveyCreate({
+  const { mutate } = useUpdateChildTracker({
     onSuccess: () => {
-      showSuccessSnackbar("Survey created successfully");
-      navigate(PATH_DASHBOARD.survey.list);
+      showSuccessSnackbar('Survey created successfully');
+      navigate(PATH_DASHBOARD.ruleManage.list);
     },
     onError: () => {
-      showErrorSnackbar("Failed to create survey");
+      showErrorSnackbar('Failed to create survey');
     },
   });
 
-  const onSubmit = (data: ISurVeyForm) => {
-    const dataCreate = {
-      ...data,
-      status: data.status ? IStatus.ACTIVE : IStatus.IN_ACTIVE,
-      point: data.point ? data.point : 0,
+  const onSubmit = () => {
+    const updatedData = {
+      ...childTrackerData,
+      content: data,
     };
-    mutate(dataCreate);
+
+    // mutate(dataCreate);
+    try {
+      // await mutate(updatedData); // Gọi API submit
+      console.log('data update', updatedData);
+      mutate(updatedData);
+    } catch (error) {
+      console.error('Submit failed:', error);
+    }
   };
 
-  console.log(childTrackerData?.week);
-  const [editorData, setEditorData] = React.useState('');
+  React.useEffect(() => {
+    setData(childTrackerData?.content || '');
+  }, [childTrackerData]);
 
-  // Define the type for the editor change handler
-  const handleEditorChange = (event: Event, editor: Editor) => {
-    
-    console.log()
-    setEditorData(editor.getData());
-  };
   return (
     <Stack spacing={3}>
-    <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
-      <Card sx={{ padding: 2 }}>
-        <Stack spacing={3}>
-          {/* Hiển thị Tiêu đề */}
-          <TextField
-            id="outlined-basic"
-            label="Tuần"
-            variant="outlined"
-            value={childTrackerData?.week || ''} // Gán giá trị trực tiếp
-            onChange={(e) => console.log(e.target.value)} // Có thể thêm hàm xử lý sự kiện khi thay đổi giá trị
-          />
-          
-          <Box>
-            <h2>Nội dung</h2>
-            <CKEditor
-              editor={ClassicEditor}
-              data= {childTrackerData?.content}
-              onChange={handleEditorChange}
+      <FormProvider methods={methods} onSubmit={handleSubmit(onSubmit)}>
+        <Card sx={{ padding: 2 }}>
+          <Stack spacing={3}>
+            {/* Hiển thị Tiêu đề */}
+            <TextField
+              id="outlined-basic"
+              label="Tuần"
+              variant="outlined"
+              value={childTrackerData?.week || ''} // Gán giá trị trực tiếp
+              onChange={(e) => console.log(e.target.value)} // Có thể thêm hàm xử lý sự kiện khi thay đổi giá trị
             />
-          </Box>
-          
+            <InputComponent
+              data={childTrackerData?.content}
+              onUpdateData={handleDataFromChild}
+            />
+          </Stack>
+        </Card>
+        <Stack justifyContent="flex-end" direction="row" spacing={2} sx={{ mt: 3 }}>
+          <LoadingButton size="large" variant="contained" onClick={() => onSubmit()}>
+            Cập nhập
+          </LoadingButton>
         </Stack>
-      </Card>
-      <Stack justifyContent="flex-end" direction="row" spacing={2} sx={{ mt: 3 }}>
-        <LoadingButton
-          size="large"
-          variant="contained"
-          loading={isSubmitting}
-          type="submit"
-        >
-          Cập nhập
-        </LoadingButton>
-      </Stack>
-    </FormProvider>
-  </Stack>
+      </FormProvider>
+    </Stack>
   );
 }

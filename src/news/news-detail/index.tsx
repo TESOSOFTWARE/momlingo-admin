@@ -4,7 +4,7 @@ import NewsDetailHeader from './components/NewsDetailHeader';
 
 export default function NewsDetail() {
   return (
-    <Page title='Thông tin tin tức'>
+    <Page title="Thông tin tin tức">
       <NewsDetailHeader />
       <NewsDetailForm />
     </Page>

@@ -27,7 +27,11 @@ import { useTranslation } from 'react-i18next';
 import { useDispatch, useSelector } from 'react-redux';
 import useDeepEffect from '../../../common/hooks/useDeepEffect';
 import { useGetListSystemConfigPoint } from '../../hooks/useGetListSystemConfig';
-import { IEventSkus, IFormCreateEvent, ISystemConfigPoint } from '../../common/interfaces';
+import {
+  IEventSkus,
+  IFormCreateEvent,
+  ISystemConfigPoint,
+} from '../../common/interfaces';
 import { DEFAULT_VALUES_EVENT, TypeEvent, TypeEventReward } from '../../common/constant';
 import RHFSelectSystemConfigPoint from '../../common/components/RHFSelectSearch';
 import { useEditEvent } from '../../hooks/useEditEvent';
@@ -74,7 +78,10 @@ export default function FormEditEvent() {
 
   useDeepCompareEffect(() => {
     if (dataEvent) {
-      const arrSCP = dataEvent?.eventSkus?.map((item) =>{ return item?.systemConfigPoint}) || [];
+      const arrSCP =
+        dataEvent?.eventSkus?.map((item) => {
+          return item?.systemConfigPoint;
+        }) || [];
       const dataResetEvent = {
         ...dataEvent,
         status: dataEvent?.status,
@@ -93,10 +100,11 @@ export default function FormEditEvent() {
       endDate: dataSubmit?.endDate,
       eventReward: dataSubmit?.eventReward,
       status: dataSubmit?.status ? 'ACTIVE' : 'IN_ACTIVE',
-      systemConfigPointIds: dataSubmit?.systemConfigPointIds?.map((item: ISystemConfigPoint) => item?.id),
+      systemConfigPointIds: dataSubmit?.systemConfigPointIds?.map(
+        (item: ISystemConfigPoint) => item?.id
+      ),
     };
     mutate(dataEdit);
-
   };
   return (
     <Paper elevation={3} sx={{ boxShadow: 10, padding: 3 }}>

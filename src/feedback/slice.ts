@@ -2,15 +2,15 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { StateProps } from './interface';
 
 const initialState: StateProps = {
-  searchParams:{
-    phone:undefined,
-    name:undefined,
-    startDate:undefined,
-    endDate:undefined,
-    type:undefined,
+  searchParams: {
+    phone: undefined,
+    name: undefined,
+    startDate: undefined,
+    endDate: undefined,
+    type: undefined,
   },
   confirmModal: {
-    callback: () => { },
+    callback: () => {},
     isOpen: false,
     text: '',
   },
@@ -25,7 +25,7 @@ export const feedbackSlice = createSlice({
     },
     closeConfirmModal: (state) => {
       state.confirmModal = {
-        callback: () => { },
+        callback: () => {},
         isOpen: false,
         text: '',
       };
@@ -36,6 +36,7 @@ export const feedbackSlice = createSlice({
   },
 });
 
-export const {setConfirmModal, closeConfirmModal, setSearchParams } = feedbackSlice.actions;
+export const { setConfirmModal, closeConfirmModal, setSearchParams } =
+  feedbackSlice.actions;
 
 export default feedbackSlice.reducer;

@@ -35,7 +35,7 @@ import {
   setIsOpenModal,
   setIsOpenModalSelector,
   setSelectedRowId,
-  setSelectedRowIdSelector
+  setSelectedRowIdSelector,
 } from '../../slice';
 import { useDeleteNotiById } from '../hooks/useDeleteById';
 import { useGetListNotifications } from '../hooks/useGetLisNotifications';

@@ -71,16 +71,28 @@ export default function Login() {
   }, [expired]);
 
   return (
-    <Page title="Login" sx={{background:'#29adb2c7', display:'flex', alignItems:'center', justifyContent:'center', height:'fix-content'}}>
-      <RootStyle sx={{
-        width: '80%',
-        minHeight:'500px',
-        margin: '10vh 0px',
-        height: '80vh',
-        boxShadow: 'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
-        borderRadius:'20px',
-        background:'#fff'
-      }}>
+    <Page
+      title="Login"
+      sx={{
+        background: '#29adb2c7',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 'fix-content',
+      }}
+    >
+      <RootStyle
+        sx={{
+          width: '80%',
+          minHeight: '500px',
+          margin: '10vh 0px',
+          height: '80vh',
+          boxShadow:
+            'rgba(0, 0, 0, 0.25) 0px 14px 28px, rgba(0, 0, 0, 0.22) 0px 10px 10px',
+          borderRadius: '20px',
+          background: '#fff',
+        }}
+      >
         {mdUp && (
           <SectionStyle>
             <Image

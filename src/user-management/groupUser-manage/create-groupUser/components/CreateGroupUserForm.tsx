@@ -32,7 +32,10 @@ import { useEffect, useState } from 'react';
 import { IFormCreateGroupUser } from '../../interfaces';
 import { schemaGroupUser } from '../../shema';
 import { DEFAULT_VALUE_GROUP_USER, GroupUserStatus, UserRank } from '../../constants';
-import { useCreateGroupUser, useCreateGroupUserAll } from '../../hooks/useCreateGroupUser';
+import {
+  useCreateGroupUser,
+  useCreateGroupUserAll,
+} from '../../hooks/useCreateGroupUser';
 import { RHFSelectPagitnationMultiple } from '../../../../common/components/hook-form/RHFSelectPaginationMutiple';
 import { getListGroupUser } from '../../services';
 import RHFMultipleSelect from '../../../../common/components/hook-form/RHFMultipleSelect';
@@ -77,16 +80,15 @@ export default function FormCreateGroupUser() {
   const isCheckAllUser = useSelector(isCheckAllSelector);
   const dataCheckAllUser = useSelector(dataCheckAllUserSelector);
 
-
   useEffect(() => {
     dispatch(setIsCheckAll(false));
     dispatch(setDataCheckAllUsers(DEFAULT_VALUE_SEARCH_USER));
   }, []);
 
   useEffect(() => {
-    if(isCheckAllUser){
+    if (isCheckAllUser) {
       setValue('isCheckAll', true);
-    }else{
+    } else {
       setValue('isCheckAll', false);
     }
   }, [isCheckAllUser]);
@@ -101,7 +103,6 @@ export default function FormCreateGroupUser() {
     },
   });
 
-  
   const { mutate: mutateAll } = useCreateGroupUserAll({
     onSuccess: () => {
       showSuccessSnackbar(t('groupUser.editSuccess'));
@@ -112,25 +113,24 @@ export default function FormCreateGroupUser() {
     },
   });
 
-
   const onSubmit = (data: IFormCreateGroupUser) => {
-    if(isCheckAllUser) {
+    if (isCheckAllUser) {
       const dataCreateGroupUser = {
         groupName: data.nameGroup,
-          status: data.status ? GroupUserStatus.ACTIVE : GroupUserStatus.INACTIVE,
-          description: data.description,
-          email: dataCheckAllUser?.email ? dataCheckAllUser.email : undefined,
-          phoneNumber: dataCheckAllUser?.phoneNumber
-            ? dataCheckAllUser.phoneNumber
-            : undefined,
-          name: dataCheckAllUser?.name ? dataCheckAllUser.name : undefined,
-          accountStatus: dataCheckAllUser.accountStatus
-            ? dataCheckAllUser.accountStatus
-            : undefined,
-          tierCode: dataCheckAllUser?.tierCode ? dataCheckAllUser.tierCode : undefined,
+        status: data.status ? GroupUserStatus.ACTIVE : GroupUserStatus.INACTIVE,
+        description: data.description,
+        email: dataCheckAllUser?.email ? dataCheckAllUser.email : undefined,
+        phoneNumber: dataCheckAllUser?.phoneNumber
+          ? dataCheckAllUser.phoneNumber
+          : undefined,
+        name: dataCheckAllUser?.name ? dataCheckAllUser.name : undefined,
+        accountStatus: dataCheckAllUser.accountStatus
+          ? dataCheckAllUser.accountStatus
+          : undefined,
+        tierCode: dataCheckAllUser?.tierCode ? dataCheckAllUser.tierCode : undefined,
       };
       mutateAll(dataCreateGroupUser);
-    }else{
+    } else {
       const dataCreateGroupUser = {
         name: data.nameGroup,
         status: data.status ? GroupUserStatus.ACTIVE : GroupUserStatus.INACTIVE,
@@ -150,7 +150,7 @@ export default function FormCreateGroupUser() {
   useDeepCompareEffect(() => {
     setValue('ids', listUserPicked);
   }, [listUserPicked]);
-  
+
   return (
     <Paper
       sx={{

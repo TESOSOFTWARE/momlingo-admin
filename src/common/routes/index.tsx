@@ -29,6 +29,7 @@ import StoreEdit from '../../store-in-map/store-edit/StoreEdit';
 import EditShareAppBanner from '../../config-share-app/components/BannerEdit';
 import NewBabyTrackerPage from '../../config-off-checkout/new-baby-tracker';
 import EditChildTracker from '../../rule-manage/detail-child-tracker';
+import NewChildTracker from '../../rule-manage/new-child-tracker';
 
 // ----------------------------------------------------------------------
 
@@ -158,17 +159,14 @@ export default function Router() {
               index: true,
             },
             {
-              path: PATH_DASHBOARD.configFeature.edit.babyTracker, 
-              element: <EditBabyTracker/>
+              path: PATH_DASHBOARD.configFeature.edit.babyTracker,
+              element: <EditBabyTracker />,
             },
             {
-              path: PATH_DASHBOARD.configFeature.new.babyTracker, 
-              element: <NewBabyTrackerPage/>
+              path: PATH_DASHBOARD.configFeature.new.babyTracker,
+              element: <NewBabyTrackerPage />,
             },
-            { path: PATH_DASHBOARD.configFeature.list, 
-              element: <ConfigFeatureList /> },
-            
-      
+            { path: PATH_DASHBOARD.configFeature.list, element: <ConfigFeatureList /> },
           ],
         },
         {
@@ -334,10 +332,9 @@ export default function Router() {
             },
             {
               path: 'edit-banner/:id',
-              element: <EditShareAppBanner />
-            }
-          ]
-
+              element: <EditShareAppBanner />,
+            },
+          ],
         },
         {
           path: PATH_DASHBOARD.point.root,
@@ -762,8 +759,12 @@ export default function Router() {
               element: <RuleManageList />,
             },
             {
-              path: PATH_DASHBOARD.configFeature.edit.childTracker, 
-              element: <EditChildTracker/>
+              path: PATH_DASHBOARD.configFeature.edit.childTracker,
+              element: <EditChildTracker />,
+            },
+            {
+              path: PATH_DASHBOARD.configFeature.new.childTracker,
+              element: <NewChildTracker />,
             },
           ],
         },
@@ -889,16 +890,15 @@ export default function Router() {
       path: '/',
       element: (
         <AuthGuard>
-          <DashboardLayout/>
+          <DashboardLayout />
         </AuthGuard>
       ),
-      children:[
+      children: [
         {
           path: '',
           element: <ChartOrder />,
         },
       ],
-       
     },
     { path: '*', element: <Navigate to="/404" replace /> },
   ]);
@@ -1049,7 +1049,12 @@ const IndexEditOrder = Loadable(
   lazy(() => import('src/order-management/edit-order/index'))
 );
 const ProductDetailEVoucher = Loadable(
-  lazy(() => import('src/order-management/detail-order/components/DetailFormElement/ProductInfo/ProductDetail'))
+  lazy(
+    () =>
+      import(
+        'src/order-management/detail-order/components/DetailFormElement/ProductInfo/ProductDetail'
+      )
+  )
 );
 
 const ListOrderRefund = Loadable(
@@ -1214,7 +1219,9 @@ const NewsSubjectEdit = Loadable(
 
 // history-scan
 const HistoryScanList = Loadable(lazy(() => import('src/history-scan/index')));
-const DuplicateScanList = Loadable(lazy(() => import('src/history-scan/duplicate-scan/index')));
+const DuplicateScanList = Loadable(
+  lazy(() => import('src/history-scan/duplicate-scan/index'))
+);
 // rule-manage
 const RuleManageList = Loadable(lazy(() => import('src/rule-manage/index')));
 
@@ -1254,4 +1261,6 @@ const AnalystScan = Loadable(lazy(() => import('src/analytics/analytic-scan/inde
 // config-share-app
 const EditConfigShareApp = Loadable(lazy(() => import('src/config-share-app/index')));
 // baby tracker
-const EditBabyTracker = Loadable(lazy(() => import('../../config-off-checkout/detail-baby-tracker')));
+const EditBabyTracker = Loadable(
+  lazy(() => import('../../config-off-checkout/detail-baby-tracker'))
+);

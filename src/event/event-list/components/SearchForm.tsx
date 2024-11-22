@@ -26,9 +26,11 @@ export function SearchForm({ setPage }: SearchFormProps) {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const methods = useForm({ defaultValues: {
-    searchText: '',
-  } });
+  const methods = useForm({
+    defaultValues: {
+      searchText: '',
+    },
+  });
   const { handleSubmit, reset, control } = methods;
 
   const onSubmit = (data: any) => {
