@@ -11,11 +11,11 @@ import { PATH_AUTH } from '../routes/paths';
 // ----------------------------------------------------------------------
 
 const axiosInstance = axios.create({
-  baseURL: '',
+  // baseURL: HOST_API,
   paramsSerializer: (param) => toQueryString(param),
 });
 const axiosInstance2 = axios.create({
-  baseURL: HOST_API,
+  // baseURL: HOST_API,
 });
 axiosInstance.interceptors.response.use(
   (response) => response.data,

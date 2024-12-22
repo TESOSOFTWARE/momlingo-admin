@@ -198,6 +198,12 @@ export const PATH_DASHBOARD = {
     list: path(ROOT_DASHBOARD, '/category/list'),
     edit: (categoryId: number) => path(ROOT_DASHBOARD, `/category/edit/${categoryId}`),
   },
+  musicTool: {
+    root: path(ROOT_DASHBOARD, '/music'),
+    new: path(ROOT_DASHBOARD, '/music/new'),
+    list: path(ROOT_DASHBOARD, '/music/list'),
+    edit: (musicId: number) => path(ROOT_DASHBOARD, `/music/edit/${musicId}`),
+  },
 
   tag: {
     root: path(ROOT_DASHBOARD, '/tag'),

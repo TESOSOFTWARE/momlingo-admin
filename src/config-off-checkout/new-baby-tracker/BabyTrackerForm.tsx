@@ -1,49 +1,44 @@
-import * as React from 'react';
 import TextField from '@mui/material/TextField';
+import * as React from 'react';
 
-import { Box, Button, Card, Stack, Typography } from '@mui/material';
-import { ISurVeyForm } from '../../survey/common/survey.interface';
-import { useNavigate } from 'react-router-dom';
-import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schemaAddSurvey } from '../../survey/schema';
-import { DEFAULT_ADD_SURVEY } from '../../survey/contanst';
-import useMessage from '../../common/hooks/useMessage';
-import { useSurveyCreate } from '../../survey/survey-create/hooks/useSurveyCreate';
-import { PATH_DASHBOARD } from '../../common/routes/paths';
-import { IStatus } from '../../game-manage/constants';
-import { FormProvider, RHFSwitch, RHFTextField } from '../../common/components/hook-form';
 import { LoadingButton } from '@mui/lab';
-import { useUpdateBabyTracker } from '../config-feature-list/hooks/useUpdateBabyTracker';
-import { UpdateBabyTrackerParams } from '../config-feature-list/baby-tracker-interface';
+import { Box, Card, Stack, Typography } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { FormProvider } from '../../common/components/hook-form';
+import useMessage from '../../common/hooks/useMessage';
+import { ISurVeyForm } from '../../survey/common/survey.interface';
+import { DEFAULT_ADD_SURVEY } from '../../survey/contanst';
+import { schemaAddSurvey } from '../../survey/schema';
+import { useNewBabyTracker } from '../config-feature-list/hooks/useNewBabyTracker';
+import FileInputField from './component/input_image';
 
 export default function NewBabyTracker() {
   const navigate = useNavigate();
 
   // init data
-  const [week, setWeek] = React.useState('0');
-  const [keyTakeaways, setKeyTakeaways] = React.useState('0');
+  const [week, setWeek] = React.useState('');
+  const [keyTakeaways, setKeyTakeaways] = React.useState('');
   const [momThumbnail3DUrl, setMomThumbnail3DUrl] = React.useState(
     'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
   );
-  const [momImage3DUrl, setMomImage3DUrl] = React.useState('0');
-  const [symptoms, setSymptoms] = React.useState('0');
-  const [thingsToAvoid, setThingsToAvoid] = React.useState('0');
-  const [thingsTodo, setThingsTodo] = React.useState('0');
-  const [high, setHigh] = React.useState('0');
-  const [weight, setWeight] = React.useState('0');
-  const [thumbnail3DUrl, setThumbnail3DUrl] = React.useState('0');
-  const [image3DUrl, setImage3DUrl] = React.useState('0');
+  const [momImage3DUrl, setMomImage3DUrl] = React.useState('');
+  const [symptoms, setSymptoms] = React.useState('');
+  const [thingsToAvoid, setThingsToAvoid] = React.useState('');
+  const [thingsTodo, setThingsTodo] = React.useState('');
+  const [high, setHigh] = React.useState('');
+  const [weight, setWeight] = React.useState('');
+  const [thumbnail3DBaby, setThumbnail3DBaby] = React.useState(
+    'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
+  );
+  const [image3DUrlBaby, setImage3DUrlBaby] = React.useState('');
   const [symbolicImageUrl, setSymbolicImageUrl] = React.useState(
     'https://i.pinimg.com/originals/ae/8a/c2/ae8ac2fa217d23aadcc913989fcc34a2.png'
   );
-  const [sizeShortDescription, setSizeShortDescription] = React.useState('0');
-  const [babyOverallInfo, setBabyOverallInfo] = React.useState('0');
-  const [babySizeInfo, setBabySizeInfo] = React.useState('0');
-
-  // React.useEffect(() => {
-
-  // }, []);
+  const [sizeShortDescription, setSizeShortDescription] = React.useState('');
+  const [babyOverallInfo, setBabyOverallInfo] = React.useState('');
+  const [babySizeInfo, setBabySizeInfo] = React.useState('');
   const methods = useForm<ISurVeyForm>({
     resolver: yupResolver(schemaAddSurvey),
     defaultValues: DEFAULT_ADD_SURVEY, // Sử dụng dữ liệu truyền vào nếu có
@@ -58,37 +53,69 @@ export default function NewBabyTracker() {
   } = methods;
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
 
-  const { mutate } = useUpdateBabyTracker();
+  const { mutate } = useNewBabyTracker();
 
+  // update image
+
+  //
   const dataNewTracker = async () => {
+    if (!week || isNaN(Number(week))) {
+      console.error('Tuần không hợp lệ. Giá trị phải là một số.');
+      return;
+    }
+
+    const formData = new FormData();
+
     const dataNew = {
+      week: Number(week),
       keyTakeaways: keyTakeaways,
       thumbnail3DMom: momThumbnail3DUrl,
       image3DUrlMom: momImage3DUrl,
       symptoms: symptoms,
       thingsTodo: thingsTodo,
       thingsToAvoid: thingsToAvoid,
-      weight: weight,
-      high: high,
-      thumbnail3DBaby: thumbnail3DUrl,
-      image3DUrlBaby: image3DUrl,
-      symbolicImage: sizeShortDescription,
+      weight: Number(weight) | 0,
+      high: Number(high) | 0,
+      thumbnail3DBaby: thumbnail3DBaby,
+      image3DUrlBaby: image3DUrlBaby,
+      symbolicImage: symbolicImageUrl,
       sizeShortDescription: sizeShortDescription,
       babyOverallInfo: babyOverallInfo,
       babySizeInfo: babySizeInfo,
     };
     console.log('data :', dataNew);
+    // const numericWeek = isNaN(Number(week)) ? 0 : Math.floor(Number(week));  // Đảm bảo là số nguyên
+    formData.append('week', week);
+    formData.append('keyTakeaways', keyTakeaways);
+    formData.append('weight', weight);
+    formData.append('high', high);
+    formData.append('thingsToAvoid', thingsToAvoid);
+    formData.append('thingsTodo', thingsTodo);
+    formData.append('symptoms', symptoms);
+    // formData.append('symbolicImage', sizeShortDescription);
+    formData.append('sizeShortDescription', sizeShortDescription);
+    formData.append('babySizeInfo', babySizeInfo);
+    // formData.append('idTracker', idTracker);
+    formData.append(
+      'babyOverallInfo',
+      babyOverallInfo ? String(babyOverallInfo).trim() : ''
+    );
 
-    if (!week) {
-      console.error('Tuần không hợp lệ.');
-      return;
-    }
-    // const updateParams: UpdateBabyTrackerParams = {
-    //   week,
-    //   data: dataUpdate,
-    // };
-    // Gọi mutate với dữ liệu đã chuẩn bị
-    //  mutate(updateParams);
+    if (momImage3DUrl) formData.append('image3DUrlMom', momImage3DUrl);
+    if (image3DUrlBaby) formData.append('image3DUrlBaby', image3DUrlBaby);
+    // Xử lý file ảnh (image3DUrlMom và thumbnail3DMom)
+    // if (momThumbnail3DUrl instanceof File) {
+    if (momThumbnail3DUrl) formData.append('thumbnail3DMom', momThumbnail3DUrl); // Gửi file trực tiếp
+    // }
+    // if (thumbnail3DUrl instanceof File) {
+    if (thumbnail3DBaby) formData.append('thumbnail3DBaby', thumbnail3DBaby);
+    // }
+
+    // if (image3DUrl instanceof File) {
+    if (symbolicImageUrl) formData.append('symbolicImage', symbolicImageUrl);
+    // }
+
+    mutate(formData);
   };
   return (
     <Stack spacing={3}>
@@ -103,8 +130,8 @@ export default function NewBabyTracker() {
               id="outlined-basic"
               label="Tuần"
               variant="outlined"
-              value={week} // Gán giá trị trực tiếp
-              onChange={(e) => setWeek(e.target.value)} // Có thể thêm hàm xử lý sự kiện khi thay đổi giá trị
+              value={week}
+              onChange={(e) => setWeek(e.target.value)}
             />
             {/* Hiển thị Mô tả */}
             <TextField
@@ -138,7 +165,7 @@ export default function NewBabyTracker() {
 
             <TextField
               id="high"
-              label="Chiều cao (m)"
+              label="Chiều cao (cm)"
               variant="outlined"
               value={high}
               onChange={(e) => setHigh(e.target.value)}
@@ -146,12 +173,12 @@ export default function NewBabyTracker() {
 
             <TextField
               id="weight"
-              label="Cân nặng (kg)"
+              label="Cân nặng (gram)"
               variant="outlined"
               value={weight}
               onChange={(e) => setWeight(e.target.value)}
             />
-
+            {/* image3DUrl */}
             <Box
               sx={{
                 display: 'grid',
@@ -164,10 +191,10 @@ export default function NewBabyTracker() {
             >
               <TextField
                 id="image3DUrl"
-                label="URL Hình ảnh 3D"
+                label="Link dẫn đến ảnh 3D mở webview"
                 variant="outlined"
-                value={image3DUrl}
-                onChange={(e) => setImage3DUrl(e.target.value)}
+                value={image3DUrlBaby}
+                onChange={(e) => setImage3DUrlBaby(e.target.value)}
               />
               <Box
                 sx={{
@@ -177,7 +204,7 @@ export default function NewBabyTracker() {
                 }}
               >
                 <iframe
-                  src={image3DUrl}
+                  src={image3DUrlBaby}
                   title="3D Baby View"
                   width="100%"
                   height="100%"
@@ -189,57 +216,46 @@ export default function NewBabyTracker() {
 
             <TextField
               id="sizeShortDescription"
-              label="Mô tả ngắn về kích thước"
+              label="Mô tả kích thước e bé"
               variant="outlined"
               value={sizeShortDescription}
               onChange={(e) => setSizeShortDescription(e.target.value)}
             />
+
+            <Typography>Ảnh mô tả kích thước bé</Typography>
+            <FileInputField
+              id="symbolicImageUrl"
+              label="Ảnh mô tả kích thước của bé"
+              value={symbolicImageUrl}
+              onChange={setSymbolicImageUrl}
+            />
+            {/* up here */}
             <Box
               sx={{
-                display: 'grid',
-                gridTemplateColumns: {
-                  xs: '1fr',
-                  md: '1fr 1fr',
-                },
+                display: 'flex',
+                flexDirection: 'column',
                 gap: 2,
               }}
             >
-              <TextField
-                id="symbolicImageUrl"
-                label="URL Hình ảnh tượng trưng"
-                variant="outlined"
-                value={symbolicImageUrl}
-                onChange={(e) => setSymbolicImageUrl(e.target.value)}
-              />
-              <img
-                src={symbolicImageUrl}
-                width={'100%'}
-                height={'300px'}
-                alt="img tượng trưng"
-              />
-            </Box>
-            <Box
-              sx={{
-                display: 'grid',
-                gridTemplateColumns: {
-                  xs: '1fr',
-                  md: '1fr 1fr',
-                },
-                gap: 2,
-              }}
-            >
-              <TextField
+              {/* <TextField
                 id="thumbnail3DUrl"
                 label="URL Hình ảnh thu nhỏ 3D"
                 variant="outlined"
-                value={thumbnail3DUrl}
-                onChange={(e) => setThumbnail3DUrl(e.target.value)}
+                value={thumbnail3DBaby}
+                onChange={(e) => setThumbnail3DBaby(e.target.value)}
               />
               <img
-                src={thumbnail3DUrl}
+                src={thumbnail3DBaby}
                 width={'100%'}
                 height={'300px'}
                 alt="URL Hình ảnh thu nhỏ 3D"
+              /> */}
+              <Typography>URL Hình ảnh thu nhỏ 3D</Typography>
+              <FileInputField
+                id="thumbnail3DBaby"
+                label="URL Hình ảnh thu nhỏ 3D"
+                value={thumbnail3DBaby}
+                onChange={setThumbnail3DBaby}
               />
             </Box>
 
@@ -305,39 +321,35 @@ export default function NewBabyTracker() {
             </Box>
             <Box
               sx={{
-                display: 'grid',
-                gridTemplateColumns: {
-                  xs: '1fr',
-                  md: '1fr 1fr',
-                },
+                display: 'flex',
+                flexDirection: 'column',
                 gap: 2,
               }}
             >
-              <TextField
+              {/* <TextField
                 id="momThumbnail3DUrl"
                 label="URL Hình ảnh thu nhỏ 3D"
                 variant="outlined"
                 value={momThumbnail3DUrl}
-                onChange={(e) => setThumbnail3DUrl(e.target.value)}
+                onChange={(e) => setThumbnail3DBaby(e.target.value)}
               />
               <img
                 src={momThumbnail3DUrl}
                 width={'100%'}
                 height={'300px'}
                 alt="URL Hình ảnh thu nhỏ 3D"
+              /> */}
+              <Typography>URL Hình ảnh thu nhỏ 3D</Typography>
+              <FileInputField
+                id="momThumbnail3DUrl"
+                label="URL Hình ảnh thu nhỏ 3D"
+                value={momThumbnail3DUrl}
+                onChange={setMomThumbnail3DUrl}
               />
             </Box>
           </Stack>
         </Card>
         <Stack justifyContent="flex-end" direction="row" spacing={2} sx={{ mt: 3 }}>
-          {/* <Button
-            color="inherit"
-            size="medium"
-            variant="contained"
-            onClick={() => navigate(PATH_DASHBOARD.survey.list)}
-          >
-            Hủy bỏ
-          </Button> */}
           <LoadingButton
             size="large"
             variant="contained"
@@ -345,7 +357,7 @@ export default function NewBabyTracker() {
             // type="submit"
             onClick={() => dataNewTracker()}
           >
-            Cập nhật
+            Thêm mới
           </LoadingButton>
         </Stack>
       </FormProvider>

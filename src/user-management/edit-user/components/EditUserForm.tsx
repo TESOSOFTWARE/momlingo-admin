@@ -1,50 +1,25 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { LoadingButton } from '@mui/lab';
-import {
-  Button,
-  Container,
-  FormLabel,
-  Paper,
-  Stack,
-  TextField,
-  Box,
-  MenuItem,
-} from '@mui/material';
-import { DatePicker, DateTimePicker } from '@mui/x-date-pickers';
-import { Controller, useForm } from 'react-hook-form';
+import { Button, MenuItem, Paper, Stack } from '@mui/material';
+import { useForm } from 'react-hook-form';
 import { useNavigate, useParams } from 'react-router-dom';
-import {
-  FormProvider,
-  RHFSelect,
-  RHFSwitch,
-  RHFTextField,
-} from 'src/common/components/hook-form';
+import { FormProvider, RHFSelect, RHFTextField } from 'src/common/components/hook-form';
 import useMessage from 'src/common/hooks/useMessage';
 import i18n from 'src/common/locales/i18n';
 import { PATH_DASHBOARD } from 'src/common/routes/paths';
 
 import { useTranslation } from 'react-i18next';
-import { useDispatch, useSelector } from 'react-redux';
-import {
-  DATA_LIST_USER,
-  DEFAULT_LIMIT_SIZE,
-  DEFAULT_PAGE_SIZE,
-  DEFAULT_VALUE_USER_BY_ID,
-  TYPE_GENDER,
-  UserGender,
-  UserRank,
-} from '../../constants';
+import { useDispatch } from 'react-redux';
+import { DEFAULT_VALUE_USER_BY_ID, TYPE_GENDER } from '../../constants';
 
 import { useEffect } from 'react';
-import { useGetUserById } from '../../hooks/useGetUserById';
+import { formatDate } from '../../../common/constants/common.utils';
 import useDeepEffect from '../../../common/hooks/useDeepEffect';
-import { formatDate, formatDateNoTime } from '../../../common/constants/common.utils';
-import { schemaEditUser } from '../../schema';
 import useEditUser from '../../hooks/useEditUser';
-import { IFormEditUser, IUser } from '../../interfaces';
+import { useGetUserById } from '../../hooks/useGetUserById';
+import { IFormEditUser } from '../../interfaces';
+import { schemaEditUser } from '../../schema';
 import { useGetProvince } from '../hooks/useGetProvince';
-import RHFSearchSelect from '../../../common/components/hook-form/RHFSelectSearch';
-import { watch } from 'fs';
 
 export default function FormEditUser() {
   const navigate = useNavigate();
@@ -125,12 +100,6 @@ export default function FormEditUser() {
         name: dataSubmit?.name === '' ? null : dataSubmit?.name,
         email: dataSubmit?.email === '' ? null : dataSubmit?.email,
         gender: dataSubmit?.gender === '' ? null : dataSubmit?.gender,
-        address: dataSubmit?.address === '' ? null : dataSubmit?.address,
-        provinceId: dataSubmit?.provinceId?.id === '' ? null : dataSubmit?.provinceId?.id,
-        wardId: dataSubmit?.wardId?.id === '' ? null : dataSubmit?.wardId?.id,
-        districtId: dataSubmit?.districtId?.id === '' ? null : dataSubmit?.districtId?.id,
-        birthDate: dataSubmit?.birthDate === '' ? null : dataSubmit?.birthDate,
-        tierCode: dataSubmit?.tierCode,
         blockAccount:
           dataSubmit.blockAccount === data?.blockAccount
             ? undefined
@@ -181,68 +150,6 @@ export default function FormEditUser() {
               disabled
             />
           </Stack>
-
-          <RHFTextField name="address" label={`${i18n.t('userManage.address')}`} />
-          <Stack direction={'row'} spacing={2}>
-            <RHFSearchSelect
-              name="provinceId"
-              options={provinceData}
-              labelProp="name"
-              valueProp="id"
-              label="Tỉnh thành"
-            />
-            <RHFSearchSelect
-              name="districtId"
-              options={districtData}
-              labelProp="name"
-              valueProp="id"
-              label="Quận"
-              disableSelect={watch('provinceId')?.id ? false : true}
-            />
-            <RHFSearchSelect
-              name="wardId"
-              options={wardData}
-              labelProp="name"
-              valueProp="id"
-              label="Phường"
-              disableSelect={watch('districtId')?.id ? false : true}
-            />
-          </Stack>
-          <Stack direction={'row'} spacing={2}>
-            <Controller
-              name="birthDate"
-              control={control}
-              render={({ field }) => (
-                <Stack position="relative" width="100%">
-                  <DatePicker
-                    {...field}
-                    label="Ngày sinh"
-                    inputFormat={'dd/MM/yyyy'}
-                    renderInput={(params) => (
-                      <TextField
-                        {...params}
-                        fullWidth
-                        helperText={errors.birthDate && errors.birthDate?.message}
-                        error={!!errors.birthDate}
-                      />
-                    )}
-                  />
-                </Stack>
-              )}
-            />
-            <RHFSelect
-              name="tierCode"
-              label={`${i18n.t('userManage.rank')}`}
-              SelectProps={{ native: false }}
-            >
-              <MenuItem value="" disabled />
-              {Object.values(UserRank).map((valueRank) => (
-                <MenuItem key={valueRank} value={valueRank}>
-                  {valueRank}
-                </MenuItem>
-              ))}
-            </RHFSelect>
-          </Stack>
           <Stack direction={'row'} spacing={2}>
             <RHFTextField
               name="lastVisitDate"
@@ -257,29 +164,6 @@ export default function FormEditUser() {
               disabled
             />
           </Stack>
-          <Stack direction={'row'} spacing={2}>
-            <RHFTextField
-              type="number"
-              name="totalPoints"
-              label={`${i18n.t('userManage.totalPoints')}`}
-              InputLabelProps={{ shrink: true }}
-            />
-
-            <RHFTextField
-              name="lastScanDate"
-              label={`${i18n.t('userManage.lastScan')}`}
-              InputLabelProps={{ shrink: true }}
-              disabled
-            />
-          </Stack>
-          <Stack direction={'row'} spacing={2}>
-            <RHFSwitch
-              name="blockAccount"
-              label={`${i18n.t('userManage.blockAccount')}`}
-            />
-            <RHFSwitch name="blockAddPoint" label={`${i18n.t('userManage.block')}`} />
-          </Stack>
-
           <Stack justifyContent="flex-end" direction="row" spacing={3}>
             <Button
               color="inherit"

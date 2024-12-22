@@ -115,7 +115,7 @@ export default function TypeProductForm({
               name="categoryIds"
               options={listProductCategory}
               labelProp="name"
-              label={t('productMerchant.new.labelCategory')}
+              label={t('productMerchant.new.labelNameChild')}
               listBoxScroll={handleScrollProductCategory}
               loadingScroll={isFetchingNextPageProductCategory}
               isLoading={isLoadingProductCategory}

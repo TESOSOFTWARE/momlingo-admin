@@ -107,6 +107,7 @@ export enum Resource {
   CART = 'cart',
   ORDER = 'order',
   CATEGORY = 'category',
+  MUSIC_TOOL = 'music',
   TAG = 'tag',
   SURVEY = 'survey',
   SYSTEM_CONFIG = 'system_config',

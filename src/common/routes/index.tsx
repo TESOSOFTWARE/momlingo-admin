@@ -551,6 +551,23 @@ export default function Router() {
           ],
         },
         {
+          path: PATH_DASHBOARD.musicTool.root,
+          children: [
+            {
+              path: PATH_DASHBOARD.musicTool.new,
+              element: <NewMusicTool />,
+            },
+            {
+              path: PATH_DASHBOARD.musicTool.list,
+              element: <ListMusicTool />,
+            },
+            {
+              path: 'edit/:id',
+              element: <EditMusicTool />,
+            },
+          ],
+        },
+        {
           path: PATH_DASHBOARD.tag.root,
           children: [
             {
@@ -893,10 +910,11 @@ export default function Router() {
           <DashboardLayout />
         </AuthGuard>
       ),
+      // root element
       children: [
         {
           path: '',
-          element: <ChartOrder />,
+          element: <RootPage />,
         },
       ],
     },
@@ -1105,6 +1123,7 @@ const FeedbackList = Loadable(
 const ChartOrder = Loadable(
   lazy(() => import('src/analytics/analytic-order/OrderChartPage'))
 );
+const RootPage = Loadable(lazy(() => import('src/homeApp')));
 const ChartGame = Loadable(
   lazy(() => import('src/analytics/analytic-game/GameChartPage'))
 );
@@ -1157,9 +1176,13 @@ const UserDetail = Loadable(lazy(() => import('src/user-management/view-user/ind
 const EditUser = Loadable(lazy(() => import('src/user-management/edit-user/index')));
 
 // Category
-const NewCategory = Loadable(lazy(() => import('src/category/new-category/index')));
-const ListCategory = Loadable(lazy(() => import('src/category/list-categories/index')));
-const EditCategory = Loadable(lazy(() => import('src/category/edit-category/index')));
+const NewCategory = Loadable(lazy(() => import('src/name_child/new-category/index')));
+const ListCategory = Loadable(lazy(() => import('src/name_child/list-categories/index')));
+const EditCategory = Loadable(lazy(() => import('src/name_child/edit-category/index')));
+// Music tool
+const NewMusicTool = Loadable(lazy(() => import('src/music_tools/new-music-tool')));
+const ListMusicTool = Loadable(lazy(() => import('src/music_tools/list-music-tool')));
+const EditMusicTool = Loadable(lazy(() => import('src/music_tools/edit-music-tool')));
 // Tag
 const NewTag = Loadable(lazy(() => import('src/tag/new-tag/index')));
 // Group-user

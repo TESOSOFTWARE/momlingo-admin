@@ -6,9 +6,9 @@ import { UpdateBabyTrackerParams } from '../baby-tracker-interface';
 export function useUpdateBabyTracker() {
   const queryClient = useQueryClient();
 
-  return useMutation<void, unknown, UpdateBabyTrackerParams>(
+  return useMutation<void, unknown, any>(
     // Chấp nhận đối tượng có dạng `{ week, data }`
-    (param: UpdateBabyTrackerParams) => editBabyTrackerList(param.week, param.data),
+    (param: any) => editBabyTrackerList(param?.week, param?.data),
     {
       onSuccess: (data) => {
         queryClient.invalidateQueries([QUERY_KEYS.LIST_BABY_TRACKERS]);

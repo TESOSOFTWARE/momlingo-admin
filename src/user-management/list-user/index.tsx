@@ -1,25 +1,19 @@
-import { Container, Button } from '@mui/material';
-import Page from '../../common/components/Page';
-import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
-import { BREADCUMBS } from '../../common/constants/common.constants';
-import { PATH_DASHBOARD } from '../../common/routes/paths';
-import useSettings from '../../common/hooks/useSettings';
-import i18n from 'src/common/locales/i18n';
-import ListUserDashBoard from './components/ListUserDashboard';
-import Iconify from '../../common/components/Iconify';
-import useMessage from 'src/common/hooks/useMessage';
-import { useRequestExportListUser } from '../hooks/useRequestExportListUser';
+// Home user list
+import { Button, Container } from '@mui/material';
 import { useTranslation } from 'react-i18next';
-import { IListUserParams } from '../interfaces';
 import { useSelector } from 'react-redux';
-import {
-  isOpenModalRequestExportSelector,
-  searchFormSelector,
-  setIsOpenModalRequestExport,
-} from '../userManage.slice';
+import useMessage from 'src/common/hooks/useMessage';
+import i18n from 'src/common/locales/i18n';
+import HeaderBreadcrumbs from '../../common/components/HeaderBreadcrumbs';
+import Iconify from '../../common/components/Iconify';
+import Page from '../../common/components/Page';
+import useSettings from '../../common/hooks/useSettings';
 import useTable from '../../common/hooks/useTable';
 import { dispatch } from '../../common/redux/store';
-import { ConfirmBlockModal } from './components/modal/ModalConfirmBlock';
+import { useRequestExportListUser } from '../hooks/useRequestExportListUser';
+import { IListUserParams } from '../interfaces';
+import { searchFormSelector, setIsOpenModalRequestExport } from '../userManage.slice';
+import ListUserDashBoard from './components/ListUserDashboard';
 import ConfirmModalExport from './components/modal/ConfirmModalExport';
 
 export default function UserManagement() {
@@ -65,18 +59,18 @@ export default function UserManagement() {
               href: '',
             },
           ]}
-          action={
-            <Button
-              variant="contained"
-              startIcon={<Iconify icon={'eva:plus-fill'} />}
-              onClick={handleRequestExport}
-            >
-              {`${i18n.t('export')}`}
-            </Button>
-          }
+          // action={
+          //   <Button
+          //     variant="contained"
+          //     startIcon={<Iconify icon={'eva:plus-fill'} />}
+          //     onClick={handleRequestExport}
+          //   >
+          //     {`${i18n.t('export')}`}
+          //   </Button>
+          // }
         />
         <ListUserDashBoard />
-        <ConfirmModalExport />
+        {/* <ConfirmModalExport /> */}
       </Container>
     </Page>
   );

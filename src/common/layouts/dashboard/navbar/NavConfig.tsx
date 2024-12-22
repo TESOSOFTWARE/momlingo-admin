@@ -1,6 +1,7 @@
 // routes
 import { PATH_DASHBOARD } from '../../../routes/paths';
 // components
+// path momlingo
 import Iconify from 'src/common/components/Iconify';
 import i18n from 'src/common/locales/i18n';
 import SvgIconStyle from '../../../components/SvgIconStyle';
@@ -76,31 +77,31 @@ const navConfig = [
         children: [
           // { title: 'Các biểu đồ thống kê', path: PATH_DASHBOARD.analyticsApp.listChart },
           // { title: i18n.t('analystSpoon.title') , path: PATH_DASHBOARD.analyticsSpoon.listChart },
-          {
-            title: i18n.t('chartManage.order'),
-            path: PATH_DASHBOARD.chartManage.order,
-          },
-          {
-            title: i18n.t('chartManage.game'),
-            path: PATH_DASHBOARD.chartManage.game,
-          },
+          // {
+          //   title: i18n.t('chartManage.order'),
+          //   path: PATH_DASHBOARD.chartManage.order,
+          // },
+          // {
+          //   title: i18n.t('chartManage.game'),
+          //   path: PATH_DASHBOARD.chartManage.game,
+          // },
 
           {
             title: i18n.t('analystPoint.title'),
             path: PATH_DASHBOARD.analyticsPoint.listChart,
           },
-          {
-            title: i18n.t('analystScan.title'),
-            path: PATH_DASHBOARD.analyticsScan.listChart,
-          },
-          {
-            title: i18n.t('analystSpoonUsed.title'),
-            path: PATH_DASHBOARD.analyticsSpoonUsed.listChart,
-          },
-          {
-            title: i18n.t('analystSpoonUnused.title'),
-            path: PATH_DASHBOARD.analyticsSpoonUnused.listChart,
-          },
+          // {
+          //   title: i18n.t('analystScan.title'),
+          //   path: PATH_DASHBOARD.analyticsScan.listChart,
+          // },
+          // {
+          //   title: i18n.t('analystSpoonUsed.title'),
+          //   path: PATH_DASHBOARD.analyticsSpoonUsed.listChart,
+          // },
+          // {
+          //   title: i18n.t('analystSpoonUnused.title'),
+          //   path: PATH_DASHBOARD.analyticsSpoonUnused.listChart,
+          // },
         ],
       },
     ],
@@ -121,14 +122,14 @@ const navConfig = [
             title: i18n.t('userManage.list'),
             path: PATH_DASHBOARD.userManagement.list,
           },
-          {
-            title: i18n.t('groupUser.list'),
-            path: PATH_DASHBOARD.userManagement.listGroupUser,
-          },
-          {
-            title: i18n.t('introduceUser.list'),
-            path: PATH_DASHBOARD.userManagement.listIntroduceUser,
-          },
+          // {
+          //   title: i18n.t('groupUser.list'),
+          //   path: PATH_DASHBOARD.userManagement.listGroupUser,
+          // },
+          // {
+          //   title: i18n.t('introduceUser.list'),
+          //   path: PATH_DASHBOARD.userManagement.listIntroduceUser,
+          // },
         ],
       },
       // feature
@@ -142,8 +143,8 @@ const navConfig = [
         children: [
           { title: vn.ListConfigFeature, path: PATH_DASHBOARD.configFeature.list },
           { title: i18n.t('ruleManage.list'), path: PATH_DASHBOARD.ruleManage.list },
-          { title: i18n.t('configEvent.list'), path: PATH_DASHBOARD.configEvent.list },
-          { title: i18n.t('configApp.title'), path: PATH_DASHBOARD.configApp.list },
+          // { title: i18n.t('configEvent.list'), path: PATH_DASHBOARD.configEvent.list },
+          // { title: i18n.t('configApp.title'), path: PATH_DASHBOARD.configApp.list },
         ],
       },
       // category
@@ -151,39 +152,59 @@ const navConfig = [
         action: Action.READ,
         resource: Resource.CATEGORY,
         actionAbility: ActionAbility.CAN,
-        title: 'Danh mục',
+        title: 'Tên',
         path: PATH_DASHBOARD.category.root,
         icon: ICONS.category,
         children: [
           {
-            title: 'Danh sách danh mục',
+            title: 'Danh sách tên',
             path: PATH_DASHBOARD.category.list,
           },
           {
-            title: 'Thêm mới danh mục',
+            title: 'Thêm mới tên',
             path: PATH_DASHBOARD.category.new,
           },
         ],
       },
-      // tag
+      // music tool
       {
         action: Action.READ,
-        resource: Resource.TAG,
+        resource: Resource.MUSIC_TOOL,
         actionAbility: ActionAbility.CAN,
-        title: 'Tag',
-        path: PATH_DASHBOARD.tag.root,
-        icon: ICONS.tag,
+        title: 'Quản lý âm nhạc',
+        path: PATH_DASHBOARD.musicTool.root,
+        icon: ICONS.category,
         children: [
           {
-            title: 'Danh sách Tag',
-            path: PATH_DASHBOARD.tag.list,
+            title: 'Danh sách bài hát',
+            path: PATH_DASHBOARD.musicTool.list,
           },
           {
-            title: 'Thêm mới Tag',
-            path: PATH_DASHBOARD.tag.new,
+            title: 'Thêm mới bài hát',
+            path: PATH_DASHBOARD.musicTool.new,
           },
         ],
       },
+
+      // tag
+      // {
+      //   action: Action.READ,
+      //   resource: Resource.TAG,
+      //   actionAbility: ActionAbility.CAN,
+      //   title: 'Tag',
+      //   path: PATH_DASHBOARD.tag.root,
+      //   icon: ICONS.tag,
+      //   children: [
+      //     {
+      //       title: 'Danh sách Tag',
+      //       path: PATH_DASHBOARD.tag.list,
+      //     },
+      //     {
+      //       title: 'Thêm mới Tag',
+      //       path: PATH_DASHBOARD.tag.new,
+      //     },
+      //   ],
+      // },
 
       // product attribute
       // {
@@ -313,14 +334,14 @@ const navConfig = [
       // },
 
       // Home configuration
-      {
-        action: Action.READ,
-        icon: ICONS.homeSetting,
-        resource: Resource.SYSTEM_CONFIG,
-        actionAbility: ActionAbility.CAN,
-        title: i18n.t('homeConfig'),
-        path: PATH_DASHBOARD.homeConfig.root,
-      },
+      // {
+      //   action: Action.READ,
+      //   icon: ICONS.homeSetting,
+      //   resource: Resource.SYSTEM_CONFIG,
+      //   actionAbility: ActionAbility.CAN,
+      //   title: i18n.t('homeConfig'),
+      //   path: PATH_DASHBOARD.homeConfig.root,
+      // },
 
       // Config Share app
       // {
@@ -347,48 +368,48 @@ const navConfig = [
       // },
 
       // Manage survey
-      {
-        action: Action.READ,
-        resource: Resource.SURVEY,
-        actionAbility: ActionAbility.CAN,
-        title: i18n.t('survey.root'),
-        path: PATH_DASHBOARD.survey.root,
-        icon: ICONS.survey,
-        children: [
-          {
-            title: i18n.t('survey.list'),
-            path: PATH_DASHBOARD.survey.list,
-          },
-          {
-            title: i18n.t('survey.create.title'),
-            path: PATH_DASHBOARD.survey.create,
-          },
-        ],
-      },
+      // {
+      //   action: Action.READ,
+      //   resource: Resource.SURVEY,
+      //   actionAbility: ActionAbility.CAN,
+      //   title: i18n.t('survey.root'),
+      //   path: PATH_DASHBOARD.survey.root,
+      //   icon: ICONS.survey,
+      //   children: [
+      //     {
+      //       title: i18n.t('survey.list'),
+      //       path: PATH_DASHBOARD.survey.list,
+      //     },
+      //     {
+      //       title: i18n.t('survey.create.title'),
+      //       path: PATH_DASHBOARD.survey.create,
+      //     },
+      //   ],
+      // },
 
       // manage request
-      {
-        action: Action.READ,
-        resource: Resource.FILE_REQUEST,
-        actionAbility: ActionAbility.CAN,
-        title: i18n.t('requestManagement.root'),
-        path: PATH_DASHBOARD.requestManage.root,
-        icon: ICONS.order,
-        children: [
-          {
-            title: i18n.t('requestManagement.list'),
-            path: PATH_DASHBOARD.requestManage.list,
-          },
-          {
-            title: i18n.t('requestManagement.historyDownload.title'),
-            path: PATH_DASHBOARD.requestManage.listDownload,
-          },
-          {
-            title: i18n.t('requestManagement.listQR'),
-            path: PATH_DASHBOARD.requestManage.listQR,
-          },
-        ],
-      },
+      // {
+      //   action: Action.READ,
+      //   resource: Resource.FILE_REQUEST,
+      //   actionAbility: ActionAbility.CAN,
+      //   title: i18n.t('requestManagement.root'),
+      //   path: PATH_DASHBOARD.requestManage.root,
+      //   icon: ICONS.order,
+      //   children: [
+      //     {
+      //       title: i18n.t('requestManagement.list'),
+      //       path: PATH_DASHBOARD.requestManage.list,
+      //     },
+      //     {
+      //       title: i18n.t('requestManagement.historyDownload.title'),
+      //       path: PATH_DASHBOARD.requestManage.listDownload,
+      //     },
+      //     {
+      //       title: i18n.t('requestManagement.listQR'),
+      //       path: PATH_DASHBOARD.requestManage.listQR,
+      //     },
+      //   ],
+      // },
 
       // group policy
       // {
@@ -411,24 +432,24 @@ const navConfig = [
       // },
 
       // manage popup
-      {
-        action: Action.READ,
-        resource: Resource.SYSTEM_CONFIG,
-        actionAbility: ActionAbility.CAN,
-        title: i18n.t('popupManage.root'),
-        path: PATH_DASHBOARD.popupManage.root,
-        icon: ICONS.popup,
-        children: [
-          {
-            title: i18n.t('popupManage.list.title'),
-            path: PATH_DASHBOARD.popupManage.list,
-          },
-          {
-            title: i18n.t('popupManage.list.createButton'),
-            path: PATH_DASHBOARD.popupManage.create,
-          },
-        ],
-      },
+      // {
+      //   action: Action.READ,
+      //   resource: Resource.SYSTEM_CONFIG,
+      //   actionAbility: ActionAbility.CAN,
+      //   title: i18n.t('popupManage.root'),
+      //   path: PATH_DASHBOARD.popupManage.root,
+      //   icon: ICONS.popup,
+      //   children: [
+      //     {
+      //       title: i18n.t('popupManage.list.title'),
+      //       path: PATH_DASHBOARD.popupManage.list,
+      //     },
+      //     {
+      //       title: i18n.t('popupManage.list.createButton'),
+      //       path: PATH_DASHBOARD.popupManage.create,
+      //     },
+      //   ],
+      // },
 
       // manage feedback
       {

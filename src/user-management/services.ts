@@ -44,7 +44,7 @@ export const changeUserStatusAccount = (params: IParamsChangeBlockAccount) => {
 };
 
 export const editUser = (params: IParamsEditUser) => {
-  return axiosInstance.patch(`${API_GET_LIST_USER}/${params.id}`, { ...params?.data });
+  return axiosInstance.put(`${API_GET_LIST_USER}/${params.id}`, { ...params?.data });
 };
 
 export const requestExportListUser = (params: IListUserParams) => {

@@ -2,6 +2,9 @@ const vn = {
   babyTracker: {
     title: '',
   },
+  homeTitle: {
+    title: 'Chào mừng đến trang Admin',
+  },
 
   confirmModal: {
     content: 'Hành động này không thể hoàn tác',
@@ -458,6 +461,7 @@ const vn = {
       productType: 'Loại sản phẩm',
       labelStatus: 'Trạng thái',
       labelLang: 'Ngôn ngữ',
+      labelNameChild: 'Tên',
       labelCategory: 'Danh mục',
       labelTag: 'Gắn thẻ',
       labelOnSale: 'Đang khuyến mãi',
@@ -566,6 +570,7 @@ const vn = {
     labelSlug: 'Slug',
     labelShortDes: 'Mô tả tổng quan',
     labelCategory: 'Danh mục',
+    labelNameChild: 'Tên',
     labelTag: 'Gắn thẻ',
     labelTax: 'Tình trạng thuế',
     labelStatus: 'Trạng thái sản phẩm',
@@ -994,6 +999,27 @@ const vn = {
       title: 'Chỉnh sửa Danh mục',
       success: 'Chỉnh sửa danh mục thành công !',
       error: 'Chỉnh sửa danh mục thất bại !',
+    },
+  },
+  nameChild: {
+    new: {
+      title: 'Thêm mới Tên',
+      lang: 'Ngôn ngữ',
+      name: 'Tên',
+      slug: 'Slug',
+      desc: 'Mô tả',
+      successBar: 'Thêm mới tên thành công',
+      errorBar: 'Thêm mới tên thất bại',
+    },
+    title: 'Quản lí Tên',
+    list: 'Danh sách tên',
+    deleteSuccess: 'Xóa tên thành công !',
+    deleteFail: 'Xóa tên thất bại !',
+    add: 'Thêm mới',
+    edit: {
+      title: 'Chỉnh sửa tên',
+      success: 'Chỉnh sửa tên thành công !',
+      error: 'Chỉnh sửa tên thất bại !',
     },
   },
   // manage-store
