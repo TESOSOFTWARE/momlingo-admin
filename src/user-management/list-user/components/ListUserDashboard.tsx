@@ -63,29 +63,30 @@ export default function ListUserDashBoard() {
     }
   }, [searchData]);
 
-  const { data, isLoading } = useGetListUser(searchParams);
+  const { data, isLoading } = useGetListUser(searchParams) as any;
 
-  const listRequest = data || [];
-  console.log(listRequest);
+  const { data: listRequest } = data || [];
 
-  // const listRequest = DATA_LIST_USER;
+  const paginatedData: IUser[] = lodash.slice(
+    listRequest,
+    page * rowsPerPage,
+    page * rowsPerPage + rowsPerPage
+  );
+
   const totalItems = Array.isArray(listRequest) ? listRequest.length : 0;
-
-  // const totalItems = 0;
 
   return (
     <Paper elevation={3} sx={{ paddingTop: 3, boxShadow: 10 }}>
-      <UserFilterBar onSetPage={setPage} />
+      {/* <UserFilterBar onSetPage={setPage} /> */}
       <TableContainer sx={{ position: 'relative' }}>
         <Table size={dense ? 'small' : 'medium'}>
           <TableHeadCustom
             headLabel={USER_TABLE_HEAD}
             rowCount={Array.isArray(listRequest) ? listRequest.length : 0}
           />
-
           <TableBody>
-            {Array.isArray(listRequest) &&
-              listRequest.map((row: IUser) => <UserTableRow key={row.id} row={row} />)}
+            {Array.isArray(paginatedData) &&
+              paginatedData.map((row: IUser) => <UserTableRow key={row?.id} row={row} />)}
             {isLoading && (
               <ListUserTableSkeleton isLoading={isLoading} row={rowsPerPage} />
             )}

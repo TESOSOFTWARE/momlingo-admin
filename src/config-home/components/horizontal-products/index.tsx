@@ -12,7 +12,7 @@ import { getCategoryList } from '../../services';
 import ProductCarousel1 from '../product1/ProductCarousel1';
 import ProductCarousel2 from '../product2/ProductCarousel2';
 import { SelectPaginationSingleHorizontal } from './SelectPaginationSingleHorizontal';
-import { useGetCategoriesById } from '../../../category/hooks/useGetCategoryById';
+import { useGetCategoriesById } from '../../../name_child/hooks/useGetCategoryById';
 import { LoadingButton } from '@mui/lab';
 import { useEditHomeSections } from '../../hooks/useEditHomeSections';
 import useMessage from '../../../common/hooks/useMessage';

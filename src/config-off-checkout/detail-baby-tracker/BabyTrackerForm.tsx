@@ -1,21 +1,19 @@
-import * as React from 'react';
 import TextField from '@mui/material/TextField';
+import * as React from 'react';
 
-import { Box, Button, Card, Stack, Typography } from '@mui/material';
-import { ISurVeyForm } from '../../survey/common/survey.interface';
-import { useNavigate } from 'react-router-dom';
-import { Controller, useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { schemaAddSurvey } from '../../survey/schema';
-import { DEFAULT_ADD_SURVEY } from '../../survey/contanst';
-import useMessage from '../../common/hooks/useMessage';
-import { useSurveyCreate } from '../../survey/survey-create/hooks/useSurveyCreate';
-import { PATH_DASHBOARD } from '../../common/routes/paths';
-import { IStatus } from '../../game-manage/constants';
-import { FormProvider, RHFSwitch, RHFTextField } from '../../common/components/hook-form';
 import { LoadingButton } from '@mui/lab';
-import { useUpdateBabyTracker } from '../config-feature-list/hooks/useUpdateBabyTracker';
+import { Box, Card, Stack, Typography } from '@mui/material';
+import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router-dom';
+import { FormProvider } from '../../common/components/hook-form';
+import useMessage from '../../common/hooks/useMessage';
+import { ISurVeyForm } from '../../survey/common/survey.interface';
+import { DEFAULT_ADD_SURVEY } from '../../survey/contanst';
+import { schemaAddSurvey } from '../../survey/schema';
 import { UpdateBabyTrackerParams } from '../config-feature-list/baby-tracker-interface';
+import { useUpdateBabyTracker } from '../config-feature-list/hooks/useUpdateBabyTracker';
+import { convertImageToBinaryString } from '../utils/convert';
 
 // Sửa lại để nhận data từ parent
 interface FormCreateSurveyProps {
@@ -23,9 +21,6 @@ interface FormCreateSurveyProps {
 }
 
 export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyProps) {
-  const navigate = useNavigate();
-  console.log('ues', babyTrackerData);
-
   // init data
   const [idTracker, setIdTracker] = React.useState(babyTrackerData?.id || '0');
 
@@ -107,11 +102,29 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
     const file = e.target.files?.[0];
     if (file) {
       // Create a URL for the uploaded file
-      const fileURL = URL.createObjectURL(file);
-      setSymbolicImageUrl(fileURL);
+      // reader.readAsDataURL(file);
+      // const fileURL = URL.createObjectURL(file);
+      setSymbolicImageUrl(file);
     }
   };
-
+  // upload image
+  const handleImageUpload2 = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Create a URL for the uploaded file
+      // const fileURL = URL.createObjectURL(file);
+      setThumbnail3DUrl(file);
+    }
+  };
+  // upload image
+  const handleImageUploadMom = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      // Create a URL for the uploaded file
+      // const fileURL = URL.createObjectURL(file);
+      setMomThumbnail3DUrl(file);
+    }
+  };
   const {
     control,
     handleSubmit,
@@ -125,56 +138,47 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
 
   const { mutate } = useUpdateBabyTracker();
 
-  // const { mutate } = useSurveyCreate({
-  //   onSuccess: () => {
-  //     showSuccessSnackbar('Survey created successfully');
-  //     navigate(PATH_DASHBOARD.survey.list);
-  //   },
-  //   onError: () => {
-  //     showErrorSnackbar('Failed to create survey');
-  //   },
-  // });
-
-  // const onSubmit = (data: ISurVeyForm) => {
-  // const dataCreate = {
-  //   ...data,
-  //   status: data.status ? IStatus.ACTIVE : IStatus.IN_ACTIVE,
-  //   point: data.point ? data.point : 0,
-  // };
-  // mutate(dataCreate);
-  // console.log(...data)
-  // };
-
   const UpdateTracker = async () => {
-    const dataUpdate = {
-      keyTakeaways: keyTakeaways,
-      thumbnail3DMom: momThumbnail3DUrl,
-      image3DUrlMom: momImage3DUrl,
-      symptoms: symptoms,
-      thingsTodo: thingsTodo,
-      thingsToAvoid: thingsToAvoid,
-      weight: weight,
-      high: high,
-      thumbnail3DBaby: thumbnail3DUrl,
-      image3DUrlBaby: image3DUrl,
-      symbolicImage: sizeShortDescription,
-      sizeShortDescription: sizeShortDescription,
-      babyOverallInfo: babyOverallInfo,
-      babySizeInfo: babySizeInfo,
-    };
-    console.log('Dữ liệu cập nhật:', dataUpdate);
+    const formData = new FormData();
+
+    formData.append('week', week);
+    formData.append('keyTakeaways', keyTakeaways);
+    formData.append('weight', weight);
+    formData.append('high', high);
+    formData.append('thingsToAvoid', thingsToAvoid);
+    formData.append('thingsTodo', thingsTodo);
+    formData.append('symptoms', symptoms);
+    // formData.append('symbolicImage', sizeShortDescription);
+    formData.append('sizeShortDescription', sizeShortDescription);
+    // formData.append('babyOverallInfo', babyOverallInfo);
+    formData.append('idTracker', idTracker);
+    formData.append(
+      'babyOverallInfo',
+      babyOverallInfo ? String(babyOverallInfo).trim() : ''
+    );
+
+    formData.append('image3DUrlMom', momImage3DUrl);
+
+    // Xử lý file ảnh (image3DUrlMom và thumbnail3DMom)
+    if (momThumbnail3DUrl instanceof File) {
+      if (momThumbnail3DUrl) formData.append('thumbnail3DMom', momThumbnail3DUrl); // Gửi file trực tiếp
+    }
+    if (thumbnail3DUrl instanceof File) {
+      if (thumbnail3DUrl) formData.append('thumbnail3DBaby', thumbnail3DUrl);
+    }
+
+    if (image3DUrl instanceof File) {
+      if (image3DUrl) formData.append('symbolicImage', image3DUrl);
+    }
 
     // Kiểm tra nếu `week` có giá trị hợp lệ
     if (!week) {
       console.error('Tuần không hợp lệ.');
       return;
     }
-    const updateParams: UpdateBabyTrackerParams = {
-      week,
-      data: dataUpdate,
-    };
+
     // Gọi mutate với dữ liệu đã chuẩn bị
-    mutate(updateParams);
+    mutate(formData);
   };
 
   console.log(babyTrackerData?.week);
@@ -305,17 +309,8 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
                 variant="outlined"
                 value={symbolicImageUrl}
                 onChange={(e) => setSymbolicImageUrl(e.target.value)}
-              />
-              <img src={symbolicImageUrl} width={'100%'} height={'300px'} alt='img tượng trưng'/>
-               */}
-              <TextField
-                id="symbolicImageUrl"
-                label="URL Hình ảnh tượng trưng"
-                variant="outlined"
-                value={symbolicImageUrl}
-                onChange={(e) => setSymbolicImageUrl(e.target.value)}
-              />
-
+              /> */}
+              <Typography>URL Hình ảnh tượng trưng</Typography>
               {/* Input for file upload */}
               <input
                 type="file"
@@ -324,14 +319,14 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
               />
 
               {/* Preview the uploaded image */}
-              {symbolicImageUrl && (
+              {/* {symbolicImageUrl && (
                 <img
                   src={symbolicImageUrl}
                   width={'100%'}
                   height={'300px'}
                   alt="img tượng trưng"
                 />
-              )}
+              )} */}
             </Box>
             <Box
               sx={{
@@ -344,37 +339,30 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
               }}
             >
               {/* <TextField
-                id="thumbnail3DUrl"
-                label="URL Hình ảnh thu nhỏ 3D"
-                variant="outlined"
-                value={thumbnail3DUrl}
-                onChange={(e) => setThumbnail3DUrl(e.target.value)}
-              />
-              <img src={thumbnail3DUrl} width={'100%'} height={'300px'} alt='URL Hình ảnh thu nhỏ 3D'/> */}
-              <TextField
                 id="symbolicImageUrl"
                 label="URL Hình ảnh thu nhỏ 3D"
                 variant="outlined"
                 value={symbolicImageUrl}
                 onChange={(e) => setSymbolicImageUrl(e.target.value)}
-              />
+              /> */}
+              <Typography>URL Hình ảnh thu nhỏ 3D</Typography>
 
               {/* Input for file upload */}
               <input
                 type="file"
                 accept="image/*" // Only allow image files
-                onChange={handleImageUpload}
+                onChange={handleImageUpload2}
               />
 
               {/* Preview the uploaded image */}
-              {symbolicImageUrl && (
+              {/* {thumbnail3DUrl && (
                 <img
-                  src={symbolicImageUrl}
+                  src={thumbnail3DUrl}
                   width={'100%'}
                   height={'300px'}
                   alt="img tượng trưng"
                 />
-              )}
+              )} */}
             </Box>
 
             {/* Hiển thị thông tin mẹ */}
@@ -447,19 +435,37 @@ export default function FormCreateSurvey({ babyTrackerData }: FormCreateSurveyPr
                 gap: 2,
               }}
             >
-              <TextField
+              {/* <TextField
                 id="momThumbnail3DUrl"
                 label="URL Hình ảnh thu nhỏ 3D"
                 variant="outlined"
                 value={momThumbnail3DUrl}
                 onChange={(e) => setThumbnail3DUrl(e.target.value)}
-              />
-              <img
+              /> */}
+              {/* <img
                 src={momThumbnail3DUrl}
                 width={'100%'}
                 height={'300px'}
                 alt="URL Hình ảnh thu nhỏ 3D"
+              /> */}
+              {/* Input for file upload */}
+              <Typography>URL Hình ảnh thu nhỏ 3D</Typography>
+
+              <input
+                type="file"
+                accept="image/*" // Only allow image files
+                onChange={handleImageUploadMom}
               />
+
+              {/* Preview the uploaded image */}
+              {/* {momThumbnail3DUrl && (
+                <img
+                  src={momThumbnail3DUrl}
+                  width={'100%'}
+                  height={'300px'}
+                  alt="thumbnail3DMom"
+                />
+              )} */}
             </Box>
           </Stack>
         </Card>

@@ -39,17 +39,17 @@ export const USER_TABLE_HEAD = [
     label: 'Quyền',
     align: 'center',
   },
-  {
-    id: 'birth',
-    label: 'Ngày sinh',
-    align: 'left',
-  },
+  // {
+  //   id: 'birth',
+  //   label: 'Ngày sinh',
+  //   align: 'left',
+  // },
 
-  {
-    id: 'lastLogin',
-    label: 'Ngày truy cập gần nhất',
-    align: 'center',
-  },
+  // {
+  //   id: 'lastLogin',
+  //   label: 'Ngày truy cập gần nhất',
+  //   align: 'center',
+  // },
   // {
   //   id: 'lastCoin',
   //   label: 'Ngày tích xu cuối',
@@ -186,8 +186,8 @@ export const USER_STATUS = [
 ];
 
 export enum UserGender {
-  MALE = 'MALE',
-  FEMALE = 'FEMALE',
+  MALE = 'male',
+  FEMALE = 'female',
 }
 
 export const TYPE_GENDER = [

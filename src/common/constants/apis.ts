@@ -177,3 +177,7 @@ export const API_CHILD_REMOVE_TRACKERS = '/api/v1/child-trackers/week';
 export const API_CHILD_CREATE_TRACKERS = '/api/v1/child-trackers';
 export const API_CHILD_EDIT_TRACKERS = '/api/v1/child-trackers';
 export const API_CHILD_GET_TRACKERS_WEEK = '/api/v1/child-trackers/week';
+//
+export const API_LIST_NAME_CHILD = '/api/v1/names';
+export const API_LIST_MUSIC_TOOL = '/api/v1/musics/song';
+export const API_LIST_MUSIC_CATEGORY = '/api/v1/musics/category';

@@ -109,7 +109,7 @@ export default function FormUserDetail({ data, isLoading }: Props) {
                 InputLabelProps={{ shrink: true }}
               />
             </Stack>
-            <RHFTextField
+            {/* <RHFTextField
               name="fullAddress"
               label={`${i18n.t('userManage.address')}`}
               disabled
@@ -128,7 +128,7 @@ export default function FormUserDetail({ data, isLoading }: Props) {
                 disabled
                 InputLabelProps={{ shrink: true }}
               />
-            </Stack>
+            </Stack> */}
             <Stack direction={'row'} spacing={2}>
               <RHFTextField
                 name="lastVisitDate"
@@ -139,35 +139,6 @@ export default function FormUserDetail({ data, isLoading }: Props) {
               <RHFTextField
                 name="createdAt"
                 label={`${i18n.t('userManage.createdAt')}`}
-                disabled
-                InputLabelProps={{ shrink: true }}
-              />
-            </Stack>
-            <Stack direction={'row'} spacing={2}>
-              <RHFTextField
-                name="totalPoints"
-                label={`${i18n.t('userManage.totalPoints')}`}
-                disabled
-                InputLabelProps={{ shrink: true }}
-              />
-
-              <RHFTextField
-                name="lastScanDate"
-                label={`${i18n.t('userManage.lastScan')}`}
-                disabled
-                InputLabelProps={{ shrink: true }}
-              />
-            </Stack>
-            <Stack direction={'row'} spacing={2}>
-              <RHFTextField
-                name="blockAccount"
-                label={`${i18n.t('userManage.status')}`}
-                disabled
-                InputLabelProps={{ shrink: true }}
-              />
-              <RHFTextField
-                name="blockAddPoint"
-                label={`${i18n.t('userManage.block')}`}
                 disabled
                 InputLabelProps={{ shrink: true }}
               />

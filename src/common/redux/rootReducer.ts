@@ -46,7 +46,7 @@ import detailOrderReducer from '../../order-management/detail-order/slice';
 import newVariantReducer from '../../product-variant/new-variant/slice';
 import tagListReducer from '../../tag/tag-list/tag.slice';
 import storeInMapListReducer from '../../store-in-map/store-list/storeInMap.slice';
-import categoryManageReducer from '../../category/common/category.slice';
+import categoryManageReducer from '../../name_child/common/category.slice';
 import groupUserReducer from '../../user-management/groupUser-manage/groupUser.slices';
 import manageStoreReducer from '../../manage-store/manageStore.slice';
 import listTermReducer from '../../product-attribute-term-merchant/term-list/slice';

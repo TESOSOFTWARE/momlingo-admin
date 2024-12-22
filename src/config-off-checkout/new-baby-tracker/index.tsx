@@ -1,3 +1,4 @@
+// New Baby Tracker
 import { Box, Container } from '@mui/material';
 import i18n from 'src/common/locales/i18n';
 import Page from '../../common/components/Page';

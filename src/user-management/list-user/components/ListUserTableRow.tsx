@@ -42,7 +42,7 @@ export default function UserTableRow({ row }: IPropsTableRow) {
   } = row;
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  console.log('row', row);
   const [openMenu, setOpenMenuActions] = useState<HTMLElement | null>(null);
 
   const { showSuccessSnackbar, showErrorSnackbar } = useMessage();
@@ -145,8 +145,8 @@ export default function UserTableRow({ row }: IPropsTableRow) {
           {tierCode}
         </TableCell> */}
         {/* <TableCell align="left">{userPoint?.totalPoints}</TableCell> */}
-        <TableCell align="left">{formatDateNoTime(birthDate)}</TableCell>
-        <TableCell align="center">{formatDate(lastVisitDate)}</TableCell>
+        {/* <TableCell align="left">{formatDateNoTime(birthDate)}</TableCell>
+        <TableCell align="center">{formatDate(lastVisitDate)}</TableCell> */}
         {/* <TableCell align="left">{formatDate(lastScanDate)}</TableCell> */}
         <TableCell
           align="center"

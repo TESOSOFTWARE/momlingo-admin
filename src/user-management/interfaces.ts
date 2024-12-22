@@ -155,9 +155,9 @@ export interface IParamsEditUser {
     name: string | null;
     email: string | null;
     gender: string | null;
-    address: string | null;
-    birthDate: string | null;
-    tierCode: string | null;
+    address?: string | null;
+    birthDate?: string | null;
+    tierCode?: string | null;
     blockAccount?: boolean;
     blockAddPoint?: boolean;
     totalPoints?: number;

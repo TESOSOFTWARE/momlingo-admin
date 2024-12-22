@@ -27,7 +27,6 @@ export default function ViewUser() {
 
   const { id } = useParams();
   const { data, isLoading, refetch } = useGetUserById(Number(id));
-
   const isOpenHistoryScan = useSelector(isOpenModalHistoryScanSelector);
   const isOpenHistoryGift = useSelector(isOpenModalHistoryGiftSelector);
 
